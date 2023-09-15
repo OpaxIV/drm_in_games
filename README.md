@@ -1,2 +1,2 @@
 # hslu_secproj
-Repo for secproj HSLU
+Repo for the Security Project at the Hochschule Luzern
