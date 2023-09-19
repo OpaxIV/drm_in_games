@@ -35,4 +35,13 @@
 #### CoreFP.Framework
 - MacOS: Much of the management of FairPlay is assigned to a framework called CoreFP.Framework (Core Fair Play) found within the /System/Library/PrivateFrameworks folder.
 - Private frameworks are a set of libraries dedicated to certain specific macOS features that are considered private (not been released for public use) and all methods contained within are to be considered valid only for Apple applications.
-- 
+- Used by some applications and daemons such as Safari and AMPLibraryAgent.
+- Command to check where a private framework is currently being used: `lsof | grep -i [name_framework]` where name_framework is the name of the framework library.
+- As an example the private framework AMPLibraryAgent:
+  - User-space daemon used to manage the user’s media (TV.app and Music.app).
+  - A kind of intermediate process between the encrypted content coming from Apple’s servers and the end user interacting with the decrypted content through the TV.app and Music.app clients.
+- FairPlayd is the daemon that is invoked by AMPLibraryAgent and is used in practice to decrypt the contents.
+- Although the private frameworks are contained within a dynamic cache called dyld, the binaries of CoreFP.Framework are available without any special arrangements that the user has to make on the dynamic cache.
+- Contained in the CoreFP.framework are `CoreFP` and `fairplayd`:
+  - `CoreFP` is the binary that is used by system processes and constitutes the library.
+  - `Fairplayd` is the user space daemon. The user space daemon uses the kernel component called `FairPlayIOKit`.
