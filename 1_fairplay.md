@@ -22,6 +22,7 @@
 - Apple encrypts the contents of the IPA file the moment it receives a new request from the Apple Store: encryption is done with a public key associated with the Apple account. Once received, the archive is decompressed and the individual binary is decrypted using the private key within the device.
 - The application is thus installed in plaintext and remains in plaintext within the Apple device.
 - Apple uses a wide array of authentification parameters like the Apple Store, iCloud and Apple Signing.
+- FairPlays usage is not limited to iOS (e.g. MacOS)
 
 ### Static analysis and obfuscation techniques
 - Protecting how the decryption process works is the main goal of another set of “anti-reverse engineering” technologies named software obfuscation.
@@ -31,3 +32,7 @@
 - The solution to protect the instructions and data is to apply some forms of obfuscation that make the process of reverse engineering analysis more difficult (hence the use of FairPlay)
 
 ### The fairplayd daemon
+#### CoreFP.Framework
+- MacOS: Much of the management of FairPlay is assigned to a framework called CoreFP.Framework (Core Fair Play) found within the /System/Library/PrivateFrameworks folder.
+- Private frameworks are a set of libraries dedicated to certain specific macOS features that are considered private (not been released for public use) and all methods contained within are to be considered valid only for Apple applications.
+- 
