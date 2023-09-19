@@ -23,4 +23,5 @@
 - The application is thus installed in plaintext and remains in plaintext within the Apple device.
 - Apple uses a wide array of authentification parameters like the Apple Store, iCloud and Apple Signing.
 
-- 
+### Static analysis and obfuscation techniques
+- Protecting how the decryption process works is the main goal of another set of “anti-reverse engineering” technologies named software obfuscation.
