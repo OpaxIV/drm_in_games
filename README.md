@@ -1,6 +1,10 @@
 # hslu_secproj
 Repo for the Security Project at the Hochschule Luzern
 
+## Milestones
+- 19.09.2023 Beginning of the Project
+- 
+
 
 ## Resources
 - https://tigress.wtf/flatten.html
