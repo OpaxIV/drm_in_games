@@ -25,3 +25,9 @@
 
 ### Static analysis and obfuscation techniques
 - Protecting how the decryption process works is the main goal of another set of “anti-reverse engineering” technologies named software obfuscation.
+- Procedure called static analysis that allows for more specific investigation of certain parts of a piece of software without sending it into execution.The main technique of static analysis is reverse engineering, which is the reconstruction of the original code by inferring information from raw binary code.
+- Raw binaries in fact consist of two main pieces of information to function: data and instructions. Through a multitude of steps, programs such as Ghidra, IDA or Binary Ninja can reconstruct much of the original source code. Although not perfectly, the software analyst is able to infer much of the semantics of the software: how it works, what methods it calls, and what information it uses from the operating system are some of the examples of questions we can answer through reverse engineering.
+- Reverse engineering allows one to derive to a good degree of approximation the algorithms that FairPlay uses in order to decrypt the content.
+- The solution to protect the instructions and data is to apply some forms of obfuscation that make the process of reverse engineering analysis more difficult (hence the use of FairPlay)
+
+### The fairplayd daemon
