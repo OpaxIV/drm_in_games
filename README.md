@@ -20,6 +20,7 @@ Repo for the Security Project at the Hochschule Luzern
 e.g. https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
 
 2.2 Look at the binary compiled binary with e.g. Ghidra
+<br/>
   2.2.1 Focus on the following obfuscation techniques (one per one):
   - Control Flattening
   - Opaque Predicates
