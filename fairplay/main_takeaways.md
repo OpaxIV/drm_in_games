@@ -40,5 +40,6 @@ https://nicolo.dev/en/blog/fairplay-apple-obfuscation/
 ## Mixed Boolean-Arithmetic Obfuscation
 Mixed Boolean-Arithmetic (MBA) obfuscation is a method to perform a semantics-preserving transformation from a simple expression to a representation that is hard to understand and analyze. More specifically, this obfuscation technique consists of the mixture usage of arithmetic operations (e.g., ADD and IMUL) and Boolean operations (e.g., AND, OR, and NOT). Binary code with MBA obfuscation can effectively hide the secret data/algorithm from both static and dynamic reverse engineering, including advanced analyses utilizing SMT solvers. Unfortunately, deobfuscation research against MBA is still in its infancy: state-of-the-art solutions such as pattern matching, bit-blasting, and program synthesis either suffer from severe performance penalties, are designed for specific MBA patterns, or generate too many false simplification results in practice.
 Examples of arithmetic-boolean expressions are:
+<br/>
 `v298 & 0x52491520 | (2 * (_DWORD) v298) & 0x80120A40) ^ 0x40090520) + ((-1704077140 - (v298 & 0x8924A850)) & 0x8924A854) + ((((unsigned int) v298 & 0x24924288) + 689062540) &0x24924288 | (2 * v298) & 0x506D9510).`
 
