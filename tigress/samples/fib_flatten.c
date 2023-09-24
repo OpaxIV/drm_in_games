@@ -1,3 +1,7 @@
+/* Notes
+Around line 3100 to 3172 there seems to be the fib function (somewhat)
+*/
+
 
 /*
 BEGIN-TIGRESS
