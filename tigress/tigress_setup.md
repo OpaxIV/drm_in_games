@@ -19,4 +19,8 @@ export PATH=$PATH:/usr/local/bin/tigress/3.3.3
 2. 
 
 ## Usage
-1. In your file, which you want to obfuscate, add the following header line: `#include "PATH-TO-TIGRESS-INSTALLATION/tigress.h"`, in my case `#include "usr/local/bin/tigress.h"`
+*In your file, which you want to obfuscate, add the following header line: `#include "PATH-TO-TIGRESS-INSTALLATION/tigress.h"`, in my case `#include "/usr/local/bin/tigresspkg/3.3.3/tigress.h"`*
+
+## Troubleshooting
+- If in any case `Cannot start GNUCC at /usr/local/bin/tigresspkg/3.3.3/Linux-x86_64/App/Cilly.pm line 2212.` appears as an error, make sure to update and upgrade your system and to have gcc installed.
+
