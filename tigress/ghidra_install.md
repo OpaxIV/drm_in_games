@@ -19,3 +19,8 @@ https://github.com/NationalSecurityAgency/ghidra/releases
 Note: There is a way to create a desktop icon, which was skipped in this tutorial.
 To run ghidra, using the ghidraRun file, input the following:
 `./ghidraRun`
+
+
+## Troubleshooting
+### Ghidra won't find Java Path automatically
+I tried to work it out but lost my patience.
