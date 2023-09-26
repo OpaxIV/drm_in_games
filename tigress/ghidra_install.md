@@ -49,4 +49,5 @@ fabio@fabio-VirtualBox:~$ echo $JAVA_HOME
 
 
 ### Java version is outside of supported range
-
+Even though it is stated, that an older jdk should be used, somehow this fixed the issue:
+`sudo apt install openjdk-17-jdk openjdk-17-jre`
