@@ -7,14 +7,13 @@ _Note: Using Ubuntu_
 ### Install Ghidra
 Get the link of the zip under:
 https://github.com/NationalSecurityAgency/ghidra/releases
-`wget [link to zip file]`
+1. `wget [link to zip file]`
 
-`unzip [name of the file]`
+2. `unzip [name of the file]`
 
-_Optional:_
-`mv [name of the unzipped file] [ghidra]`
+3. _Optional:_ `mv [name of the unzipped file] [ghidra]`
 
-`cd ghidra`
+4. `cd ghidra`
 
 ### Run ghidra
 Note: There is a way to create a desktop icon, which was skipped in this tutorial.
