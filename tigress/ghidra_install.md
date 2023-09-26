@@ -46,3 +46,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 fabio@fabio-VirtualBox:~$ echo $JAVA_HOME
 /usr/lib/jvm/java-11-openjdk-amd64
 ```
+
+
+### Java version is outside of supported range
+
