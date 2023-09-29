@@ -1,4 +1,4 @@
-#include "/home/Training/Desktop/tigress/3.1/tigress.h"
+#include "/home/training/Desktop/tigress/3.1/tigress.h"
 
 #include <stdio.h>
 #include <stdlib.h>
