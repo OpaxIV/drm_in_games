@@ -16,11 +16,25 @@ As such, add the following lines in the `~./bashrc` file:
 export TIGRESS_HOME=/home/training/Desktop/tigress/3.1
 export PATH=$PATH:/home/training/Desktop/tigress/3.1
 ```
+
+---
+
 ## Check Installation
-Run the following script to check the installation:
+Input the following commands to make sure that the environment variables were added correctly:
+```
+echo $PATH
+echo $TIGRESS_HOME
+```
+Run the following command to check your install (from your tigress folder):
+```
+tigress --Environment=x86_64:Linux:Gcc:4.6 --Transform=Virtualize --Functions=main,fib,fac --out=result.c /home/training/Desktop/tigress/3.1/test1.c
+```
+
+(Run the following script to check the installation:)
 ```
 PATH TO TIGRESS/TIGRESS VERSION/check.sh
 ```
+---
 
 The tigress script will pick up the right binary to use by trying to figure out which
 platform you're on, using "uname -s" and "uname -m". If your uname returns strange
