@@ -4,4 +4,4 @@ References:
 - Curve Flattening on Tigress: https://tigress.wtf/flatten.html
 
 The following command transformers the given fib.c file into an obfuscated fib_out.c file:
-`tigress --Environment=x86_64:Linux:Gcc:4.6 --Transform=Flatten --Functions=fib --out=fib_out.c fib.c`
+`tigress --Environment=x86_64:Linux:Gcc:13.2.1 --Transform=Flatten --Functions=fib --out=fib_flatten.c fib.c`
