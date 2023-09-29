@@ -5,11 +5,19 @@ This is a fat distribution, with binaries for multiple platforms. Files for each
    PATH-TO-THIS-DIRECTORY/tigress/3.1/Linux-armv7
    PATH-TO-THIS-DIRECTORY/tigress/3.1/Linux-x86_64
 
+## Modifing ~./bashrc file
 To install, you need to set the TIGRESS_HOME environment variable:
    export TIGRESS_HOME=PATH-TO-THIS-DIRECTORY/tigress/3.1
 
 You also need to add this directory to your PATH:
    export PATH= ... PATH-TO-THIS-DIRECTORY/tigress/3.1 ...
+As such, add the following lines in the ~./bashrc file:
+```
+export TIGRESS_HOME=/home/training/Desktop/tigress/3.1
+export PATH=$PATH:/home/training/Desktop/tigress/3.1
+```
+
+
 
 The tigress script will pick up the right binary to use by trying to figure out which
 platform you're on, using "uname -s" and "uname -m". If your uname returns strange
