@@ -8,5 +8,4 @@ The following command transformers the given fib.c file into an obfuscated fib_o
 
 
 ### Analysis in Ghidra
-![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/f2de9d38-1e3d-49f5-8a89-5a2ce7cbeb7d)
-
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091)
