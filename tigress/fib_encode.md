@@ -14,7 +14,7 @@ _fib.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5f5d2c9d-1ad1-4667-86a5-d07965ce8cf2" width="500"/>
 
 _fib_encode.c:_<br/>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/8dbc0a6b-3b09-49bf-91ad-fa3d3dafe630" width="800"/>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/8dbc0a6b-3b09-49bf-91ad-fa3d3dafe630" width="300"/>
 
 #### Decompiler
 _fib.c:_
