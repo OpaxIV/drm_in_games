@@ -15,3 +15,68 @@ _fib.c:_<br/>
 
 _fib_flatten.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091" width="800"/>
+
+#### Decompiler
+_fib.c:_
+```
+undefined8 main(int param_1,long param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined8 uVar3;
+  
+  if (param_1 < 2) {
+    uVar3 = 0xffffffff;
+  }
+  else {
+    iVar1 = atoi(*(char **)(param_2 + 8));
+    uVar2 = fib(iVar1);
+    printf("result: %u\n",(ulong)uVar2);
+    uVar3 = 0;
+  }
+  return uVar3;
+}
+```
+
+_fib_flatten.c:_
+```C
+undefined8 main(int param_1,long param_2,undefined8 param_3)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined8 local_10;
+  
+  megaInit();
+  local_10 = 1;
+  _global_argv = param_2;
+  _global_argc = param_1;
+  _global_envp = param_3;
+  do {
+    switch(local_10) {
+    case 0:
+      iVar1 = atoi(*(char **)(param_2 + 8));
+      uVar2 = fib(iVar1);
+      printf("result: %u\n",(ulong)uVar2);
+      local_10 = 3;
+      break;
+    case 1:
+      local_10 = 2;
+      break;
+    case 2:
+      if (param_1 < 2) {
+        local_10 = 4;
+      }
+      else {
+        local_10 = 0;
+      }
+      break;
+    case 3:
+      return 0;
+    case 4:
+      return 0xffffffff;
+    }
+  } while( true );
+}
+```
