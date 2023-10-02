@@ -1,5 +1,5 @@
 ## Opaque Predicates
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/6a6a8777-acfd-4efb-8460-840951b5638d" width="500"/>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5c05eea2-9e56-4aec-8ae0-12795bd4b669" width="500"/>
 
 References:
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
