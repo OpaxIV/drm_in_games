@@ -4,6 +4,7 @@
 References:
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
 - Curve Flattening on Tigress: https://tigress.wtf/flatten.html
+
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
 `tigress --Environment=x86_64:Linux:Gcc:4.6 --Transform=EncodeArithmetic --Functions=main,fib --out=fib_encode.c /home/training/Desktop/tigress/3.1/fib.c`
 
