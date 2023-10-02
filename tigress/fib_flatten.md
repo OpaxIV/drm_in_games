@@ -18,7 +18,7 @@ _fib_flatten.c:_<br/>
 
 #### Decompiler
 _fib.c:_
-```
+```C
 undefined8 main(int param_1,long param_2)
 
 {
