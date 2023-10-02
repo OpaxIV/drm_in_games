@@ -1,5 +1,4 @@
 ## Curve Flattening
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/6a6a8777-acfd-4efb-8460-840951b5638d" width="500"/>
 
 References:
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
@@ -10,4 +9,9 @@ The following command transformers the given fib.c file into an obfuscated fib_o
 
 
 ### Analysis in Ghidra
-![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091)
+#### Graph View
+_fib.c:_<br/>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/6a6a8777-acfd-4efb-8460-840951b5638d" width="500"/>
+
+_fib_flatten.c:_<br/>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091" width="800"/>
