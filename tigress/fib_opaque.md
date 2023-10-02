@@ -3,7 +3,7 @@
 
 References:
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
-- Opaque Predicate on Tigress: [https://tigress.wtf/flatten.html](https://tigress.wtf/addOpaque.html)
+- Opaque Predicate on Tigress: https://tigress.wtf/addOpaque.html
 
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
 `tigress --Environment=x86_64:Linux:Gcc:4.6 --Transform=AddOpaque --Functions=main,fib --out=fib_opaque.c /home/training/Desktop/tigress/3.1/fib.c`
