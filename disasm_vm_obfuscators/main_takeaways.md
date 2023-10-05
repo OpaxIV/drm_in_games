@@ -14,3 +14,7 @@ img2
 - Internally, virtual machines often use additional data structures to preserve their internal state (like storing native registers and intermediate values). Two of the most important data structures are the virtual instruction pointer and (sometimes) the virtual stack pointer.
   - Instruction Pointer: Similar to a native instruction pointer register (such as rip on x86-64), points to current instruction in the bytecode and used to decode operands and keep track of the VM execution flow.
   - Virtual Stack Pointer: Keeps track of a VM-internal stack that may be used to store intermediate values.
+- The VM takes some parameters as inputs and calculates one or more outputs.
+- Uses a prologue and epilogue that saves and restores the native CPU state.
+- Internally, it operates on an undocumented state and interprets a sequence of bytes that represents the protected code.
+## Symbolic Execution
