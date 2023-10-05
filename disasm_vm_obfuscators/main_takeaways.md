@@ -18,3 +18,14 @@ img2
 - Uses a prologue and epilogue that saves and restores the native CPU state.
 - Internally, it operates on an undocumented state and interprets a sequence of bytes that represents the protected code.
 ## Symbolic Execution
+- Program analysis technique which allows to symbolically evaluate and summarize assembly code. Summaries provide concrete insights into  semantics of executed instructions.
+- To symbolically execute assembly code, we first lift it into an intermediate representation.
+- Afterward, we evaluate the code assignment by assignment and track the individual register and memory assignments in a hashmap that is referred to as symbolic state.
+- To propagate the data flow between the instructions, we always use the latest register/memory definitions from the symbolic state.
+- Example:
+```
+mov rax, rbx                  ; rax := rbx
+add rax, 0x20                 ; rax := rax + 0x20
+add rbx, rax                  ; rbx := rbx + rax
+xor rcx, rbx                  ; rcx := rcx ^ rbx
+```
