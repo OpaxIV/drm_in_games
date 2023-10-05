@@ -1,3 +1,9 @@
+# Writing Disassemblers for VM-based Obfuscators
+_Summarized by Fabio Schmidt<br/>
+Original Article by Tim Blazytko_<br/>
+Ref: https://synthesis.to/2021/10/21/vm_based_obfuscation.html
+
+
 ## Virtual Machines
 - Obfuscation by adding a costum "instruction set architecture" (ISA)
 - Hide original code in a sequence of bytes (the so-called bytecode) that is interpreted at runtime.
@@ -23,9 +29,23 @@ img2
 - Afterward, we evaluate the code assignment by assignment and track the individual register and memory assignments in a hashmap that is referred to as symbolic state.
 - To propagate the data flow between the instructions, we always use the latest register/memory definitions from the symbolic state.
 - Example:
-```
-mov rax, rbx                  ; rax := rbx
-add rax, 0x20                 ; rax := rax + 0x20
-add rbx, rax                  ; rbx := rbx + rax
-xor rcx, rbx                  ; rcx := rcx ^ rbx
-```
+	```
+	mov rax, rbx                  ; rax := rbx
+	add rax, 0x20                 ; rax := rax + 0x20
+	add rbx, rax                  ; rbx := rbx + rax
+	xor rcx, rbx                  ; rcx := rcx ^ rbx
+	```
+ 	Assume that the initial symbolic state maps all registers to themselves:
+  	```
+	rax: rax
+	rbx: rbx
+	rcx: rcx
+	```
+  	Going trough the instructions, the following symbolic state is presented:
+  	```
+	rax: rax + 0x20
+	rbx: rbx + (rax + 0x20)
+	rcx: rcx ^ (rbx + (rax + 0x20))
+	```
+## Writing a Disassembler
+   
