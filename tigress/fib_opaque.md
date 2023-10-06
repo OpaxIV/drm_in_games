@@ -78,29 +78,6 @@ _fib_opaque.o:_<br/>
 
 Appart from an increased number of instructions, the control flow graphs seem to be similar. 
 
-_fib.c:_
-```
-[...]
-                           main                                            XREF[2]:     Entry Point(*), 00100130(*)  
-        00100059 55              PUSH       RBP
-        0010005a 48 89 e5        MOV        RBP,RSP
-        0010005d 48 83 ec 20     SUB        RSP,0x20
-        00100061 89 7d ec        MOV        dword ptr [RBP + local_1c],EDI
-        00100064 48 89 75 e0     MOV        qword ptr [RBP + local_28],RSI
-        00100068 83 7d ec 01     CMP        dword ptr [RBP + local_1c],0x1
-        0010006c 7f 07           JG         LAB_00100075
-        0010006e b8 ff ff        MOV        EAX,0xffffffff
-                 ff ff
-        00100073 eb 3b           JMP        LAB_001000b0
-[...]
-```
-
-
-
-_fib_opaque.c:_
-```asm
-
-```
 
 #### Decompiler
 The decompiler presents the following code for the standard and obfuscated implementation of the main function:<br/>
@@ -154,12 +131,6 @@ undefined8 main(int param_1,long param_2,undefined8 param_3)
 }
 ```
 <br/>
-
-Looking at the decompiled output, the newly created fib_encode.c contains the following "rewritten" expression:<br/>
-
-```C
-
-```
 
 
 ---
