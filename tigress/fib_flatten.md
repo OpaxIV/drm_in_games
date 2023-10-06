@@ -13,7 +13,7 @@ The following command transforms the given fib.c file into an obfuscated fib_out
 `tigress --Environment=x86_64:Linux:Gcc:13.2.1 --Transform=Flatten --Functions=fib,main --out=fib_flatten.c /home/training/Desktop/tigress/3.1/fib.c`
 
 Following chapters showcase an analysis of an obfuscated fib.c file. The file contains a basic implementation of the Fibonacci series:
-```
+```C
 #include "3.1/tigress.h"
 
 #include <stdio.h>
@@ -60,6 +60,8 @@ _fib.c:_<br/>
 
 _fib_flatten.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091" width="800"/>
+
+As seen by the second graph, the whole appearance is "flattend".
 
 #### Decompiler
 _fib.c:_
