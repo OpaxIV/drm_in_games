@@ -87,10 +87,23 @@ _fib_encode.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b94d8dbb-8d7e-4299-bf80-02bc1f8d333b" width="400"/>
 
 The second graph clearly shows some change in its number of instrucions compared to the first graph.
-Under the main function at `00100000` more instructions are to be seen compared to the same named standard implementation:
+By just looking at the beginning of the assembly code of the main function at `00100000` more instructions are to be seen compared to the same named standard implementation:
 
 _fib.c:_
 ```
+[...]
+                           main                                            XREF[2]:     Entry Point(*), 00100130(*)  
+        00100059 55              PUSH       RBP
+        0010005a 48 89 e5        MOV        RBP,RSP
+        0010005d 48 83 ec 20     SUB        RSP,0x20
+        00100061 89 7d ec        MOV        dword ptr [RBP + local_1c],EDI
+        00100064 48 89 75 e0     MOV        qword ptr [RBP + local_28],RSI
+        00100068 83 7d ec 01     CMP        dword ptr [RBP + local_1c],0x1
+        0010006c 7f 07           JG         LAB_00100075
+        0010006e b8 ff ff        MOV        EAX,0xffffffff
+                 ff ff
+        00100073 eb 3b           JMP        LAB_001000b0
+[...]
 ```
 
 
