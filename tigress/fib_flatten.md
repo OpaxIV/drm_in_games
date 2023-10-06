@@ -64,7 +64,7 @@ _fib_flatten.c:_<br/>
 When looking into the second graph one can see, that a switch case was implemented, which wasn't existent before.<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d798dc0e-bdc9-4e32-afcc-216719758f99" width="1200"/>
 
-It is also visible, since this function contains a switch case, that allmost all branches are outgoing (as seen by the arrows).
+Since being a switch case, allmost all branches are outgoing from exactly the basic block at `00100145`  (as seen by the arrows).
 
 #### Decompiler
 The decompiler presents the following code for the standard implementation `fib.c`:<br/>
