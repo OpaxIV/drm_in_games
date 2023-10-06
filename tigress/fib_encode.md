@@ -223,15 +223,15 @@ undefined8 main(int param_1,long param_2,undefined8 param_3)
 }
 ```
 <br/>
+
 Looking at the decompiled output, the newly created fib_encode.c contains the following "rewritten" expression:<br/>
+
 ```C
-[...]
   if ((int)(((int)((2 - param_1) * (uint)(param_1 < 3)) >> 0x1f) -
            ((uint)(param_1 < 3) * (2 - param_1) ^ (int)((2 - param_1) * (uint)(param_1 < 3)) >> 0x1f
            )) < 0) {
     uVar3 = 0xffffffff;
   }
-[...]
 ```
 
 
