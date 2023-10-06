@@ -3,7 +3,7 @@
 
 The basic idea of the encode arithmetic technique is to rewrite "simpler" functions into more complex expressions. 
 
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/87ba2a98-23be-4e94-8603-a4026cdccecc" width="500"/>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e2deada6-8510-4e74-9c36-7e3dc723cee0" width="500"/>
 <br/>
 
 The following script shows this principle by comparing two functions:
