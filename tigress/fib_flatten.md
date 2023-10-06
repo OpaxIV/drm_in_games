@@ -61,12 +61,13 @@ _fib.c:_<br/>
 _fib_flatten.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091" width="800"/>
 
-When further analyzing the second graph one can see, that a switch case was implemented in the place (which wasn't existent before).<br/>
+When looking into the second graph one can see, that a switch case was implemented, which wasn't existent before.<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d798dc0e-bdc9-4e32-afcc-216719758f99" width="1200"/>
 
-One can also see, since this function contains a switch case, that most branches are outgoing
+It is also visible, since this function contains a switch case, that allmost all branches are outgoing (as seen by the arrows).
 
 #### Decompiler
+The decompiler presents the following code for the standard implementation `fib.c`:<br/>
 _fib.c:_
 ```C
 undefined8 main(int param_1,long param_2)
@@ -88,6 +89,8 @@ undefined8 main(int param_1,long param_2)
   return uVar3;
 }
 ```
+<br/>
+Looking at the decompiled output shows a similar result: The newly created fib_flatten.c contains a switch case and an artificial variable `local_10`. The variable is then used to execute the conditional jumps. 
 
 _fib_flatten.c:_
 ```C
