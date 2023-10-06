@@ -1,9 +1,9 @@
 ## Curve Flattening
 ### General Definition
 The idea of curve flattening consists in altering the control flow of a program by using a dispatcher function.
-As seen in the following picture, the graph is literally "flattened":
+As seen in the following picture, the graph is literally "flattened":<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/6a6a8777-acfd-4efb-8460-840951b5638d" width="500"/>
-
+<br/>
 The edges of the basic blocks are all redirected to a dispatcher function. Decisions on which blocks of the program the flow should jump are then based on a new artifical variable.
 
 
