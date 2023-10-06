@@ -1,10 +1,15 @@
 ## Curve Flattening
+### General Definition
+The idea of curve flattening consists in altering the control flow of a program by using a dispatcher function.
+As seen in the following picture, the graph is literally "flattened":
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/6a6a8777-acfd-4efb-8460-840951b5638d" width="500"/>
 
-References:
-- Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
-- Curve Flattening on Tigress: https://tigress.wtf/flatten.html
+The edges of the basic blocks are all redirected to a dispatcher function. Decisions on which blocks of the program the flow should jump are then based on a new artifical variable.
 
+
+
+
+### Tigress
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
 `tigress --Environment=x86_64:Linux:Gcc:13.2.1 --Transform=Flatten --Functions=fib,main --out=fib_flatten.c /home/training/Desktop/tigress/3.1/fib.c`
 
@@ -81,3 +86,10 @@ undefined8 main(int param_1,long param_2,undefined8 param_3)
   } while( true );
 }
 ```
+
+
+---
+References:
+- What is a "control-flow flattening" obfuscation technique? - https://reverseengineering.stackexchange.com/questions/2221/what-is-a-control-flow-flattening-obfuscation-technique
+- Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
+- Curve Flattening on Tigress: https://tigress.wtf/flatten.html
