@@ -171,7 +171,7 @@ _fib_encode.c:_
 ```
 
 #### Decompiler
-The decompiler presents the following code for the standard implementation `fib.c`:<br/>
+The decompiler presents the following code for the standard and obfuscated implementation of the main function:<br/>
 _fib.c:_
 ```C
 undefined8 main(int param_1,long param_2)
@@ -193,53 +193,48 @@ undefined8 main(int param_1,long param_2)
   return uVar3;
 }
 ```
-<br/>
-Looking at the decompiled output shows a similar result: The newly created fib_flatten.c contains a switch case and an artificial variable `local_10`. The variable is then used to execute the conditional jumps. 
+<br/> 
 
-_fib_flatten.c:_
+_fib_encode.c:_
 ```C
 undefined8 main(int param_1,long param_2,undefined8 param_3)
 
 {
   int iVar1;
   uint uVar2;
-  undefined8 local_10;
+  undefined8 uVar3;
   
   megaInit();
-  local_10 = 1;
   _global_argv = param_2;
   _global_argc = param_1;
   _global_envp = param_3;
-  do {
-    switch(local_10) {
-    case 0:
-      iVar1 = atoi(*(char **)(param_2 + 8));
-      uVar2 = fib(iVar1);
-      printf("result: %u\n",(ulong)uVar2);
-      local_10 = 3;
-      break;
-    case 1:
-      local_10 = 2;
-      break;
-    case 2:
-      if (param_1 < 2) {
-        local_10 = 4;
-      }
-      else {
-        local_10 = 0;
-      }
-      break;
-    case 3:
-      return 0;
-    case 4:
-      return 0xffffffff;
-    }
-  } while( true );
+  if ((int)(((int)((2 - param_1) * (uint)(param_1 < 3)) >> 0x1f) -
+           ((uint)(param_1 < 3) * (2 - param_1) ^ (int)((2 - param_1) * (uint)(param_1 < 3)) >> 0x1f
+           )) < 0) {
+    uVar3 = 0xffffffff;
+  }
+  else {
+    iVar1 = atoi(*(char **)(param_2 + 8));
+    uVar2 = fib(iVar1);
+    printf("result: %u\n",(ulong)uVar2);
+    uVar3 = 0;
+  }
+  return uVar3;
 }
 ```
-
-
+<br/>
+Looking at the decompiled output, the newly created fib_encode.c contains the following "rewritten" expression:
+```C
+[...]
+  if ((int)(((int)((2 - param_1) * (uint)(param_1 < 3)) >> 0x1f) -
+           ((uint)(param_1 < 3) * (2 - param_1) ^ (int)((2 - param_1) * (uint)(param_1 < 3)) >> 0x1f
+           )) < 0) {
+    uVar3 = 0xffffffff;
+  }
+[...]
+```
 ---
 References:
+- Code Obfuscation - https://www2.cs.arizona.edu/~collberg/Teaching/553/2011/Resources/obfuscation.pdf
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
 - Encode Arithmetic on Tigress: https://tigress.wtf/encodeArithmetic.html
