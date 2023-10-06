@@ -6,16 +6,55 @@ As seen in the following picture, the graph is literally "flattened":<br/>
 <br/>
 The edges of the basic blocks are all redirected to a dispatcher function. Decisions, to which blocks of the program one should jump to, are then based on a new artifical variable.
 
-
-
-
 ### Tigress
+Tigress is a C-programm obfuscator. It takes a file written in C, obfuscates it by imposing the options added by the user and outputs the obfuscated C-file.
+
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
 `tigress --Environment=x86_64:Linux:Gcc:13.2.1 --Transform=Flatten --Functions=fib,main --out=fib_flatten.c /home/training/Desktop/tigress/3.1/fib.c`
 
+Following chapters showcase an analysis of an obfuscated fib.c file. The file contains a basic implementation of the Fibonacci series:
+```
+#include "3.1/tigress.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+unsigned int fib(unsigned n) {
+  unsigned a=0;
+  unsigned b=1;
+  unsigned int s = b;
+  unsigned i;
+
+  if (n == 0) {
+    return 0;
+  }
+
+
+  for (i=2; i<=n; i++) {
+    s=a+b;
+    a=b;
+    b=s;
+  }
+  return s;
+}
+
+int main (int argc, char** argv) {
+  if (argc < 2) {
+    return -1;
+  }
+  
+  unsigned int n = atoi(argv[1]);
+  
+  printf("result: %u\n", fib(n));
+  
+  return 0;
+}
+```
 
 ### Analysis in Ghidra
 #### Graph View
+Following pictures show the control flow graph of the standard fib.c implementation and the obfuscated, flattend control flow graph of the fib_flatten.c file.
 _fib.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5f5d2c9d-1ad1-4667-86a5-d07965ce8cf2" width="500"/>
 
