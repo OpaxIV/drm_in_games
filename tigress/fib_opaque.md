@@ -76,8 +76,7 @@ _fib_opaque.o:_<br/>
 
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e5ca362f-b24c-4542-9a33-f2255922667c" width="400"/>
 
-The second graph clearly shows some change in its number of instrucions compared to the first graph.
-By just looking at the beginning of the assembly code of the main function at `00100000` more instructions are to be seen compared to the same named standard implementation:
+Appart from an increased number of instructions, the control flow graphs seem to be similar. 
 
 _fib.c:_
 ```
