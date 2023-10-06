@@ -78,17 +78,84 @@ int main (int argc, char** argv) {
 
 ### Analysis in Ghidra
 #### Graph View
-Following pictures show the control flow graph of the standard fib.c implementation and the obfuscated, flattend control flow graph of the fib_flatten.c file.<br/>
+Following pictures show the control flow graph of the main function of the standard fib.c implementation and the obfuscated control flow graph of the fib_encode.c file.<br/>
 _fib.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5f5d2c9d-1ad1-4667-86a5-d07965ce8cf2" width="500"/>
 
-_fib_flatten.c:_<br/>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091" width="800"/>
+_fib_encode.c:_<br/>
 
-When looking into the second graph one can see, that a switch case was implemented, which wasn't existent before.<br/>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d798dc0e-bdc9-4e32-afcc-216719758f99" width="1200"/>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b94d8dbb-8d7e-4299-bf80-02bc1f8d333b" width="400"/>
 
-Since being a switch case, allmost all branches are outgoing from exactly the basic block at `00100145`  (as seen by the arrows).
+The second graph clearly shows some change in its number of instrucions compared to the first graph.
+Under the main function at `00100000` more instructions are to be seen compared to the same named standard implementation:
+
+_fib.c:_
+```
+```
+
+
+
+_fib_encode.c:_
+```asm
+[...]
+                            main                                            XREF[4]:     Entry Point(*), 001001e8(*), 
+                                                                                          _elfSectionHeaders::00000050(*), 
+                                                                                          _elfSectionHeaders::000000d0(*)  
+        00100000 55              PUSH       RBP
+        00100001 48 89 e5        MOV        RBP,RSP
+        00100004 48 83 ec 30     SUB        RSP,0x30
+        00100008 89 7d ec        MOV        dword ptr [RBP + local_1c],EDI
+        0010000b 48 89 75 e0     MOV        qword ptr [RBP + local_28],RSI
+        0010000f 48 89 55 d8     MOV        qword ptr [RBP + local_30],RDX
+        00100013 e8 cb 00        CALL       megaInit                                         undefined megaInit()
+                 00 00
+        00100018 8b 45 ec        MOV        EAX,dword ptr [RBP + local_1c]
+        0010001b 89 05 57        MOV        dword ptr [_global_argc],EAX                     = ??
+                 01 00 00
+        00100021 48 8b 45 e0     MOV        RAX,qword ptr [RBP + local_28]
+        00100025 48 89 05        MOV        qword ptr [_global_argv],RAX                     = ??
+                 44 01 00 00
+        0010002c 48 8b 45 d8     MOV        RAX,qword ptr [RBP + local_30]
+        00100030 48 89 05        MOV        qword ptr [_global_envp],RAX                     = ??
+                 49 01 00 00
+        00100037 c7 45 f0        MOV        dword ptr [RBP + local_18],0x1
+                 01 00 00 00
+        0010003e 83 7d ec 02     CMP        dword ptr [RBP + local_1c],0x2
+        00100042 0f 9e c0        SETLE      AL
+        00100045 0f b6 d0        MOVZX      EDX,AL
+        00100048 b8 02 00        MOV        EAX,0x2
+                 00 00
+        0010004d 2b 45 ec        SUB        EAX,dword ptr [RBP + local_1c]
+        00100050 0f af c2        IMUL       EAX,EDX
+        00100053 c1 f8 1f        SAR        EAX,0x1f
+        00100056 89 c6           MOV        ESI,EAX
+        00100058 83 7d ec 02     CMP        dword ptr [RBP + local_1c],0x2
+        0010005c 0f 9e c0        SETLE      AL
+        0010005f 0f b6 d0        MOVZX      EDX,AL
+        00100062 b8 02 00        MOV        EAX,0x2
+                 00 00
+        00100067 2b 45 ec        SUB        EAX,dword ptr [RBP + local_1c]
+        0010006a 89 d1           MOV        ECX,EDX
+        0010006c 0f af c8        IMUL       ECX,EAX
+        0010006f 83 7d ec 02     CMP        dword ptr [RBP + local_1c],0x2
+        00100073 0f 9e c0        SETLE      AL
+        00100076 0f b6 d0        MOVZX      EDX,AL
+        00100079 b8 02 00        MOV        EAX,0x2
+                 00 00
+        0010007e 2b 45 ec        SUB        EAX,dword ptr [RBP + local_1c]
+        00100081 0f af c2        IMUL       EAX,EDX
+        00100084 c1 f8 1f        SAR        EAX,0x1f
+        00100087 31 c1           XOR        ECX,EAX
+        00100089 89 ca           MOV        EDX,ECX
+        0010008b 89 f0           MOV        EAX,ESI
+        0010008d 29 d0           SUB        EAX,EDX
+        0010008f 85 c0           TEST       EAX,EAX
+        00100091 79 07           JNS        LAB_0010009a
+        00100093 b8 ff ff        MOV        EAX,0xffffffff
+                 ff ff
+        00100098 eb 47           JMP        LAB_001000e1
+[...]
+```
 
 #### Decompiler
 The decompiler presents the following code for the standard implementation `fib.c`:<br/>
