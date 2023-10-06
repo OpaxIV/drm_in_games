@@ -1,10 +1,11 @@
 ## Opaque Predicates
 ### General Definition
 
-The basic idea of the encode arithmetic technique is to rewrite "simpler" functions into more complex expressions. 
-
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e2deada6-8510-4e74-9c36-7e3dc723cee0" width="500"/>
 <br/>
+
+Opaque predicates can be defined as follows:
+ In a nutshell, an opaque predicate is "something that a program analysis might miss, if the program analysis is not sophisticated enough".
 
 The following script shows this principle by comparing two functions:
 ```py
