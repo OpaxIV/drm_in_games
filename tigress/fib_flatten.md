@@ -54,14 +54,17 @@ int main (int argc, char** argv) {
 
 ### Analysis in Ghidra
 #### Graph View
-Following pictures show the control flow graph of the standard fib.c implementation and the obfuscated, flattend control flow graph of the fib_flatten.c file.
+Following pictures show the control flow graph of the standard fib.c implementation and the obfuscated, flattend control flow graph of the fib_flatten.c file.<br/>
 _fib.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5f5d2c9d-1ad1-4667-86a5-d07965ce8cf2" width="500"/>
 
 _fib_flatten.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091" width="800"/>
 
-As seen by the second graph, the whole appearance is "flattend".
+When further analyzing the second graph one can see, that a switch case was implemented in the place (which wasn't existent before).<br/>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d798dc0e-bdc9-4e32-afcc-216719758f99" width="1200"/>
+
+One can also see, since this function contains a switch case, that most branches are outgoing
 
 #### Decompiler
 _fib.c:_
