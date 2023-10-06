@@ -9,25 +9,7 @@ Opaque predicates can be defined as follows:
 
 The following script shows this principle by comparing two functions:
 ```py
-## checks if the two expressins are equal
-## only for testing purposes
 
-
-def genericExp(x: int) -> int:
-    y = x * 42
-    return y
-
-
-def arithEnc(x: int) -> int:
-    y = x << 5
-    y += x << 3
-    y += x << 1
-    return y
-
-
-if __name__ == "__main__":
-    if genericExp(10) == arithEnc(10):
-        print("True")
 ```
 When executed the word "True" is printed into the console.
 
@@ -239,5 +221,6 @@ Looking at the decompiled output, the newly created fib_encode.c contains the fo
 ---
 References:
 - Code Obfuscation - https://www2.cs.arizona.edu/~collberg/Teaching/553/2011/Resources/obfuscation.pdf
+- What is an "opaque predicate"? - https://reverseengineering.stackexchange.com/questions/1669/what-is-an-opaque-predicate
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
 - Encode Arithmetic on Tigress: https://tigress.wtf/encodeArithmetic.html
