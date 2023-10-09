@@ -1,6 +1,13 @@
 # hslu_secproj
 Repo for the Security Project at the Hochschule Luzern
 
+
+## Personal 2DO
+- Summarize VM Article and Main Takeaways (replace copy-paste parts)
+- May try to properly analyze the opaque predicates tigress sample 
+
+---
+
 ## Milestones
 - 19.09.2023 Beginning of the Project
 - 
