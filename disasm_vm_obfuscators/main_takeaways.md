@@ -5,7 +5,7 @@ Ref: https://synthesis.to/2021/10/21/vm_based_obfuscation.html
 
 
 ## Virtual Machines
-- Obfuscation by adding a costum "instruction set architecture" (ISA)
+- Obfuscation by adding a custom "instruction set architecture" (ISA)
 - Hide original code in a sequence of bytes (the so-called bytecode) that is interpreted at runtime.
 - Control-flow graph: central basic block (dispatcher) which directs control flow to individual basic blocks, which then jump back to the dispatcher.
 img 1
@@ -23,6 +23,10 @@ img2
 - The VM takes some parameters as inputs and calculates one or more outputs.
 - Uses a prologue and epilogue that saves and restores the native CPU state.
 - Internally, it operates on an undocumented state and interprets a sequence of bytes that represents the protected code.
+
+
+---
+
 ## Symbolic Execution
 - Program analysis technique which allows to symbolically evaluate and summarize assembly code. Summaries provide concrete insights into  semantics of executed instructions.
 - To symbolically execute assembly code, we first lift it into an intermediate representation.
