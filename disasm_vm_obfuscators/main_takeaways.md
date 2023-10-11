@@ -5,13 +5,13 @@ Ref: https://synthesis.to/2021/10/21/vm_based_obfuscation.html
 
 
 ## Virtual Machines
-- Obfuscation by adding a custom "instruction set architecture" (ISA)
+- One of the most sophisticated opfuscation schemes.
+- Obfuscation by adding a custom "instruction set architecture" (ISA): 
 - Hide original code in a sequence of bytes (the so-called bytecode) that is interpreted at runtime.
-- Control-flow graph: central basic block (dispatcher) which directs control flow to individual basic blocks, which then jump back to the dispatcher.
-img 1
-
-- Not Control-flow Flattening: individual basic blocks have a 1:1 mapping to the original code. ??
-- In this case these basic blocks are known as handlers and implement the individual instruction semantics of the custom instruction set architecture, such as virtual addition or push/pop instructions. ??
+- Control-flow graph: Consists of a central basic block (dispatcher) which directs control flow to individual basic blocks, which then jump back to the dispatcher.
+- Similar but not same as Control-flow Flattening:
+	- In Control-Flow Flattening the individual basic blocks have a 1:1 mapping to the original code.
+ 	- In the case of VM-based obfuscation these basic blocks are known as handlers and implement the individual instruction semantics of the custom instruction set architecture, such as virtual addition or push/pop instructions. ??
  -High Level Description of VM:
 	- Starting at the entry basic block, it backups the native CPU registers and initializes the VM state.
 	- Afterward, it walks over the bytecode array, iteratively fetches some bytes, decodes the corresponding instruction and executes the handler that implements the virtual instruction.
@@ -30,29 +30,7 @@ img 1
 
 ---
 
-## Symbolic Execution
-- Program analysis technique which allows to symbolically evaluate and summarize assembly code. Summaries provide concrete insights into  semantics of executed instructions.
-- To symbolically execute assembly code, we first lift it into an intermediate representation.
-- Afterward, we evaluate the code assignment by assignment and track the individual register and memory assignments in a hashmap that is referred to as symbolic state.
-- To propagate the data flow between the instructions, we always use the latest register/memory definitions from the symbolic state.
-- Example:
-	```
-	mov rax, rbx                  ; rax := rbx
-	add rax, 0x20                 ; rax := rax + 0x20
-	add rbx, rax                  ; rbx := rbx + rax
-	xor rcx, rbx                  ; rcx := rcx ^ rbx
-	```
- 	Assume that the initial symbolic state maps all registers to themselves:
-  	```
-	rax: rax
-	rbx: rbx
-	rcx: rcx
-	```
-  	Going trough the instructions, the following symbolic state is presented:
-  	```
-	rax: rax + 0x20
-	rbx: rbx + (rax + 0x20)
-	rcx: rcx ^ (rbx + (rax + 0x20))
-	```
-## Writing a Disassembler
+References:
+- Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
+- What Is an Instruction Set Architecture? - https://www.arm.com/glossary/isa
    
