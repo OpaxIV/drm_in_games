@@ -16,7 +16,10 @@ img 1
 	- Starting at the entry basic block, it backups the native CPU registers and initializes the VM state.
 	- Afterward, it walks over the bytecode array, iteratively fetches some bytes, decodes the corresponding instruction and executes the handler that implements the virtual instruction.
 	- The fetch-decode-execute (FDE) process is performed in a loop until the VM reaches a specific handler that restores the native CPU registers and leaves the VM. This handler is called the VM exit. 
-img2
+
+
+
+<img src="" width="">
 - Internally, virtual machines often use additional data structures to preserve their internal state (like storing native registers and intermediate values). Two of the most important data structures are the virtual instruction pointer and (sometimes) the virtual stack pointer.
   - Instruction Pointer: Similar to a native instruction pointer register (such as rip on x86-64), points to current instruction in the bytecode and used to decode operands and keep track of the VM execution flow.
   - Virtual Stack Pointer: Keeps track of a VM-internal stack that may be used to store intermediate values.
