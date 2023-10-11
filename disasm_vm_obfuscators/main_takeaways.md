@@ -43,9 +43,14 @@ Combining it all together, the graph could look like the following:
 - examples: Dalvik, Lua, LLVM, …
 
 _Note: hybrid architectures also possible!_
+
+
+
+
 ---
 
 References:
-- Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
+- Analysis of Virtualization-based Obfuscation (r2con2021workshop) - https://www.youtube.com/watch?v=b6udPT79itk
 - What Is an Instruction Set Architecture? - https://www.arm.com/glossary/isa
+- Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
    
