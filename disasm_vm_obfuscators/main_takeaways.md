@@ -1,9 +1,9 @@
 # Writing Disassemblers for VM-based Obfuscators
 _Summarized by Fabio Schmidt<br/>
-Original Article by Tim Blazytko_<br/>
+Original Article and Video Lecture by Dr. Tim Blazytko_<br/>
+
 Ref: https://synthesis.to/2021/10/21/vm_based_obfuscation.html
 
-Some information also refers to the video lecture of the same author and topic:
 Ref: https://www.youtube.com/watch?v=b6udPT79itk
 
 ## Virtual Machines
