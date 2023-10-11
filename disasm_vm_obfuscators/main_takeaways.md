@@ -27,9 +27,10 @@ Combining it all together, the graph could look like the following:
 - Two of the most important data structures are the **virtual instruction pointer** and (sometimes) the **virtual stack pointer**.
   - Instruction Pointer: Similar to a native instruction pointer register (such as rip on x86-64), points to current instruction in the bytecode and used to decode operands and keep track of the VM execution flow.
   - Virtual Stack Pointer: Keeps track of a VM-internal stack that may be used to store intermediate values.
-- The VM takes some parameters as inputs and calculates one or more outputs.
-- Uses a prologue and epilogue that saves and restores the native CPU state.
-- Internally, it operates on an undocumented state and interprets a sequence of bytes that represents the protected code.
+
+- In conclusion, a VM can be seend as an obfuscated function with a custom calling convention: It takes some parameters as inputs and calculates one or more outputs. It uses a prologue (VM entry) and an epilogue (VM exit) to preserve the outer execution context, hence saves and restores the native CPU state.
+Internally, it operates on an undocumented state and interprets a sequence of bytes that represents the protected code.
+
 
 ### Architectures
 #### Stack-Based Architectures
