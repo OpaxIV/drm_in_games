@@ -15,11 +15,11 @@ img 1
  -High Level Description of VM:
 	- Starting at the entry basic block, it backups the native CPU registers and initializes the VM state.
 	- Afterward, it walks over the bytecode array, iteratively fetches some bytes, decodes the corresponding instruction and executes the handler that implements the virtual instruction.
-	- The fetch-decode-execute (FDE) process is performed in a loop until the VM reaches a specific handler that restores the native CPU registers and leaves the VM. This handler is called the VM exit. 
+	- The fetch-decode-execute (FDE) process is performed in a loop until the VM reaches a specific handler that restores the native CPU registers and leaves the VM. This handler is called the VM exit.
+ Visually the graph of a VM-based obfuscator would look like the following picture: 
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/80e2498c-f847-4abe-bd74-cc79fa5daf7d" width="800">
 
 
-
-<img src="" width="">
 - Internally, virtual machines often use additional data structures to preserve their internal state (like storing native registers and intermediate values). Two of the most important data structures are the virtual instruction pointer and (sometimes) the virtual stack pointer.
   - Instruction Pointer: Similar to a native instruction pointer register (such as rip on x86-64), points to current instruction in the bytecode and used to decode operands and keep track of the VM execution flow.
   - Virtual Stack Pointer: Keeps track of a VM-internal stack that may be used to store intermediate values.
