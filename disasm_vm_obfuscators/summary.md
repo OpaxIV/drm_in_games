@@ -28,7 +28,7 @@ Combining it all together, the graph could look like the following:
   - Instruction Pointer: Similar to a native instruction pointer register (such as rip on x86-64), points to current instruction in the bytecode and used to decode operands and keep track of the VM execution flow.
   - Virtual Stack Pointer: Keeps track of a VM-internal stack that may be used to store intermediate values.
 
-- In conclusion, a VM can be seend as an obfuscated function with a custom calling convention: It takes some parameters as inputs and calculates one or more outputs. It uses a prologue (VM entry) and an epilogue (VM exit) to preserve the outer execution context, hence saves and restores the native CPU state.
+- In conclusion, a VM can be seen as an obfuscated function with a custom calling convention: It takes some parameters as inputs and calculates one or more outputs. It uses a prologue (VM entry) and an epilogue (VM exit) to preserve the outer execution context, hence saves and restores the native CPU state.
 Internally, it operates on an undocumented state and interprets a sequence of bytes that represents the protected code.
 
 
