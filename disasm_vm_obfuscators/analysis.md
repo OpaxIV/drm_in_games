@@ -13,6 +13,13 @@ This documents contains an analysis (or an attempt at that) of the vim_base.bin 
 - Register used as Virtual Stack Pointer (OR)
 - Register used as Virtual Instrucion Pointer (OR)
 - ...
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/55528869-41ab-4306-8412-19926d8b745e" width="600">
+
+
+### How to proceed
+1. Graph View
+2. Identify the individual parts of the VM
+3. Identify the architecture (stack- or instruction-based, hybrid)
 
 ---
 ### Ghidra
@@ -35,4 +42,4 @@ Only when zooming in, it is then, that some functions / basic blocks start to ap
 
 ---
 - Analysis of Virtualization-based Obfuscation (r2con2021workshop) - https://www.youtube.com/watch?v=b6udPT79itk
--  r2con2021_deobfuscation GitHub Repo - https://github.com/mrphrazer/r2con2021_deobfuscation/tree/main/samples
+- r2con2021_deobfuscation GitHub Repo - https://github.com/mrphrazer/r2con2021_deobfuscation/tree/main/samples
