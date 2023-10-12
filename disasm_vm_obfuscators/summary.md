@@ -33,6 +33,9 @@ Internally, it operates on an undocumented state and interprets a sequence of by
 
 
 ### Architectures
+VM-based obfuscators can have different architecures. They can either be stack- or register-based or a combination of the two.
+
+
 #### Stack-Based Architectures
 - pop arguments from stack
 - push results onto stack
