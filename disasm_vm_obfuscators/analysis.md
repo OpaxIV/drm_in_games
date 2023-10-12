@@ -32,7 +32,6 @@ The binary has been analysed with ghidra. When selecting the language, I chose "
 Make sure to download the file directly from github or with the `curl` terminal command.
 The file then should be of type "ELF" when imported in ghidra.
 
-#### 
 
 #### Graphing View
 <img src="" width="200">
@@ -40,6 +39,34 @@ The file then should be of type "ELF" when imported in ghidra.
 Only when zooming in, it is then, that some functions / basic blocks start to appear:<br/>
 <img src="" width="400">
 
+#### Identification of VM Components
+Open the sample vm_basic.bin and start your analysis at 0x115a.
+- Locate the VM dispatcher.
+- Locate the bytecode.
+- Identify some basic blocks that implement handlers.
+- What are the functions of rdx and rcx?
+
+#### Recovering Handler Semantics I
+Open the sample vm_basic.bin and analyze the handler at 0x11e1.
+- How fetches the handler its argument?
+- What does it do with the argument?
+- What else does the handler do?
+
+
+
+#### Recovering Handler Semantics II
+Open the sample vm_basic.bin and analyze the handler at 0x11a9.
+- How fetches the handler its arguments?
+- What does it compute?
+- What else does the handler do?
+
+#### Recovering Handler Semantics III
+Open the sample vm_basic.bin and analyze the handler at 0x1281.
+- What does the handler check?
+- Why does it branch?
+- What does the handler do with rdx and rax?
+
+#### Recovering Handler Semantics ???
 
 
 
