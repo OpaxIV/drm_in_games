@@ -1,6 +1,6 @@
 ## Analysis of the vm_base.bin File
 
-This documents contains an analysis (or an attempt at that) of the vim_base.bin binary of the r2con2021_deobfuscation workshop by Dr. Tim Blazytko.
+This documents contains an analysis (or an attempt at that) of the vim_base.bin binary of the r2con2021_deobfuscation workshop by Dr. Tim Blazytko (linked bellow).
 
 ## Definition of an VM Obfuscation
 ???
@@ -43,3 +43,4 @@ Only when zooming in, it is then, that some functions / basic blocks start to ap
 ---
 - Analysis of Virtualization-based Obfuscation (r2con2021workshop) - https://www.youtube.com/watch?v=b6udPT79itk
 - r2con2021_deobfuscation GitHub Repo - https://github.com/mrphrazer/r2con2021_deobfuscation/tree/main/samples
+- Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
