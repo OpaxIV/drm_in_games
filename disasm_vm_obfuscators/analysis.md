@@ -1,6 +1,6 @@
 ## Analysis of the vm_base.bin File
 
-This documents contains an analysis (or an attempt at that) of the vim_base.bin binary of the r2con2021_deobfuscation workshop by Dr. Tim Blazytko (linked bellow).
+This documents contains an analysis (or an attempt at that) of the vim_base.bin binary of the r2con2021_deobfuscation workshop by Dr. Tim Blazytko (referenced bellow).
 
 ## Definition of an VM Obfuscation
 ???
@@ -9,9 +9,11 @@ This documents contains an analysis (or an attempt at that) of the vim_base.bin 
 - VM entry
 - VM exit
 - Dispatcher
-- Handlers
-- Register used as Virtual Stack Pointer (OR)
-- Register used as Virtual Instrucion Pointer (OR)
+- Locate the bytecode
+- Handlers (at least some)
+- Functionality of rdx and rcx
+  - Register used as Virtual Stack Pointer (OR)
+  - Register used as Virtual Instrucion Pointer (OR)
 - ...
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/55528869-41ab-4306-8412-19926d8b745e" width="600">
 
