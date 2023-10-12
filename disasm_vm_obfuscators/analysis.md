@@ -1,4 +1,4 @@
-## Analysis of the vm_base.bin File
+# Analysis of the vm_base.bin File
 
 This documents contains an analysis (or an attempt at that) of the vim_base.bin binary of the r2con2021_deobfuscation workshop by Dr. Tim Blazytko (referenced bellow).
 
