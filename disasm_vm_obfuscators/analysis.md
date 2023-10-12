@@ -10,7 +10,8 @@ This documents contains an analysis (or an attempt at that) of the vim_base.bin 
 - VM exit
 - Dispatcher
 - Handlers
-- Register used as Virtual Stack Pointer
+- Register used as Virtual Stack Pointer (OR)
+- Register used as Virtual Instrucion Pointer (OR)
 - ...
 
 ---
