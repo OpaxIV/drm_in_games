@@ -19,7 +19,8 @@ In a couple of words one can say, that this obfuscation technique uses a costum 
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/55528869-41ab-4306-8412-19926d8b745e" width="600">
 
 
-### How to proceed
+### Analysis Procedure
+During the analysis, the goal is to identify individual components of the VM-based obfuscator. They include: 
 1. Graph View
 2. Identify the individual parts of the VM
 3. Identify the architecture (stack- or instruction-based, hybrid)
