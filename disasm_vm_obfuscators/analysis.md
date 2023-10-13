@@ -71,7 +71,7 @@ _Note: To show any occurences of e.g. registers, highlight the wished register a
 Looking at the handlers will lead to the conclusion, that rdx is used as an virtual instruction pointer. Reason for this is, that most if not all handlers increment rdx by the instructions size.
 Example of the handler at 0x1011a9:
 By looking at the bytes, we can see that the first instruction starts the address 0x1011a9.
-Adding the amount of bytes of the instruction (in this case 4) we should land onto the next instruction at 0x1011ad.
+By Adding the amount of bytes of the current instruction (in this case 4) should land us onto the next instruction at 0x1011ad.
 
 ```
 001011a9 ADD             48 83 c2 01   RDX,0x1
@@ -93,6 +93,9 @@ Which is indeed the address of the next instruction.
 
 
 Another important register is rcx:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/0f545161-d026-4c3f-8efc-73a860829ade" width="1100">
+<br/>
 
 
 
