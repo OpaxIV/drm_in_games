@@ -1,23 +1,14 @@
 # Analysis of the vm_base.bin File
 
 This documents contains an analysis (or an attempt at that) of the vim_base.bin binary of the r2con2021_deobfuscation workshop by Dr. Tim Blazytko (referenced bellow).
+The goal is to find the most important components of the VM-based obfuscation and to present their functionality. Doing so will back up the reasoning behind the definition of each one of them.    
 
 ## Definition of an VM Obfuscation
 The exact definition of an VM-based obfuscation has already been stated under the section https://github.com/OpaxIV/hslu_secproj/blob/0bc6c015a4a7fa69abbd0b94e3960d5773a84f95/disasm_vm_obfuscators/summary.md
 In a couple of words one can say, that this obfuscation technique uses a costum instruction set architecture as the basis of its obfuscation. Is hides the original code in a sequence of bytes, which are then interpreted at runtime.
-
-### What to look out for
-- VM entry
-- VM exit
-- Dispatcher
-- Locate the bytecode
-- Handlers (at least some)
-- Functionality of rdx and rcx
-  - Register used as Virtual Stack Pointer (OR)
-  - Register used as Virtual Instrucion Pointer (OR)
-- ...
+<br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/55528869-41ab-4306-8412-19926d8b745e" width="600">
-
+<br/>
 
 ### Analysis Procedure
 During the analysis, the goal is to identify individual components of the VM-based obfuscator. They include: 
@@ -33,7 +24,7 @@ Make sure to download the file directly from github or with the `curl` terminal 
 The file then should be of type "ELF" when imported in ghidra.
 
 
-#### Identification of VM Components
+#### Identification of the VM Components
 Starting at the adress 0010115a, one can get a broad overview of the VM-obfuscation. The graph already presents a similarity to the picture of the general structure above:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/4b48d578-4dba-41f7-abce-0f3af633d01a" width="700">
@@ -108,17 +99,13 @@ What basically happens here is, that first the position on the stack at [RDX + 0
 The value contained in EAX is then again copied and pushed back to the position [RCX + local_120] on the stack.
 After doing so, RCX and RDX both get increment by a defined value and the control flow jumps back to the dispatcher.
 
+In other words it is safe to assume that the register rcx is used as a virual stack pointer.
+
 
 
 
 ---
 TEMP (to remove or rearrange afterwards):
-
-#### Graphing View
-
-
-Only when zooming in, it is then, that some functions / basic blocks start to appear:<br/>
-<img src="" width="400">
 
 
 
@@ -151,3 +138,4 @@ Open the sample vm_basic.bin and analyze the handler at 0x1281.
 - Analysis of Virtualization-based Obfuscation (r2con2021workshop) - https://www.youtube.com/watch?v=b6udPT79itk
 - r2con2021_deobfuscation GitHub Repo - https://github.com/mrphrazer/r2con2021_deobfuscation/tree/main/samples
 - Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
+- Ghidra 101: Cursor Text Highlighting - https://www.tripwire.com/state-of-security/ghidra-101-cursor-text-highlighting
