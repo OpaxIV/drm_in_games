@@ -33,12 +33,6 @@ Make sure to download the file directly from github or with the `curl` terminal 
 The file then should be of type "ELF" when imported in ghidra.
 
 
-#### Graphing View
-
-
-Only when zooming in, it is then, that some functions / basic blocks start to appear:<br/>
-<img src="" width="400">
-
 #### Identification of VM Components
 Starting at the adress 0010115a, one can get a broad overview of the VM-obfuscation. The graph already presents a similarity to the picture of the general structure above:
 <br>
@@ -48,18 +42,45 @@ Unfortunately, even with tweaking the different graphing views, it is not possib
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5e576e5e-96c4-4a77-a430-1a4b7a84d245" width="200">
 <br/>
-In any way, one can spot the VM dispatcher just by looking at the colors and direction of the arrows:
+In any way, one can spot the VM dispatcher just by looking at the colors and direction of the arrows. The dispatcher at the adress 00101207 has the most outgoing and incoming arrows compared to all other basic blocks.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5b11ccea-a063-45c8-aff4-3a3e2a3cfca1" width="500">
 <br/>
-The dispatcher at the adress 00101207 has the most outgoing and incoming arrows compared to all other basic blocks.
+
+A further component to look out for is the bytecode. In this example, the bytecode can be found in the VM entry at the address 00101178.
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/743e1229-ca82-4a1c-9c2a-721d0caf136a" width="300">
+<br/>
+```
+        00101178 48 8d 15        LEA        RDX,[DAT_00104060]                               = D5h
+                 e1 2e 00 00
+```
 
 
-Open the sample vm_basic.bin and start your analysis at 0x115a.
-- Locate the VM dispatcher.
-- Locate the bytecode.
-- Identify some basic blocks that implement handlers.
+Furthermore one will immediately identify a large number of handlers. As an example, let us pick the one at address 001011a9. This basic block is undirectly comming from and going directly back to the dispatcher at address 00101207.
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/344b30f3-e817-4eb6-886a-d31d0352b5cc" width="300">
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/12a2e7e6-84ff-42e2-b2c8-5badecd7e723" width="600">
+<br/>
+
+
+
+
 - What are the functions of rdx and rcx?
+
+
+
+
+---
+TEMP (to remove or rearrange afterwards):
+
+#### Graphing View
+
+
+Only when zooming in, it is then, that some functions / basic blocks start to appear:<br/>
+<img src="" width="400">
+
+
 
 #### Recovering Handler Semantics I
 Open the sample vm_basic.bin and analyze the handler at 0x11e1.
