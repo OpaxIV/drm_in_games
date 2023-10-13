@@ -136,56 +136,36 @@ Before the control flow is then handed again to the dispatcher, the virtual stac
 This handler is different from the previous occurences. As seen by the graph view, the handler consists of multiple basic blocks:
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b5252f42-d22a-4fd1-8271-b923e632cbd5" width="700">
 
-
-Open the sample vm_basic.bin and analyze the handler at .
-- What does the handler check?
-- Why does it branch?
-- What does the handler do with rdx and rax?
-
-
-
-
-
-
-
-
-
+The first block is represented by the following code:
+```
+00101281 CMP             83 39 00                dword ptr [RCX]=>local_128,0x0
+00101284 JZ              74 12                   LAB_00101298
+```
+It is first checked if the top of the virtual stack [RCX] is equal to 0. If that is the case, then a jump occurs to the following basic block.
+```
+LAB_00101298
+	00101298 ADD             48 83 c2 05             RDX,0x5
+	0010129c JMP             eb f1                   LAB_0010128f
+```
+This basic block basically represents an if-statement. Hence if the condition is true, then the virtual instruction pointer gets incremented by 0x5.
 
 
+On the other hand, if the condition is not satisfied, the "else" block is executed:
+```
+00101286 MOVSXD          48 63 42 01             RAX,dword ptr [RDX + 0x1]=>DAT_00104061
+0010128a LEA             48 8d 54 02 01          RDX,[RDX + RAX*0x1 + 0x1]
+```
+The value at [RDX + 0x1] gets copied into rax. Furthermore the address [RDX + RAX*0x1 + 0x1] from the bytecode gets computed and loaded into rdx (hence pointing it to it).
 
 
+In the end both statements end up here:
+```
+LAB_0010128f
+    0010128f SUB             48 83 e9 08             RCX,0x8
+    00101293 JMP             e9 6f ff ff ff          LAB_00101207
+```
+The virtual stack pointer is incremented by 0x8, hence pointing again at the top of the stack and the control flow is again passed to the dispatcher.
 
-
-
-
-
-
-
-
-
-
-
----
-TEMP (to remove or rearrange afterwards):
-
-
-
-#### Recovering Handler Semantics I
-Open the sample vm_basic.bin and analyze the handler at 0x11e1.
-- How fetches the handler its argument?
-- What does it do with the argument?
-- What else does the handler do?
-
-
-
-#### Recovering Handler Semantics II
-Open the sample vm_basic.bin and analyze the handler at 0x11a9.
-- How fetches the handler its arguments?
-- What does it compute?
-- What else does the handler do?
-
-
-#### Recovering Handler Semantics ???
 
 
 
