@@ -63,7 +63,37 @@ Furthermore one will immediately identify a large number of handlers. As an exam
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/12a2e7e6-84ff-42e2-b2c8-5badecd7e723" width="600">
 <br/>
 
-Analyzing the disassembly in more detail it is possible to find out the functionality of the rdx and rcx registers in this function.
+Analyzing the disassembly in more detail will make it possible to understand the purpose of the rdx and rcx registers in this function. As already seen before the rdx register gets initialized at the beginning, then and then contains the bytecode (00101178). Looking at the graph will show, that nearly every handler (and some other components like the dispatcher) will contain at least an operation, that manipulates the named register rdx.
+_Note: To show any occurences of e.g. registers, highlight the wished register and click on the mouse wheel in ghidra._ 
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d9546851-c640-4b96-a16b-1f92dfeff2a8" width="1100">
+<br/>
+Looking at the handlers will lead to the conclusion, that rdx is used as an virtual instruction pointer. Reason for this is, that most if not all handlers increment rdx by the instructions size.
+Example of the handler at 0x1011a9:
+By looking at the bytes, we can see that the first instruction starts the address 0x1011a9.
+Adding the amount of bytes of the instruction (in this case 4) we should land onto the next instruction at 0x1011ad.
+
+```
+001011a9 ADD             48 83 c2 01   RDX,0x1
+001011ad MOV             8b 01         EAX,dword ptr [RCX]=>local_128
+001011af ADD             01 41 f8      dword ptr [RCX + local_130],EAX
+001011b2 SUB             48 83 e9 08   RCX,0x8
+001011b6 JMP             eb 4f         LAB_00101207
+```
+Using python (or any other tool that can process the following calculation), we get:
+```
+Python 3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> hex(0x1011a9 + 4)
+'0x1011ad'
+>>>
+```
+Which is indeed the address of the next instruction.
+
+
+
+Another important register is rcx:
+
 
 
 
