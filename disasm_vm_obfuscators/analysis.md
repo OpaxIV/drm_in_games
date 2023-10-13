@@ -96,7 +96,17 @@ Another important register is rcx:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/0f545161-d026-4c3f-8efc-73a860829ade" width="1100">
 <br/>
-
+Looking at the handler at the address 0x1011e1 will show the following code:
+```
+001011e1 MOV             8b 42 01                EAX,dword ptr [RDX + 0x1]=>DAT_00104061
+001011e4 MOV             89 41 08                dword ptr [RCX + local_120],EAX
+001011e7 ADD             48 83 c1 08             RCX,0x8
+001011eb ADD             48 83 c2 05             RDX,0x5
+001011ef JMP             eb 16                   LAB_00101207
+```
+What basically happens here is, that first the position on the stack at [RDX + 0x1] is popped and copied into EAX.
+The value contained in EAX is then again copied and pushed back to the position [RCX + local_120] on the stack.
+After doing so, RCX and RDX both get increment by a defined value and the control flow jumps back to the dispatcher.
 
 
 
