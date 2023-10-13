@@ -96,7 +96,7 @@ In other words it is safe to assume that the register rcx is used as a virual st
 
 
 ### Indentifing some Handler Functionalities
-
+The number of handlers is vast.
 
 
 
