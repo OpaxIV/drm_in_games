@@ -96,8 +96,23 @@ In other words it is safe to assume that the register rcx is used as a virual st
 
 
 ### Indentifing some Handler Functionalities
-The number of handlers is vast.
+The number of handlers is vast. Hence only few will be analysed in great detail.
 
+#### Handler 0x1011c4
+By looking at the handler at the address 0x1011c4 one can see the following code:
+
+```
+001011c4 MOVSXD          48 63 42 01             RAX,dword ptr [RDX + 0x1]=>DAT_00104061
+001011c8 ADD             48 01 f0                RAX,RSI
+001011cb MOV             48 89 41 08             qword ptr [RCX + local_120],RAX
+001011cf ADD             48 83 c1 08             RCX,0x8
+001011d3 ADD             48 83 c2 05             RDX,0x5
+001011d7 JMP             eb 2e                   LAB_00101207
+```
+
+As already defined, rdx is used as the virtual instruction pointer. So whatever is at [RDX + 0x1] will be copied into the register rax.
+It follows an addition between rsi and rax, of which the result is then stored in rax. Since rcx was also defined as the virtual stack pointer, the result is then pushed onto the stack at the position [RCX + local_120].
+Before the control flow is then handed again to the dispatcher, the virtual stack pointer decrementet in size by adding 0x8 and the instruction pointer is set to the next instruction.
 
 
 
