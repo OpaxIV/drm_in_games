@@ -115,6 +115,47 @@ It follows an addition between rsi and rax, of which the result is then stored i
 Before the control flow is then handed again to the dispatcher, the virtual stack pointer decrementet in size by adding 0x8 and the instruction pointer is set to the next instruction.
 
 
+#### Handler 0x101226
+
+```
+
+
+```
+
+
+
+#### Handler 0x1281
+This handler is different from the previous occurences. As seen by the graph view, the handler consists of multiple basic blocks:
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b5252f42-d22a-4fd1-8271-b923e632cbd5" width="700">
+
+
+Open the sample vm_basic.bin and analyze the handler at .
+- What does the handler check?
+- Why does it branch?
+- What does the handler do with rdx and rax?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 TEMP (to remove or rearrange afterwards):
@@ -135,11 +176,6 @@ Open the sample vm_basic.bin and analyze the handler at 0x11a9.
 - What does it compute?
 - What else does the handler do?
 
-#### Recovering Handler Semantics III
-Open the sample vm_basic.bin and analyze the handler at 0x1281.
-- What does the handler check?
-- Why does it branch?
-- What does the handler do with rdx and rax?
 
 #### Recovering Handler Semantics ???
 
