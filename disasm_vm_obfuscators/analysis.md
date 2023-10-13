@@ -63,10 +63,7 @@ Furthermore one will immediately identify a large number of handlers. As an exam
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/12a2e7e6-84ff-42e2-b2c8-5badecd7e723" width="600">
 <br/>
 
-
-
-
-- What are the functions of rdx and rcx?
+Analyzing the disassembly in more detail it is possible to find out the functionality of the rdx and rcx registers in this function.
 
 
 
