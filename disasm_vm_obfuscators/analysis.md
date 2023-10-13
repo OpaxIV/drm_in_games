@@ -116,12 +116,20 @@ Before the control flow is then handed again to the dispatcher, the virtual stac
 
 
 #### Handler 0x101226
+The handlers code at 0x101226 is shown as follows:
 
 ```
-
-
+00101226 ADD             48 83 c2 01             RDX,0x1
+0010122a MOV             48 8b 01                RAX,qword ptr [RCX]=>local_128
+0010122d MOV             8b 79 f8                EDI,dword ptr [RCX + local_130]
+00101230 MOV             89 38                   dword ptr [RAX],EDI
+00101232 SUB             48 83 e9 10             RCX,0x10
+00101236 JMP             eb cf                   LAB_00101207
 ```
 
+0x1 is added to the virtual instruction pointer. The value currently in rcx is then moved into rax and the same occurs for [RCX + local_130] into edi.
+The moved value from edi gets then again moved into the memory address at [RAX].
+Before the control flow is then handed again to the dispatcher, the virtual stack pointer incremented in size by adding 0x10 and thus pointing on the top of the stack.
 
 
 #### Handler 0x1281
