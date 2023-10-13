@@ -34,12 +34,27 @@ The file then should be of type "ELF" when imported in ghidra.
 
 
 #### Graphing View
-<img src="" width="200">
+
 
 Only when zooming in, it is then, that some functions / basic blocks start to appear:<br/>
 <img src="" width="400">
 
 #### Identification of VM Components
+Starting at the adress 0010115a, one can get a broad overview of the VM-obfuscation. The graph already presents a similarity to the picture of the general structure above:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/4b48d578-4dba-41f7-abce-0f3af633d01a" width="700">
+<br/>
+Unfortunately, even with tweaking the different graphing views, it is not possible to get the "perfect" view of the graph. Using the "nested code layout" will remove the hierarchical structre but present a better view of the "path" the exectution of the function takes.
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5e576e5e-96c4-4a77-a430-1a4b7a84d245" width="200">
+<br/>
+In any way, one can spot the VM dispatcher just by looking at the colors and direction of the arrows:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5b11ccea-a063-45c8-aff4-3a3e2a3cfca1" width="500">
+<br/>
+The dispatcher at the adress 00101207 has the most outgoing and incoming arrows compared to all other basic blocks.
+
+
 Open the sample vm_basic.bin and start your analysis at 0x115a.
 - Locate the VM dispatcher.
 - Locate the bytecode.
