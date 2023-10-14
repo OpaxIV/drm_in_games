@@ -167,6 +167,37 @@ LAB_0010128f
 The virtual stack pointer is incremented by 0x8, hence pointing again at the top of the stack and the control flow is again passed to the dispatcher.
 
 
+The last component we can spot is the VM exit: It is to be found at the adress 0x101245:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/a87b5790-c8b9-402a-bf47-fa16da1100e8" width="1000">
+<br/>
+
+The most notible aspects of the assembly instructions are:
+The `JNZ LAB_001012b9` instruction, which checks the stack canarys value (at address 001012b9):
+
+```
+LAB_001012b9                                    XREF[1]:     00101258(j)  
+	001012b9 e8 72 fd        CALL       <EXTERNAL>::__stack_chk_fail                     undefined __stack_chk_fail()
+			 ff ff
+					 -- Flow Override: CALL_RETURN (CALL_TERMINATOR)
+```
+the `ADD RSP,0x138` instruction, which restores the original non-virtual stack and the `RET` instruction, which further underlines the fact, that this is the exit point of the obfuscator.
+```
+LAB_00101245                                    XREF[1]:     0010121a(j)  
+	00101245 8b 01           MOV        EAX,dword ptr [RCX]=>local_128
+	00101247 48 8b 94        MOV        RDX,qword ptr [RSP + local_10]
+			 24 28 01 
+			 00 00
+	0010124f 64 48 2b        SUB        RDX,qword ptr FS:[0x28]
+			 14 25 28 
+			 00 00 00
+	00101258 75 5f           JNZ        LAB_001012b9
+	0010125a 48 81 c4        ADD        RSP,0x138
+			 38 01 00 00
+	00101261 c3              RET
+```
+
+
 
 
 
