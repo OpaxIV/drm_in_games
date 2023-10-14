@@ -129,7 +129,7 @@ The handlers code at 0x101226 is shown as follows:
 
 0x1 is added to the virtual instruction pointer. The value currently in rcx is then moved into rax and the same occurs for [RCX + local_130] into edi.
 The moved value from edi gets then again moved into the memory address at [RAX].
-Before the control flow is then handed again to the dispatcher, the virtual stack pointer incremented in size by adding 0x10 and thus pointing on the top of the stack.
+Before the control flow is then handed again to the dispatcher, the virtual stack pointer is incremented in size by adding 0x10 and thus pointing on the top of the stack.
 
 
 #### Handler 0x1281
