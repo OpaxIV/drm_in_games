@@ -94,6 +94,7 @@ After doing so, RCX and RDX both get increment by a defined value and the contro
 
 In other words it is safe to assume that the register rcx is used as a virual stack pointer.
 
+Combining those two foundings we can say, that this binary contains a VM obfuscator of the "stack-based" architecture type. 
 
 ### Indentifing some Handler Functionalities
 The number of handlers is vast. Hence only few will be analysed in great detail.
