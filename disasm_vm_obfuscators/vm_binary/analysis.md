@@ -84,9 +84,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 Which is indeed the address of the next instruction.
-Important to note is that only the subset of instructions, contained in the byte code are really dependent of this virtual instruction pointer. All other instruction follow the instruction pointer of the native CPU.
-@fabio: to further elaborate, making an example
-
+_Important: All instructions run on the native CPU. Only in combination they compute a virtual instruction._
 
 #### RCX - Virtual Stack Pointer
 Another important register is rcx:
@@ -102,12 +100,12 @@ Looking at the handler at the address 0x1011e1 will show the following code:
 001011ef JMP             eb 16                   LAB_00101207
 ```
 What basically happens here is, that first the position on the stack at [RDX + 0x1] is popped and copied into EAX.
-The value contained in EAX is then again copied and pushed back to the position [RCX + local_120] on the stack.
-After doing so, RCX and RDX both get increment by a defined value and the control flow jumps back to the dispatcher.
+The value contained in EAX is then again copied and pushed back onto the position [RCX + local_120] on the stack.
+After doing so, `rcx` and `rdx` both get increment by a defined value and the control flow jumps back to the dispatcher.
 
-In other words it is safe to assume that the register rcx is used as a virual stack pointer.
+In other words it is safe to assume that the register `rcx` is used as a virual stack pointer.
 
-Combining those two foundings we can say, that this binary contains a VM obfuscator of the "stack-based" architecture type. 
+Combining especially those two foundings we can say, that this binary contains a VM obfuscator of the **"stack-based" architecture** type. 
 
 ### Indentifing Handler Functionalities
 The number of handlers is vast. Hence only few will be analysed in great detail.
@@ -124,9 +122,9 @@ By looking at the handler at the address 0x1011c4 one can see the following code
 001011d7 JMP             eb 2e                   LAB_00101207
 ```
 
-As already defined, rdx is used as the virtual instruction pointer. So whatever is at [RDX + 0x1] will be copied into the register rax.
-It follows an addition between rsi and rax, of which the result is then stored in rax. Since rcx was also defined as the virtual stack pointer, the result is then pushed onto the stack at the position [RCX + local_120].
-Before the control flow is then handed again to the dispatcher, the virtual stack pointer decrementet in size by adding 0x8 and the instruction pointer is set to the next instruction.
+As already defined, `rdx` is used as the virtual instruction pointer. So whatever is at [RDX + 0x1] will be copied into the register `rax`.
+It follows an addition between `rsi` and `rax`, of which the result is then stored in `rax`. Since `rcx` was also defined as the virtual stack pointer, the result is then pushed onto the stack at the position [RCX + local_120].
+Before handling the control flow back again to the dispatcher, the virtual stack pointer gets decrementet in size by adding 0x8 and the instruction pointer repositioned to point to the next instruction.
 
 
 #### Handler 0x101226
@@ -141,12 +139,12 @@ The handlers code at 0x101226 is shown as follows:
 00101236 JMP             eb cf                   LAB_00101207
 ```
 
-0x1 is added to the virtual instruction pointer. The value currently in rcx is then moved into rax and the same occurs for [RCX + local_130] into edi.
-The moved value from edi gets then again moved into the memory address at [RAX].
-Before the control flow is then handed again to the dispatcher, the virtual stack pointer is incremented in size by adding 0x10 and thus pointing on the top of the stack.
+The hexadecimal value 0x1 is added to the virtual instruction pointer. The value currently in [rcx], gets dereferenced and then moved into `rax`. The same occurs for `edi`, in which the dereferenced value of [RCX + local_130] gets copied.
+The value from `edi` gets then again moved into the address in memory at [rax].
+Before the control flow is then handed back again to the dispatcher, the virtual stack pointer is incremented by adding 0x10 and thus pointing to the top of the stack.
 
 
-#### Handler 0x1281
+#### Handler 0x101281
 This handler is different from the previous occurences. As seen by the graph view, the handler consists of multiple basic blocks:
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b5252f42-d22a-4fd1-8271-b923e632cbd5" width="700">
 
@@ -155,21 +153,21 @@ The first block is represented by the following code:
 00101281 CMP             83 39 00                dword ptr [RCX]=>local_128,0x0
 00101284 JZ              74 12                   LAB_00101298
 ```
-It is first checked if the top of the virtual stack [RCX] is equal to 0. If that is the case, then a jump occurs to the following basic block.
+It is first checked if the top of the virtual stack [rcx] is equal to 0. If that is the case, then a jump occurs to the block at 0x101298. This clearly represents a condition statement like e.g. an if-statement.
+
+In the first basic block, the virtual instruction pointer gets incremented by 0x5. The follow up instruction then handles the control flow via JMP-instruction to the basic block at 0x10128f.
 ```
 LAB_00101298
 	00101298 ADD             48 83 c2 05             RDX,0x5
 	0010129c JMP             eb f1                   LAB_0010128f
 ```
-This basic block basically represents an if-statement. Hence if the condition is true, then the virtual instruction pointer gets incremented by 0x5.
-
 
 On the other hand, if the condition is not satisfied, the "else" block is executed:
 ```
 00101286 MOVSXD          48 63 42 01             RAX,dword ptr [RDX + 0x1]=>DAT_00104061
 0010128a LEA             48 8d 54 02 01          RDX,[RDX + RAX*0x1 + 0x1]
 ```
-The value at [RDX + 0x1] gets copied into rax. Furthermore the address [RDX + RAX*0x1 + 0x1] from the bytecode gets computed and loaded into rdx (hence pointing it to it).
+The value at [RDX + 0x1] gets copied into `rax`. Furthermore the address [RDX + RAX*0x1 + 0x1]  gets computed from the byte code and loaded into `rdx` (hence pointing it to it).
 
 
 In the end both statements end up here:
@@ -178,16 +176,16 @@ LAB_0010128f
     0010128f SUB             48 83 e9 08             RCX,0x8
     00101293 JMP             e9 6f ff ff ff          LAB_00101207
 ```
-The virtual stack pointer is incremented by 0x8, hence pointing again at the top of the stack and the control flow is again passed to the dispatcher.
+The virtual stack pointer is incremented by 0x8, pointing again on top of the stack and the control flow is once again passed onto the dispatcher.
 
 
-The last component we can spot is the VM exit: It is to be found at the adress 0x101245:
+The last component we can spot is the VM- xit: It is to be found at the adress 0x101245:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/a87b5790-c8b9-402a-bf47-fa16da1100e8" width="1000">
 <br/>
 
 The most notible aspects of the assembly instructions are:
-The `JNZ LAB_001012b9` instruction, which checks the stack canarys value (at address 001012b9) before:
+The `JNZ LAB_001012b9` instruction, which checks the stack canarys value (at address 001012b9):
 
 ```
 LAB_001012b9                                    XREF[1]:     00101258(j)  
@@ -195,7 +193,7 @@ LAB_001012b9                                    XREF[1]:     00101258(j)
 			 ff ff
 					 -- Flow Override: CALL_RETURN (CALL_TERMINATOR)
 ```
-the `ADD RSP,0x138` instruction, which restores the original non-virtual stack and the `RET` instruction, which further underlines the fact, that this is the exit point of the obfuscator.
+Most notable are the `MOV EAX,dword ptr [RCX]=>local_128` instruction, which copies the return value into `eax`, the `ADD RSP,0x138` instruction, which restores the original non-virtual stacks state, and the `RET` instruction, which lets the control flow return.
 ```
 LAB_00101245                                    XREF[1]:     0010121a(j)  
 	00101245 8b 01           MOV        EAX,dword ptr [RCX]=>local_128
@@ -210,6 +208,7 @@ LAB_00101245                                    XREF[1]:     0010121a(j)
 			 38 01 00 00
 	00101261 c3              RET
 ```
+ These specifications further underline the fact, that this is the exit point of the VM-obfuscator.
 
 #### Type Architecure Type
 
