@@ -75,6 +75,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 Which is indeed the address of the next instruction.
+Important to note is that only the subset of instructions, contained in the byte code are really dependent of this virtual instruction pointer.
 
 
 #### RCX - Virtual Stack Pointer
