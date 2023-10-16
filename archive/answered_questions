@@ -44,9 +44,8 @@ Secproj Fragen 16.10.2023
 
 
 - Wie würde eine register based architecure aussehen?
-
----> register based nicht instruction, register wie x86
+	-->register wie x86
 
 - wie weitermachen?
-	--> opaque predicate
+	--> anstelle analysieren von tigress opaque predicate: https://github.com/mrphrazer/r2con2020_deobfuscation/blob/master/samples/ac3e087e43be67bdc674747c665b46c2 an Addresse: 0x491aa0
 
