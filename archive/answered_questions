@@ -18,40 +18,32 @@ Secproj Fragen 16.10.2023
 	--> Durch Inkremetierung werden dann im array die nächste(n) Instruktionen geholt, zeigt dann auf nächste intruktion.
 
 
-- bytecode erneut definieren, was ist das genau?
-	--> unterschiedlcihe längen von ADD RDX, wel auch unterschiedlcihe grosse instruk
-	--> LAB_00101262 bsp
+- Unterschiedliche Längen der Instruktionen aus dem Bytearray?
+	--> Jede Instruktion ist anders und kann daher auch einer anderen bytelänge entsprechen
+	--> Beispiel wäre an 0x101262 
 
 
 - RDX: instruction pointer, wird addiert zur grösse der jetzigen instruction --> ist der wert (ADD rbx 0x5) daher irrelevent? bsp. 001011e1
-	---> VIP andres zum nativen!!!!
-
+	--> Der Virtual Intruction Pointer hat nichts mit dem nativen Instruction Pointer zu tun.
+	--> Ich habe mich immer gefragt, wieso der Instructionpointer nur manchmal addiert und manchmal nicht. Diesem sollte ja eigentlich immer etwas dazuaddiert werden, sodass er auch auf die neuste Instruktion zeigt.
+	--> Da dieser jedoch unabhängig ist, ist alles umso klarer. Hier ein Beispiel:
+	--> Wie im Decompiler zu sehen, werden Instruktionen trotzdem weiter ausgeführt, auch wenn der VIP gar nicht angerührt wird:
+	```
             virtual_IP = virtual_IP + 1;
             *(uint *)(ppiVar2 + -1) =
                  (uint)(*(uint *)(ppiVar2 + -1) < *(uint *)ppiVar2 ||
                        *(uint *)(ppiVar2 + -1) == *(uint *)ppiVar2);
             ppiVar2 = ppiVar2 + -1;
+	```		
 			
 			
-			
-- 001011e1: vorgehen korrekt oder etwas missverstanden?
-
-
-
-- 0x1011c4: als beispiel aber überall: rdx ist der instr pointer, wieso wird nicht "immer" der pointer verschoben und nur manchmal über ADD rdx 0x8? // auch: lesen vom bytecode noch unklar
-
-
-
 - 001012b9: korrekt, dass der nicht virtuelle stack wiederhergestellt wird?
-	--> eax ergebnis
-	--> aufräumen
+	--> korrekt, hier geht es um den "nativen" stack.
+	--> ergebnis wird in eax geschrieben 
+	--> Stack aufgeräumt
 
 
-- handlers kontrollieren mit tim: ASM richtig verstanden?
-
----> tim bescheid geben input
-
--wie würde eine instruction based architecure aussehen?
+- Wie würde eine register based architecure aussehen?
 
 ---> register based nicht instruction, register wie x86
 
