@@ -210,19 +210,6 @@ LAB_00101245                                    XREF[1]:     0010121a(j)
 ```
  These specifications further underline the fact, that this is the exit point of the VM-obfuscator.
 
-#### Type Architecure Type
-
-stack-based architecture
-• pop arguments from stack
-• push results onto stack
-• examples: JVM, CPython, WebAssembly, …
-
-register-based architecture
-• pass arguments in virtual registers
-• store results in virtual registers
-• examples: Dalvik, Lua, LLVM, …
-• hybrid architectures possible
-
 
 
 ---
