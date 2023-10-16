@@ -13,9 +13,9 @@ Secproj Fragen 16.10.2023
 	--> repräsentiert instruktionen als machinen code
 	--> Im Falle einer VM gibt es virtuelle Instruktionen (bspw. virtuelle addition)
 	--> Eine VM hat eine eigenständige ISA, die je nach VM also unterschiedlich sein kann.
-	-- >original code in vm obfisckiet, übersetzts original code in VM asm, VM assembler
-	--> byte represantion von original code für VM übersetzt
-	--> byte array, eine funktion nach der anderen d5 ist erste, inkremented dann in array, zeigt dann auf nächste intruktion.
+	--> Der originale Code wird in der VM verschleiert, diese übersetzt den Originalcode in VM assembler / byte repräsentation
+	--> Der byte code ist nichts anderes als ein array: es wird eine Funktion nach der anderen (bspw. `d5` an der Adresse  0x104060 ist die erste)
+	--> Durch Inkremetierung werden dann im array die nächste(n) Instruktionen geholt, zeigt dann auf nächste intruktion.
 
 
 - bytecode erneut definieren, was ist das genau?
