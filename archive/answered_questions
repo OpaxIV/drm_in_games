@@ -1,0 +1,60 @@
+Secproj Fragen 16.10.2023
+
+- Beispiel und Definition von Opaque Predicate
+--> Ein klares Ausgehen einer Bedingung, die aber trotzdem zu überprüfen ist.
+--> Grundsätzliche Idee ist daher, dass durch das Einfügen immer mehr "unnötiger" Branches der Kontrollfluss an Volumen zunimmt.
+
+
+
+
+-  "Is hides the original code in a sequence of bytes, which are then interpreted at runtime."
+--> Was genau ist "bytecode"?
+	-->  Anderer Begriff für "machine code"
+	--> repräsentiert instruktionen als machinen code
+	--> Im Falle einer VM gibt es virtuelle Instruktionen (bspw. virtuelle addition)
+	--> Eine VM hat eine eigenständige ISA, die je nach VM also unterschiedlich sein kann.
+	-- >original code in vm obfisckiet, übersetzts original code in VM asm, VM assembler
+	--> byte represantion von original code für VM übersetzt
+	--> byte array, eine funktion nach der anderen d5 ist erste, inkremented dann in array, zeigt dann auf nächste intruktion.
+
+
+- bytecode erneut definieren, was ist das genau?
+	--> unterschiedlcihe längen von ADD RDX, wel auch unterschiedlcihe grosse instruk
+	--> LAB_00101262 bsp
+
+
+- RDX: instruction pointer, wird addiert zur grösse der jetzigen instruction --> ist der wert (ADD rbx 0x5) daher irrelevent? bsp. 001011e1
+	---> VIP andres zum nativen!!!!
+
+            virtual_IP = virtual_IP + 1;
+            *(uint *)(ppiVar2 + -1) =
+                 (uint)(*(uint *)(ppiVar2 + -1) < *(uint *)ppiVar2 ||
+                       *(uint *)(ppiVar2 + -1) == *(uint *)ppiVar2);
+            ppiVar2 = ppiVar2 + -1;
+			
+			
+			
+- 001011e1: vorgehen korrekt oder etwas missverstanden?
+
+
+
+- 0x1011c4: als beispiel aber überall: rdx ist der instr pointer, wieso wird nicht "immer" der pointer verschoben und nur manchmal über ADD rdx 0x8? // auch: lesen vom bytecode noch unklar
+
+
+
+- 001012b9: korrekt, dass der nicht virtuelle stack wiederhergestellt wird?
+	--> eax ergebnis
+	--> aufräumen
+
+
+- handlers kontrollieren mit tim: ASM richtig verstanden?
+
+---> tim bescheid geben input
+
+-wie würde eine instruction based architecure aussehen?
+
+---> register based nicht instruction, register wie x86
+
+- wie weitermachen?
+	--> opaque predicate
+
