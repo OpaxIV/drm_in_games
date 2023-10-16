@@ -5,7 +5,7 @@ The goal is to find the most important components of the VM-based obfuscation an
 
 ## Definition of an VM Obfuscation
 The exact definition of an VM-based obfuscation has already been stated under the section https://github.com/OpaxIV/hslu_secproj/blob/0bc6c015a4a7fa69abbd0b94e3960d5773a84f95/disasm_vm_obfuscators/summary.md
-In a couple of words one can say, that this obfuscation technique uses a costum instruction set architecture as the basis of its obfuscation. Is hides the original code in a sequence of bytes, which are then interpreted at runtime.
+In a couple of words one can say, that this obfuscation technique uses a costum instruction set architecture as the basis of its obfuscation. It hides the original code in a sequence of bytes, which are then interpreted at runtime.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/55528869-41ab-4306-8412-19926d8b745e" width="600">
 <br/>
@@ -47,7 +47,9 @@ Furthermore one will immediately identify a large number of handlers. As an exam
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/12a2e7e6-84ff-42e2-b2c8-5badecd7e723" width="600">
 <br/>
 
-Analyzing the disassembly in more detail will make it possible to understand the purpose of the rdx and rcx registers in this function. As already seen before the rdx register gets initialized at the beginning, then and then contains the bytecode (00101178). Looking at the graph will show, that nearly every handler (and some other components like the dispatcher) will contain at least an operation, that manipulates the named register rdx.
+Analyzing the disassembly in more detail will make it possible to understand the purpose of the rdx and rcx registers in this function.
+#### RDX - Virtual Instruction Pointer
+As already seen before the rdx register gets initialized at the beginning, then and then contains the bytecode (00101178). Looking at the graph will show, that nearly every handler (and some other components like the dispatcher) will contain at least one operation, that manipulates the named register rdx.
 _Note: To show any occurences of e.g. registers, highlight the wished register and click on the mouse wheel in ghidra._ 
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d9546851-c640-4b96-a16b-1f92dfeff2a8" width="1100">
@@ -55,7 +57,7 @@ _Note: To show any occurences of e.g. registers, highlight the wished register a
 Looking at the handlers will lead to the conclusion, that rdx is used as an virtual instruction pointer. Reason for this is, that most if not all handlers increment rdx by the instructions size.
 Example of the handler at 0x1011a9:
 By looking at the bytes, we can see that the first instruction starts the address 0x1011a9.
-By Adding the amount of bytes of the current instruction (in this case 4) should land us onto the next instruction at 0x1011ad.
+By Adding the amount of bytes of the current instruction (in this case 4), this should land us onto the next instruction at 0x1011ad.
 
 ```
 001011a9 ADD             48 83 c2 01   RDX,0x1
@@ -75,7 +77,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 Which is indeed the address of the next instruction.
 
 
-
+#### RCX - Virtual Stack Pointer
 Another important register is rcx:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/0f545161-d026-4c3f-8efc-73a860829ade" width="1100">
@@ -174,7 +176,7 @@ The last component we can spot is the VM exit: It is to be found at the adress 0
 <br/>
 
 The most notible aspects of the assembly instructions are:
-The `JNZ LAB_001012b9` instruction, which checks the stack canarys value (at address 001012b9):
+The `JNZ LAB_001012b9` instruction, which checks the stack canarys value (at address 001012b9) before:
 
 ```
 LAB_001012b9                                    XREF[1]:     00101258(j)  
