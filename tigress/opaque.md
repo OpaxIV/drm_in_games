@@ -21,7 +21,9 @@ Examples:<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/623a0dfc-1caa-4d9b-b9c7-8ccb79e9a008" width="500"/>
 <br/>
 
+### Analysis in Ghidra
 
+adress 0x491aa0
 
 ---
 References:
