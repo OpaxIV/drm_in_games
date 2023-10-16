@@ -44,7 +44,7 @@ VM-based obfuscators can have different architecures. They can either be stack- 
 #### Register-Based Architectures
 - pass arguments in virtual registers
 - store results in virtual registers
-- examples: Dalvik, Lua, LLVM, …
+- examples: x86 architecures, Dalvik, Lua, LLVM, …
 
 _Note: hybrid architectures also possible!_
 
