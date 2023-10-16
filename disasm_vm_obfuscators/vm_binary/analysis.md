@@ -49,24 +49,24 @@ A further component to look out for is the bytecode. In this example, the byteco
 ```
 
 
-Furthermore one will immediately identify a large number of handlers. As an example, let us pick the one at address 001011a9. This basic block is undirectly comming from and going directly back to the dispatcher at address 00101207.
+Furthermore a great amount of so-called "handlers" can be recognized. Looking at the handler 0x1011a9: This basic block is undirectly coming from and going directly back to the dispatcher at the address 0x0101207.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/344b30f3-e817-4eb6-886a-d31d0352b5cc" width="300">
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/12a2e7e6-84ff-42e2-b2c8-5badecd7e723" width="600">
 <br/>
 
-Analyzing the disassembly in more detail will make it possible to understand the purpose of the rdx and rcx registers in this function.
+Analyzing the disassembly in more detail will make it possible to also understand the purpose of the `rdx` and `rcx` registers in this function.
 #### RDX - Virtual Instruction Pointer
-As already seen before, the rdx register gets initialized in the VM entry and contains the bytecode (address at 0x101178). This byte code is nothing else the "translated" instructions from the native CPU to the custom VM Instruction Set Architecure. It can be seen as an array, of which the entries are instructions, sequences defined as bytes, that can be accessed.
-Looking at the graph will show, that nearly every handler (and some other components like e.g. the dispatcher) will at least once manipulate the named register rdx.
+As already seen before, the `rdx` register gets initialized in the VM entry and contains the byte code (address at 0x101178). This byte code represents the instructions from the native CPU, translated into the custom VM Instruction Set Architecure (ISA). It can be seen as an array, of which the entries are instructions, sequences defined as bytes.
+Looking at the graph will show, that nearly every handler (and some other components like e.g. the dispatcher) will at least once in their basic block manipulate the named register `rdx`.
 _Note: To show any occurences of e.g. registers, highlight the wished register and click on the mouse wheel in ghidra._ 
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d9546851-c640-4b96-a16b-1f92dfeff2a8" width="1100">
 <br/>
-Looking at the handlers will lead to the conclusion, that rdx is used as an virtual instruction pointer. Reason for this is, that most if not all handlers increment rdx by the instructions size.
-Example of the handler at 0x1011a9:
+Looking at the handlers will further emphasize the conclusion, that `rdx` is used as an virtual instruction pointer. Most if not all handlers increment `rdx` by the current instructions size.
+Example of the handler at the address 0x1011a9:
 By looking at the bytes, we can see that the first instruction starts at the address 0x1011a9.
-By adding the amount of bytes of the current instruction (in this case 4 bytes), should land us onto the next instruction at 0x1011ad.
+An addition of the amount of bytes of the current instruction (in this case 4 bytes), should result into the next instructions address (0x1011ad).
 
 ```
 001011a9 ADD             48 83 c2 01   RDX,0x1
@@ -84,7 +84,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 Which is indeed the address of the next instruction.
-Important to note is that only the subset of instructions, contained in the byte code are really dependent of this virtual instruction pointer. All other instruction follow the instruction pointer of the native CPU. 
+Important to note is that only the subset of instructions, contained in the byte code are really dependent of this virtual instruction pointer. All other instruction follow the instruction pointer of the native CPU.
+@fabio: to further elaborate, making an example
 
 
 #### RCX - Virtual Stack Pointer
