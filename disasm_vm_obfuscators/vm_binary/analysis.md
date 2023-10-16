@@ -5,13 +5,15 @@ The goal is to find the most important components of the VM-based obfuscation an
 
 ## Definition of an VM Obfuscation
 The exact definition of an VM-based obfuscation has already been stated under the section https://github.com/OpaxIV/hslu_secproj/blob/0bc6c015a4a7fa69abbd0b94e3960d5773a84f95/disasm_vm_obfuscators/summary.md
+<br>
 In a couple of words one can say, that this obfuscation technique uses a costum instruction set architecture as the basis of its obfuscation. It hides the original code in a sequence of bytes, which are then interpreted at runtime.
+<br/>
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/55528869-41ab-4306-8412-19926d8b745e" width="600">
 <br/>
 
 ## Analysis Procedure
-During the analysis, the goal is to identify individual components of the VM-based obfuscator. At the beginning the graph view shall be used to get a broad idea of the binary. In a further step the goal is to identify each one the most important components of a Vm-based obfuscation. In the end, if possible, it shall be stated of which architecure (stack- or instruction-based, hybrid) the presented binary is.
+During the analysis, the goal is to identify individual components of the VM-based obfuscator. At the beginning, the graph view shall be used to get a broad idea of the binary. In a further step the most important components of a Vm-based obfuscation shall be identified.  In the end, the architecure of the  (stack- or instruction-based, hybrid) the presented binary is.
 
 The binary has been analysed with the reverse engineering tool ghidra. When selecting the language, I chose "x86, compiler: gcc". Please make sure to download the file directly from github or with the `curl` terminal command.
 The file then should be of type "ELF" when imported in ghidra.
