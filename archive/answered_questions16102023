@@ -42,6 +42,25 @@ Secproj Fragen 16.10.2023
 	--> ergebnis wird in eax geschrieben 
 	--> Stack aufgeräumt
 
+- Wie erkennt man virtuelle und native Instruktionen?
+	--> bsp: 
+	--> Im Grunde ist jede der Instruktionen eine Instruktion, die auf der nativen CPU ausgeführt wird.
+	--> Virtuelle Instruktionen, als die auf einer VM ausführt werden, bestehen quasi aus einer Reihe von nativen Instruktionen.
+	--> Im folgenden Beispiel (basic block), von 10129e bis 1012b4, sind acht x86-64 instruktionen zu sehen, die alle zusammen in Kombination eine entsprechende virtuelle Instruktion bilden (High-Level)
+	```
+	                             LAB_0010129e                                    XREF[1]:     0010120c(j)  
+	        0010129e 48 83 c2 01     ADD        virtual_IP,0x1
+	        001012a2 8b 01           MOV        EAX,dword ptr [RCX]=>local_128
+	        001012a4 39 41 f8        CMP        dword ptr [RCX + local_130],EAX
+	        001012a7 0f 96 c0        SETBE      AL
+	        001012aa 0f b6 c0        MOVZX      EAX,AL
+	        001012ad 89 41 f8        MOV        dword ptr [RCX + local_130],EAX
+	        001012b0 48 83 e9 08     SUB        RCX,0x8
+	        001012b4 e9 4e ff        JMP        LAB_00101207
+	                 ff ff
+	
+	```
+
 
 - Wie würde eine register based architecure aussehen?
 	-->register wie x86
