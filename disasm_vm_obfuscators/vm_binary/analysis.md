@@ -49,15 +49,15 @@ Furthermore one will immediately identify a large number of handlers. As an exam
 
 Analyzing the disassembly in more detail will make it possible to understand the purpose of the rdx and rcx registers in this function.
 #### RDX - Virtual Instruction Pointer
-As already seen before the rdx register gets initialized at the beginning, then and then contains the bytecode (00101178). Looking at the graph will show, that nearly every handler (and some other components like the dispatcher) will contain at least one operation, that manipulates the named register rdx.
+As already seen before, the rdx register gets initialized in the VM entry and contains the bytecode (address at 0x101178). Looking at the graph will show, that nearly every handler (and some other components like e.g. the dispatcher) will at least once manipulate the named register rdx.
 _Note: To show any occurences of e.g. registers, highlight the wished register and click on the mouse wheel in ghidra._ 
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d9546851-c640-4b96-a16b-1f92dfeff2a8" width="1100">
 <br/>
 Looking at the handlers will lead to the conclusion, that rdx is used as an virtual instruction pointer. Reason for this is, that most if not all handlers increment rdx by the instructions size.
 Example of the handler at 0x1011a9:
-By looking at the bytes, we can see that the first instruction starts the address 0x1011a9.
-By Adding the amount of bytes of the current instruction (in this case 4), this should land us onto the next instruction at 0x1011ad.
+By looking at the bytes, we can see that the first instruction starts at the address 0x1011a9.
+By adding the amount of bytes of the current instruction (in this case 4 bytes), should land us onto the next instruction at 0x1011ad.
 
 ```
 001011a9 ADD             48 83 c2 01   RDX,0x1
