@@ -13,22 +13,28 @@ In a couple of words one can say, that this obfuscation technique uses a costum 
 <br/>
 
 ## Analysis Procedure
-During the analysis, the goal is to identify individual components of the VM-based obfuscator. At the beginning, the graph view shall be used to get a broad idea of the binary. In a further step the most important components of a Vm-based obfuscation shall be identified.  In the end, the architecure of the  (stack- or instruction-based, hybrid) the presented binary is.
+During the analysis, the goal is to identify individual components of the VM-based obfuscator. At the beginning, the graph view shall be used to get a broad idea of the binary. In a further step the most important components of a VM-based obfuscation shall be identified. In a last step the VM-architecure of the binary is to be stated.
 
 The binary has been analysed with the reverse engineering tool ghidra. When selecting the language, I chose "x86, compiler: gcc". Please make sure to download the file directly from github or with the `curl` terminal command.
 The file then should be of type "ELF" when imported in ghidra.
 
 
 ### Identification of the VM Components
-Starting at the adress 0010115a, one can get a broad overview of the VM-obfuscation. The graph already presents a similarity to the picture of the general structure above:
+Starting at the adress 0x10115a, one can get a broad overview of the VM-obfuscation. The graph already presents a similarity to the picture of the general structure from above:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/4b48d578-4dba-41f7-abce-0f3af633d01a" width="700">
 <br/>
-Unfortunately, even with tweaking the different graphing views, it is not possible to get the "perfect" view of the graph. Using the "nested code layout" will remove the hierarchical structre but present a better view of the "path" the exectution of the function takes.
+Unfortunately, even with tweaking and changing between the different graphing views, it is not possible to get the "perfect" perspective of the graph. Using the "nested code layout" will remove the hierarchical structure but present a better view of the "path" the exectution of the function follows. A combined approach should be taken to get the full picture.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5e576e5e-96c4-4a77-a430-1a4b7a84d245" width="200">
 <br/>
-In any way, one can spot the VM dispatcher just by looking at the colors and direction of the arrows. The dispatcher at the adress 00101207 has the most outgoing and incoming arrows compared to all other basic blocks.
+In any way, the first thing to point out is the VM-entry, which can be found at the address 0x10115a. The reasoning behind this assumption is the lack of any incoming arrows from the basic block:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/621d6309-fbbc-4c30-a7b7-fecd2ae956ef" width="600">
+<br/>
+
+The VM-dispatcher can be found just by looking at the colors and direction of the arrows. The dispatcher, being at the address 00101207, has the most outgoing and incoming arrows compared to all other basic blocks.
+Furthermore, as we will see when analyzing some handler functions, the returning point of every handler is the location 0x10120a, which is indeed our dispatcher:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5b11ccea-a063-45c8-aff4-3a3e2a3cfca1" width="500">
 <br/>
@@ -204,7 +210,18 @@ LAB_00101245                                    XREF[1]:     0010121a(j)
 	00101261 c3              RET
 ```
 
+#### Type Architecure Type
 
+stack-based architecture
+• pop arguments from stack
+• push results onto stack
+• examples: JVM, CPython, WebAssembly, …
+
+register-based architecture
+• pass arguments in virtual registers
+• store results in virtual registers
+• examples: Dalvik, Lua, LLVM, …
+• hybrid architectures possible
 
 
 
