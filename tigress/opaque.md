@@ -1,14 +1,15 @@
 ## Opaque Predicates
-Important: Due to an error in tigress, no samples could be generated with the "AddOpaque" option.
+Note: Due to an unknown error in tigress, no samples could be generated with the "AddOpaque" option.
 Hence another sample has been taken for analysis (referenced bellow).
-### General Definition
 
+### General Definition
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e2deada6-8510-4e74-9c36-7e3dc723cee0" width="500"/>
 <br/>
-Defined as expression that evaluates to either "true" or "false", for which the outcome is known by the programmer beforehand, but which, for a variety of reasons, still needs to be evaluated at run time. Opaque predicates are basically branches of which the outcome is already clear. There might 
-An opaque predicate is a part of a program, which might be missed during analysis. This is given if the program analysis is not sophisticated enough.
 
-
+In computer science, predicates are conditional expressions that evaluate to true or false. An opaque predicates value (outcome) is kown to the obfuscator at the time of obfuscation, but difficult to find out externally at a later point in time. 
+Using opaque predicates will lead to an extremely excessive control flow graph with redudant inexecutable paths.
+It is for this reason, that any further analysis based on the control flow graph will turn into tedious work.
+In comparasion to other control flow graph obfuscation techniques, opaque predicates act more covert, since it is difficult to separate them from actual functional code in the program.
 
 
 Opaque Predicates can have the following types:
