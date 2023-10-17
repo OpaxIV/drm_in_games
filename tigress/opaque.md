@@ -151,19 +151,42 @@ unsat
 As we can see, this expression is not satisfiable. So any occurence of `((2 /  (x * x + 1)) ==  y * y + 3)` will lead it to never be true.
 This branch can be described as dead weight, since it will never be executed.
 
+So we can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress 0x491b5d.
+```
+                             LAB_00491b5d                                    XREF[1]:     00491ba4(j)  
+        00491b5d b8 04 00        MOV        EAX,0x4
+                 00 00
+        00491b62 e8 19 81        CALL       __alloca_probe                                   undefined __alloca_probe(void)
+                 00 00
+        00491b67 89 e0           MOV        EAX,ESP
+        00491b69 83 e0 f8        AND        EAX,0xfffffff8
+        00491b6c 89 46 34        MOV        dword ptr [ESI + 0x34],EAX
+        00491b6f 89 c4           MOV        ESP,EAX
+        00491b71 b8 04 00        MOV        EAX,0x4
+                 00 00
+        00491b76 e8 05 81        CALL       __alloca_probe                                   undefined __alloca_probe(void)
+                 00 00
+        00491b7b 89 e0           MOV        EAX,ESP
+        00491b7d 83 e0 f8        AND        EAX,0xfffffff8
+        00491b80 89 46 38        MOV        dword ptr [ESI + 0x38],EAX
+        00491b83 89 c4           MOV        ESP,EAX
+        00491b85 b8 02 00        MOV        EAX,0x2
+                 00 00
+        00491b8a 31 d2           XOR        EDX,EDX
+        00491b8c f7 f1           DIV        this
+        00491b8e 0f af ff        IMUL       EDI,EDI
+        00491b91 83 c7 03        ADD        EDI,0x3
+        00491b94 39 f8           CMP        EAX,EDI
+        00491b96 75 0e           JNZ        LAB_00491ba6
+```
 
 
-
-
-
-
-
-#### Sample at XXX
+#### Sample at 0x492491
 
 
 
 (may only 2 samples?)
-#### Sample at XXX
+#### Sample at 0x492796
 
 
 
