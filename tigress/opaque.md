@@ -14,7 +14,7 @@ In comparasion to other control flow graph obfuscation techniques, opaque predic
 #### Opaque Expressions
 Opaque predicates can be classified as the following types:
 
-_P<sup>T</sup> - opaquely true predicate_
+_P<sup>T</sup> - opaquely true predicate_ <br>
 The condition is always satisfied, hence "true". The following example shows, that either expression `2` or `(x^2 + x)^T` must be correct. Since `2` is always true, the branch on the left will always be taken.
 ```C
 if (2|(x^2 + x)^T){
@@ -26,7 +26,7 @@ else {
 ```
 
 
-_P<sup>F</sup> - opaquely false predicate_
+_P<sup>F</sup> - opaquely false predicate_ <br>
 The condition is never satisfied, hence "false".
 Consider the following example:
 ```C
@@ -40,7 +40,7 @@ else {
 The expression `2 == 3` will never be true, hence the else-statement is always the executed branch.
 
 
-_P<sup>?</sup> - opaquely intermediate predicate_
+_P<sup>?</sup> - opaquely intermediate predicate_ <br>
 This type of opaque predicate combines the two types above. It is uncertain, which path gets taken since the expression can be true in one case and be false in another case.
 ```C
 if (x mod 2 == 0){
@@ -55,7 +55,7 @@ For example for `x` being equal to 2, the if-statement would be executed, since 
 On the other hand `x = 4` would not satisfy this condition and the code in the else-block would be executed instead. 
 
 
-_E<sup>=v</sup> - for an opaque expression of value v_
+_E<sup>=v</sup> - for an opaque expression of value v_ <br>
 
 @ fabio: zu ergänzen
 
