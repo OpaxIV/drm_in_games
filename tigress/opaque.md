@@ -174,18 +174,11 @@ else block / ending block
 
 
 #### Sample at XXX
-<br>
-<img src="" width="900">
-<br/>
 
 
 
 (may only 2 samples?)
 #### Sample at XXX
-<br>
-<img src="" width="900">
-<br/>
-
 
 
 
