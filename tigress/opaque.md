@@ -5,11 +5,11 @@ Hence another sample has been taken for analysis (referenced bellow).
 
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e2deada6-8510-4e74-9c36-7e3dc723cee0" width="500"/>
 <br/>
-
+Defined as expression that evaluates to either "true" or "false", for which the outcome is known by the programmer beforehand, but which, for a variety of reasons, still needs to be evaluated at run time. Opaque predicates are basically branches of which the outcome is already clear. There might 
 An opaque predicate is a part of a program, which might be missed during analysis. This is given if the program analysis is not sophisticated enough.
-It is referred to as a branch that always executes in one direction, which is known to the creator of the program, and which is unknown a priori to the analyzer.
 
-Furthermore it might be defined as an expression whose value is known to the maker/the person implementing it, but which is difficult for an attacker to find out.
+
+
 
 Opaque Predicates can have the following types:
 - P^T = opaquely true predicate
@@ -30,5 +30,5 @@ References:
 - Code Obfuscation - https://www2.cs.arizona.edu/~collberg/Teaching/553/2011/Resources/obfuscation.pdf
 - What is an "opaque predicate"? - https://reverseengineering.stackexchange.com/questions/1669/what-is-an-opaque-predicate
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
-- Encode Arithmetic on Tigress: https://tigress.wtf/encodeArithmetic.html
 - Sample - https://github.com/mrphrazer/r2con2020_deobfuscation/blob/master/samples/ac3e087e43be67bdc674747c665b46c2
+- Opaque Predicate - https://en.wikipedia.org/wiki/Opaque_predicate
