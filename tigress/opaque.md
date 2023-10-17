@@ -1,5 +1,5 @@
 ## Opaque Predicates
-Important: Due to an error in tigress, no samples could be generated with the "opaque predicated" option.
+Important: Due to an error in tigress, no samples could be generated with the "opaque predicate" option.
 Hence another sample has been taken for analysis (referenced bellow).
 ### General Definition
 
