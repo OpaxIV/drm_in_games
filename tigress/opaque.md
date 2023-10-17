@@ -61,8 +61,51 @@ _E<sup>=v</sup> - for an opaque expression of value v_ <br>
 
 
 ### Analysis in Ghidra
+Beginning at the address 0x491aa0, one can regognize the high complexity of the control flow graph of this binarys function.
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e507b626-41a5-43dd-8d44-d87edf457f1a" width="700">
+<br/>
+Since the amount is so vast, only a sample set of randomly chosen candidates will be analyzed in further detail.
 
-adress 0x491aa0
+#### Sample at 0x491b38
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/ec0d8dde-7edc-4b11-af79-f4d8d884cede" width="900">
+<br/>
+
+
+
+
+#### Sample at 0x491b38
+<br>
+<img src="" width="900">
+<br/>
+
+
+
+
+#### Sample at 0x491b38
+<br>
+<img src="" width="900">
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 References:
