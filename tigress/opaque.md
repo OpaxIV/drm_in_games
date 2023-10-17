@@ -212,3 +212,5 @@ References:
 - Used sample: https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
 - Sample - https://github.com/mrphrazer/r2con2020_deobfuscation/blob/master/samples/ac3e087e43be67bdc674747c665b46c2
 - Opaque Predicate - https://en.wikipedia.org/wiki/Opaque_predicate
+- Z3 Solver - https://github.com/Z3Prover/z3
+- Semi-automatic Code Deobfuscation (r2con2020 workshop) - https://www.youtube.com/watch?v=_TsV0RXoIQE
