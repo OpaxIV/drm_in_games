@@ -1,3 +1,5 @@
+@ fabio: rewrite readme in final version
+
 # hslu_secproj
 Repo for the Security Project at the Hochschule Luzern
 
