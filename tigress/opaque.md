@@ -11,17 +11,6 @@ Using opaque predicates will lead to an extremely excessive control flow graph w
 It is for this reason, that any further analysis based on the control flow graph will turn into tedious work.
 In comparasion to other control flow graph obfuscation techniques, opaque predicates act more covert, since it is difficult to separate them from actual functional code in the program.
 
-
-Opaque Predicates can have the following types:
-- P^T = opaquely true predicate
-- P^F = opaquely false predicate
-- P^? = opaquely intermediate predicate
-- E^=v = opaque expression of value v
-
-Examples:<br/>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/623a0dfc-1caa-4d9b-b9c7-8ccb79e9a008" width="500"/>
-<br/>
-
 ### Analysis in Ghidra
 
 adress 0x491aa0
