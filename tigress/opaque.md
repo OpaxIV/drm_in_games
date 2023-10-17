@@ -148,8 +148,10 @@ unsat
 >>>
 ```
 
-As we can see, this expression is not satisfiable. So in any occurence `((2 /  (x * x + 1)) ==  y * y + 3)` will never be true.
-This branch can hence be defined as dead weight, since it will never be executed.
+As we can see, this expression is not satisfiable. So any occurence of `((2 /  (x * x + 1)) ==  y * y + 3)` will lead it to never be true.
+This branch can be described as dead weight, since it will never be executed.
+
+
 
 
 
