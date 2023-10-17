@@ -67,13 +67,16 @@ Beginning at the address 0x491aa0, one can recognize the high complexity of the 
 <br/>
 Since the amount is so vast, only a sample set of randomly chosen candidates will be analyzed in further detail.
 
+
 #### Sample at 0x491b38
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/ec0d8dde-7edc-4b11-af79-f4d8d884cede" width="900">
 <br/>
 
+Three basic blocks compose this opaque predicate.
+The first can be seen as the "if-statement", in which the condition gets checked.
 if-statement at 0x491b38
-```
+```asm
                              LAB_00491b38                                    XREF[1]:     00491b1e(j)  
         00491b38 8b 0d 44        MOV        this,dword ptr [DAT_0058dd44]                    = ??
                  dd 58 00
@@ -91,7 +94,11 @@ if-statement at 0x491b38
         00491b59 39 d0           CMP        EAX,EDX
         00491b5b 74 3b           JZ         LAB_00491b98
 ```
+The jump occurs if `eax` and `edx` are equal. This is computed by subtracting both values currently resting in the registers and checking the result.
+If the result ends up being equal to zero, then the jump occurs. Every other outcome would lead to a continuation of the code at 0x0491b5d.
 
+Interesting to know would be, what the actual if-statement would be like, hence to understand how the values in the registers `eax` and `edx` would look like.
+We can somewhat get an idea of this by looking at the decompiler output:
 ```C
   uVar9 = DAT_0058dd44 * DAT_0058dd44 + 1;
   if ((int)(2 / (ulonglong)uVar9) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;
@@ -105,68 +112,44 @@ LAB_00491b98:
     DAT_0058dd40 = 0;
   }
 ```
-
-  
-if-block
-```
-                             LAB_00491b98                                    XREF[1]:     00491b5b(j)  
-        00491b98 c7 05 40        MOV        dword ptr [DAT_0058dd40],0x0                     = ??
-                 dd 58 00 
-                 00 00 00 00
-        00491ba2 31 ff           XOR        EDI,EDI
-        00491ba4 eb b7           JMP        LAB_00491b5d
-
+Most notably is the line `if ((int)(2 / (ulonglong)uVar9) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;`.
+To get a better understanding, we need to simplify this expression. By looking one line above, we can see what the `uVar9` variable stands for.
+By substituting `uVar9` with `DAT_0058dd44 * DAT_0058dd44 + 1` we get:
+```C
+  if ((int)(2 / (ulonglong)DAT_0058dd44 * DAT_0058dd44 + 1) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;
 ```
 
-
+Rewritten with some examplary variables for better visualisation:
 ```
-LAB_00491b98:
-    DAT_0058dd40 = 0;
-  }
-```
+x = DAT_0058dd44
+y = DAT_0058dd40
 
-
-
-
-else block / ending block
-```
-                             LAB_00491b5d                                    XREF[1]:     00491ba4(j)  
-        00491b5d b8 04 00        MOV        EAX,0x4
-                 00 00
-        00491b62 e8 19 81        CALL       __alloca_probe                                   undefined __alloca_probe(void)
-                 00 00
-        00491b67 89 e0           MOV        EAX,ESP
-        00491b69 83 e0 f8        AND        EAX,0xfffffff8
-        00491b6c 89 46 34        MOV        dword ptr [ESI + 0x34],EAX
-        00491b6f 89 c4           MOV        ESP,EAX
-        00491b71 b8 04 00        MOV        EAX,0x4
-                 00 00
-        00491b76 e8 05 81        CALL       __alloca_probe                                   undefined __alloca_probe(void)
-                 00 00
-        00491b7b 89 e0           MOV        EAX,ESP
-        00491b7d 83 e0 f8        AND        EAX,0xfffffff8
-        00491b80 89 46 38        MOV        dword ptr [ESI + 0x38],EAX
-        00491b83 89 c4           MOV        ESP,EAX
-        00491b85 b8 02 00        MOV        EAX,0x2
-                 00 00
-        00491b8a 31 d2           XOR        EDX,EDX
-        00491b8c f7 f1           DIV        this
-        00491b8e 0f af ff        IMUL       EDI,EDI
-        00491b91 83 c7 03        ADD        EDI,0x3
-        00491b94 39 f8           CMP        EAX,EDI
-        00491b96 75 0e           JNZ        LAB_00491ba6
-
+if ((2 /  (x * x + 1)) ==  y * y + 3) goto LAB_00491b98;
 ```
 
-```
-  while( true ) {
-    puStack_6c = (uint *)0x491b67;
-    ppuStack_34 = &puStack_70;
-    puStack_74 = (uint *)0x491b7b;
-    ppuVar14 = (uint **)&uStack_78;
-    if ((int)(2 / (ulonglong)uVar9) != DAT_0058dd40 * DAT_0058dd40 + 3) break;
+Now we can check this expression using the python tool "z3-solver":
+
+```py
+[training@vm ~]$ python
+Python 3.11.5 (main, Sep  2 2023, 14:16:33) [GCC 13.2.1 20230801] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from z3 import *
+>>> x, y = BitVecs('x y', 32)
+>>> f = (2 /  (x * x + 1))
+>>> g = y * y + 3
+>>> f
+2/(x*x + 1)
+>>> g
+y*y + 3
+>>> solver = Solver()
+>>> solver.add(f == g)
+>>> solver.check()
+unsat
+>>>
 ```
 
+As we can see, this expression is not satisfiable. So in any occurence `((2 /  (x * x + 1)) ==  y * y + 3)` will never be true.
+This branch can hence be defined as dead weight, since it will never be executed.
 
 
 
