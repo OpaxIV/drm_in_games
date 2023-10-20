@@ -184,6 +184,22 @@ So we can conclude, that the conditon is never satisfied and hence the control f
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@fabio: may need to remove, since this seems to be the same as before
+
 #### Sample at 0x494924
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/4e49a698-56d4-4926-8478-e9436d40f7a9" width="900">
@@ -193,6 +209,26 @@ In this case, not three but four basic blocks compose this opaque predicate.
 The first can be seen as the one containing an "if-statement", in which the condition gets checked.
 Basic block containing a conditional check (starting at 0x494924):
 ```asm
+                             LAB_00494924                                    XREF[1]:     0049484d(j)  
+        00494924 8b 46 28        MOV        EAX,dword ptr [ESI + 0x28]
+        00494927 89 46 2c        MOV        dword ptr [ESI + 0x2c],EAX
+        0049492a 8b 46 2c        MOV        EAX,dword ptr [ESI + 0x2c]
+        0049492d 0f af c0        IMUL       EAX,EAX
+        00494930 89 46 2c        MOV        dword ptr [ESI + 0x2c],EAX
+        00494933 ff 46 2c        INC        dword ptr [ESI + 0x2c]
+        00494936 b8 02 00        MOV        EAX,0x2
+                 00 00
+        0049493b 31 d2           XOR        EDX,EDX
+        0049493d f7 76 2c        DIV        dword ptr [ESI + 0x2c]
+        00494940 8b 56 24        MOV        EDX,dword ptr [ESI + 0x24]
+        00494943 0f af d2        IMUL       EDX,EDX
+        00494946 89 56 2c        MOV        dword ptr [ESI + 0x2c],EDX
+        00494949 8d 52 03        LEA        EDX,[EDX + 0x3]
+        0049494c 39 d0           CMP        EAX,EDX
+        0049494e 0f 84 f7        JZ         LAB_0049554b
+                 0b 00 00
+        00494954 e9 e3 0b        JMP        LAB_0049553c
+                 00 00
 ```
 The jump occurs if `eax` and `edx` are equal. This is computed by subtracting both values currently resting in the registers and checking the result.
 If the result ends up being equal to zero, then the jump occurs. Every other outcome would lead to a continuation of the code at 0x0491b5d.
@@ -200,12 +236,29 @@ If the result ends up being equal to zero, then the jump occurs. Every other out
 Interesting to know would be, what the actual if-statement would be like, hence to understand how the values in the registers `eax` and `edx` would look like.
 We can somewhat get an idea of this by looking at the decompiler output:
 ```C
+LAB_00494924:
+      if ((int)(2 / (ulonglong)((int)ppuStack_40 * (int)ppuStack_40 + 1)) ==
+          (int)ppuStack_44 * (int)ppuStack_44 + 3) goto LAB_0049554b;
+      while ((int)ppuStack_40 * (int)ppuStack_40 * 7 + -1 == (int)ppuStack_44 * (int)ppuStack_44) {
+LAB_0049554b:
+        uVar9 = (int)ppuStack_40 / (int)((uint)ppuStack_40 / 0) & (uint)ppuStack_40;
+        uVar4 = (int)ppuStack_40 * uVar9;
+        DAT_00590814 = (uint **)(uVar4 + (uVar9 + uVar4 ^ uVar4));
+        ppuStack_40 = DAT_00590814;
+      }
 ```
-Most notably is the line `if ((int)(2 / (ulonglong)uVar9) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;`.
-To get a better understanding, we need to simplify this expression. By looking one line above, we can see what the `uVar9` variable stands for.
-By substituting `uVar9` with `DAT_0058dd44 * DAT_0058dd44 + 1` we get:
+Most notably is the line `if ((int)(2 / (ulonglong)((int)ppuStack_40 * (int)ppuStack_40 + 1)) == (int)ppuStack_44 * (int)ppuStack_44 + 3) goto LAB_0049554b;`.
+To get a better understanding, we need to simplify this expression. We can see that the value is used multiple times before:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b506ab32-2c0d-4811-b68c-ee5941718714" width="500">
+<br/>
+ust by looking at it, it won't seem that the values of `ppuStack_40` and `ppuStack_44` get drastically changed. They are used in multiple computations but not overwritten in any way.
+With this fact in hand, we can just replace and simplify these expressions with examplary values like `x` and `y`.
 ```C
-  if ((int)(2 / (ulonglong)DAT_0058dd44 * DAT_0058dd44 + 1) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;
+x =  ppuStack_40
+y = ppuStack_44
+
+if ((2 / (x * x + 1)) == y * y + 3) goto LAB_0049554b;
 ```
 
 Rewritten with some examplary variables for better visualisation:
