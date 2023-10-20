@@ -178,8 +178,8 @@ LAB_0010128f
 ```
 The virtual stack pointer is incremented by 0x8, pointing again on top of the stack and the control flow is once again passed onto the dispatcher.
 
-
-The last component we can spot is the VM- xit: It is to be found at the adress 0x101245:
+### The VM-Exit
+The last component we can spot is the VM-exit: It is to be found at the adress 0x101245:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/a87b5790-c8b9-402a-bf47-fa16da1100e8" width="1000">
 <br/>
@@ -193,7 +193,7 @@ LAB_001012b9                                    XREF[1]:     00101258(j)
 			 ff ff
 					 -- Flow Override: CALL_RETURN (CALL_TERMINATOR)
 ```
-Most notable are the `MOV EAX,dword ptr [RCX]=>local_128` instruction, which copies the return value into `eax`, the `ADD RSP,0x138` instruction, which restores the original non-virtual stacks state, and the `RET` instruction, which lets the control flow return.
+To note are the `MOV EAX,dword ptr [RCX]=>local_128` instruction, which copies the return value into `eax`, the `ADD RSP,0x138` instruction, which restores the original non-virtual stacks state, and the `RET` instruction, which lets the control flow return.
 ```
 LAB_00101245                                    XREF[1]:     0010121a(j)  
 	00101245 8b 01           MOV        EAX,dword ptr [RCX]=>local_128
