@@ -75,7 +75,7 @@ Since the amount is so vast, only a sample set of randomly chosen candidates wil
 
 Three basic blocks compose this opaque predicate.
 The first can be seen as the "if-statement", in which the condition gets checked.
-if-statement at 0x491b38
+Basic block containing a conditional check (starting at 0x491b38):
 ```asm
                              LAB_00491b38                                    XREF[1]:     00491b1e(j)  
         00491b38 8b 0d 44        MOV        this,dword ptr [DAT_0058dd44]                    = ??
@@ -181,17 +181,75 @@ So we can conclude, that the conditon is never satisfied and hence the control f
 ```
 
 
-#### Sample at 0x492491
 
 
 
-(may only 2 samples?)
-#### Sample at 0x492796
+#### Sample at 0x494924
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/4e49a698-56d4-4926-8478-e9436d40f7a9" width="900">
+<br/>
+
+In this case, not three but four basic blocks compose this opaque predicate.
+The first can be seen as the one containing an "if-statement", in which the condition gets checked.
+Basic block containing a conditional check (starting at 0x494924):
+```asm
+```
+The jump occurs if `eax` and `edx` are equal. This is computed by subtracting both values currently resting in the registers and checking the result.
+If the result ends up being equal to zero, then the jump occurs. Every other outcome would lead to a continuation of the code at 0x0491b5d.
+
+Interesting to know would be, what the actual if-statement would be like, hence to understand how the values in the registers `eax` and `edx` would look like.
+We can somewhat get an idea of this by looking at the decompiler output:
+```C
+```
+Most notably is the line `if ((int)(2 / (ulonglong)uVar9) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;`.
+To get a better understanding, we need to simplify this expression. By looking one line above, we can see what the `uVar9` variable stands for.
+By substituting `uVar9` with `DAT_0058dd44 * DAT_0058dd44 + 1` we get:
+```C
+  if ((int)(2 / (ulonglong)DAT_0058dd44 * DAT_0058dd44 + 1) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;
+```
+
+Rewritten with some examplary variables for better visualisation:
+```
+x = DAT_0058dd44
+y = DAT_0058dd40
+
+if ((2 /  (x * x + 1)) ==  y * y + 3) goto LAB_00491b98;
+```
+
+Now we can check this expression using the python tool "z3-solver":
+
+```py
+[training@vm ~]$ python
+Python 3.11.5 (main, Sep  2 2023, 14:16:33) [GCC 13.2.1 20230801] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from z3 import *
+>>> x, y = BitVecs('x y', 32)
+>>> f = (2 /  (x * x + 1))
+>>> g = y * y + 3
+>>> f
+2/(x*x + 1)
+>>> g
+y*y + 3
+>>> solver = Solver()
+>>> solver.add(f == g)
+>>> solver.check()
+unsat
+>>>
+```
+
+As we can see, this expression is not satisfiable. So any occurence of `((2 /  (x * x + 1)) ==  y * y + 3)` will lead it to never be true.
+This branch can be described as dead weight, since it will never be executed.
+
+So we can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress 0x491b5d.
+```
+```
 
 
 
 
 
+
+#### Sample at 0x492491 / 0x4925be / 0x492796 / 
 
 
 
