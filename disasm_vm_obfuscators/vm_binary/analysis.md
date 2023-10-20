@@ -178,7 +178,7 @@ LAB_0010128f
 ```
 The virtual stack pointer is incremented by 0x8, pointing again on top of the stack and the control flow is once again passed onto the dispatcher.
 
-### The VM-Exit
+#### The VM-Exit
 The last component we can spot is the VM-exit: It is to be found at the adress 0x101245:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/a87b5790-c8b9-402a-bf47-fa16da1100e8" width="1000">
