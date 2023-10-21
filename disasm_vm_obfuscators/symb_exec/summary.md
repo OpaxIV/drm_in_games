@@ -34,9 +34,48 @@ assert(x+y+z!=3)
 ```
 The condition to reach the end of this code is to make sure, that the sum of the variables x, y and z is not equal to the value 3. These variables values depend on the other three variables a, b and c. The thing is though, that those values are unknown to us. Hence to put some values symbollicaly in their places would help us to understand the control flow and the multiple possible paths it may takes.
 Every possible path has been written down in a three diagram to further elaborate on this point.
+_Note: path conditions are written at the end of every path._
+<br>
 ```
+O = valid path
+X = invalid path
 
+.
+├── x=0, y=0, z=0
+└── α
+    ├── true
+    │   └── x=-2
+    │       └── β<5
+    │           ├── true
+    │           │   └── z=2
+    │           │       └── α∧(β<5)
+    │           │           └── O
+    │           └── false
+    │               └── α∧(β≥5)
+    │                   └── O
+    └── false
+        └── β<5
+            ├── true
+            │   └── ¬α∧γ
+            │       ├── true
+            │       │   └── y=1
+            │       │       └── z=2
+            │       │           └── ¬α∧(β<5)∧γ
+            │       │               └── X
+            │       └── false
+            │           └── z=2
+            │               └── ¬α∧(β<5)∧¬γ
+            │                   └── O
+            └── false
+                └── ¬α∧(β≥5)
+                    └── O
 ```
+<br/>
+Each symbolic execution path stands for many actually program runs. In fact, exactly the set of runs whose concrete values satisfy the path condition.
+By this procedure one can cover a greater part of the program’s execution space than using e.g. testing as a technique.
+@ fabio, gegebenfalls erneut anpassen
+
+
 
 
 ---
@@ -48,5 +87,5 @@ References:
 - Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
 - What is symbolic execution for software programs? - https://symflower.com/en/company/blog/2021/symbolic-execution/
 - Symbolic Execution for finding bugs by Michael Hicks - https://www.cs.umd.edu/~mwh/se-tutorial/symbolic-exec.pdf
-   
+- tree.nathanfriend.io - https://gitlab.com/nfriend/tree-online#what-is-this
 
