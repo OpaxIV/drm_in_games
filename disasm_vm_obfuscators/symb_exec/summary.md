@@ -13,7 +13,30 @@ Possible inputs that trigger a branch can then be determined by solving these co
 @fabio erneut anpassen, nicht so sicher und korrekt
 
 ### Example
+The following example shall provide an example for a case of symbolic execution.<br>
+Consider the following C-code:
+```C
+int a = α, b = β, c = γ; 		// unknown, only symbolic
+int x = 0, y = 0, z = 0;
 
+if (a) {
+	x = -2;
+}
+
+if (b < 5) {
+	if (!a && c) {
+		y = 1;
+	}
+	z = 2;
+}
+
+assert(x+y+z!=3)
+```
+The condition to reach the end of this code is to make sure, that the sum of the variables x, y and z is not equal to the value 3. These variables values depend on the other three variables a, b and c. The thing is though, that those values are unknown to us. Hence to put some values symbollicaly in their places would help us to understand the control flow and the multiple possible paths it may takes.
+Every possible path has been written down in a three diagram to further elaborate on this point.
+```
+
+```
 
 
 ---
@@ -24,5 +47,6 @@ References:
 - What Is an Instruction Set Architecture? - https://www.arm.com/glossary/isa
 - Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
 - What is symbolic execution for software programs? - https://symflower.com/en/company/blog/2021/symbolic-execution/
+- Symbolic Execution for finding bugs by Michael Hicks - https://www.cs.umd.edu/~mwh/se-tutorial/symbolic-exec.pdf
    
 
