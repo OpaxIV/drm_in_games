@@ -29,6 +29,6 @@ References:
 - Symbolic execution - https://en.wikipedia.org/wiki/Symbolic_execution
 - What Is an Instruction Set Architecture? - https://www.arm.com/glossary/isa
 - Writing Disassemblers for VM-based Obfuscators - https://synthesis.to/2021/10/21/vm_based_obfuscation.html
-- 
+- What is symbolic execution for software programs? - https://symflower.com/en/company/blog/2021/symbolic-execution/
    
 
