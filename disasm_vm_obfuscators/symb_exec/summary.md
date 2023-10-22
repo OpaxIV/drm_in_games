@@ -5,15 +5,13 @@ Original Article and Video Lecture by Dr. Tim Blazytko_<br/>
 
 
 ## Definition
-Symbolic execution is defined as a technique of analyzing a computer program to determine what inputs cause each part of a program to execute.
+Symbolic execution is defined as a technique of analyzing computer programs to determine what inputs cause each part of the program to execute.
 This technique is based on assumptions, as inputs are placed "symbolically" (hence the name) rather than being the actual inputs when executing the program normally.
-These rewrites of code provide concrete insights in the way a program could work without knowing the correct parameters that go with it. It can be imagined as a tool to uncover the inner workings of an even blacker box.
-Possible inputs that trigger a branch can then be determined by solving these constraints.
-
-@fabio erneut anpassen, nicht so sicher und korrekt
+These rewrites of code provide concrete insights in the way a program could work without knowing the exact parameters that go with it.
+The main focus is to determine the paths, which a program could take during execution: By symbolically placing pseudo-variables as the input, one can find multiple if not all paths that the control flow would take during execution.  
 
 ### Example
-The following example shall provide an example for a case of symbolic execution.<br>
+The following code shall provide an example of a case of symbolic execution.<br>
 Consider the following C-code:
 ```C
 int a = α, b = β, c = γ; 		// unknown, only symbolic
@@ -32,7 +30,7 @@ if (b < 5) {
 
 assert(x+y+z!=3)
 ```
-The condition to reach the end of this code is to make sure, that the sum of the variables x, y and z is not equal to the value 3. These variables values depend on the other three variables a, b and c. The thing is though, that those values are unknown to us. Hence to put some values symbollicaly in their places would help us to understand the control flow and the multiple possible paths it may takes.
+The condition to reach the complete end of this code is to make sure, that the sum of the variables x, y and z is not equal to the value of 3. These variable's values depend on the other three variables a, b and c. The thing is though, that those values are unknown to us. Hence to put some values symbollicaly in their places would help us to understand the control flow and the multiple possible paths the program may takes.
 Every possible path has been written down in a three diagram to further elaborate on this point.
 _Note: path conditions are written at the end of every path._
 <br>
@@ -71,10 +69,8 @@ X = invalid path
                     └── O
 ```
 <br/>
-Each symbolic execution path stands for many actually program runs. In fact, exactly the set of runs whose concrete values satisfy the path condition.
-By this procedure one can cover a greater part of the program’s execution space than using e.g. testing as a technique.
-@ fabio, gegebenfalls erneut anpassen
-
+As we can see by the tree diagram, by just assuming the variables one can start to uncover and understand the multiple paths presented by the program. Furthermore by evaluating every path it can also be shown, which paths are more likely to be taken, if the goal is to successfully execute the program (hence reach the end of the programm's code).<br>
+In this example every path is a valid path expect for the one marked by an `X`. This is the only executable path which would not lead to an complete errorless execution.
 
 
 
