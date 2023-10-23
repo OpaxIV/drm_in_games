@@ -1,7 +1,7 @@
 @ fabio: rewrite readme in final version
 
-# hslu_secproj
-Repo for the Security Project at the Hochschule Luzern
+# HSLU SECPROJ
+Repository for the Security Project from the Hochschule Luzern
 
 
 ## Personal 2DO
