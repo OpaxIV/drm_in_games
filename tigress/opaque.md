@@ -128,7 +128,7 @@ if ((2 /  (x * x + 1)) ==  y * y + 3) goto LAB_00491b98;
 ```
 
 Now we can check this expression using the python tool "z3-solver":
-
+Note: The number `32` in `BitVecs(...)` stands for the values' size. Since we are working with 32-bit registers, the number to input is 32.
 ```py
 [training@vm ~]$ python
 Python 3.11.5 (main, Sep  2 2023, 14:16:33) [GCC 13.2.1 20230801] on linux
@@ -180,93 +180,59 @@ So we can conclude, that the conditon is never satisfied and hence the control f
         00491b96 75 0e           JNZ        LAB_00491ba6
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@fabio: may need to remove, since this seems to be the same as before
-
-#### Sample at 0x494924
+#### Sample at 0x492d09
 <br>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/4e49a698-56d4-4926-8478-e9436d40f7a9" width="900">
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b8f8b709-5d42-4252-969b-8f82047110ee" width="900">
 <br/>
 
-In this case, not three but four basic blocks compose this opaque predicate.
-The first can be seen as the one containing an "if-statement", in which the condition gets checked.
-Basic block containing a conditional check (starting at 0x494924):
+As a second example the opaque at address 0x492d09 has been chosen. The following code shows a familiarity with the preceding example
 ```asm
-                             LAB_00494924                                    XREF[1]:     0049484d(j)  
-        00494924 8b 46 28        MOV        EAX,dword ptr [ESI + 0x28]
-        00494927 89 46 2c        MOV        dword ptr [ESI + 0x2c],EAX
-        0049492a 8b 46 2c        MOV        EAX,dword ptr [ESI + 0x2c]
-        0049492d 0f af c0        IMUL       EAX,EAX
-        00494930 89 46 2c        MOV        dword ptr [ESI + 0x2c],EAX
-        00494933 ff 46 2c        INC        dword ptr [ESI + 0x2c]
-        00494936 b8 02 00        MOV        EAX,0x2
-                 00 00
-        0049493b 31 d2           XOR        EDX,EDX
-        0049493d f7 76 2c        DIV        dword ptr [ESI + 0x2c]
-        00494940 8b 56 24        MOV        EDX,dword ptr [ESI + 0x24]
-        00494943 0f af d2        IMUL       EDX,EDX
-        00494946 89 56 2c        MOV        dword ptr [ESI + 0x2c],EDX
-        00494949 8d 52 03        LEA        EDX,[EDX + 0x3]
-        0049494c 39 d0           CMP        EAX,EDX
-        0049494e 0f 84 f7        JZ         LAB_0049554b
-                 0b 00 00
-        00494954 e9 e3 0b        JMP        LAB_0049553c
-                 00 00
-```
-The jump occurs if `eax` and `edx` are equal. This is computed by subtracting both values currently resting in the registers and checking the result.
-If the result ends up being equal to zero, then the jump occurs. Every other outcome would lead to a continuation of the code at 0x0491b5d.
+00492d09 a1 bc dc        MOV        EAX,[DAT_0058dcbc]                               = ??
+		 58 00
+00492d0e 8b 0d b8        MOV        this,dword ptr [DAT_0058dcb8]                    = ??
+		 dc 58 00
+00492d14 89 4e 2c        MOV        dword ptr [ESI + 0x2c],this
+00492d17 0f af c0        IMUL       EAX,EAX
+00492d1a 89 46 3c        MOV        dword ptr [ESI + 0x3c],EAX
+00492d1d 6b c0 07        IMUL       EAX,EAX,0x7
+00492d20 48              DEC        EAX
+00492d21 0f af c9        IMUL       this,this
+00492d24 39 c8           CMP        EAX,this
+00492d26 a1 94 08        MOV        EAX,[DAT_00590894]                               = ??
+		 59 00
+00492d2b 89 46 24        MOV        dword ptr [ESI + 0x24],EAX
+00492d2e 0f 84 94        JZ         LAB_00492dc8
+		 00 00 00
 
-Interesting to know would be, what the actual if-statement would be like, hence to understand how the values in the registers `eax` and `edx` would look like.
-We can somewhat get an idea of this by looking at the decompiler output:
-```C
-LAB_00494924:
-      if ((int)(2 / (ulonglong)((int)ppuStack_40 * (int)ppuStack_40 + 1)) ==
-          (int)ppuStack_44 * (int)ppuStack_44 + 3) goto LAB_0049554b;
-      while ((int)ppuStack_40 * (int)ppuStack_40 * 7 + -1 == (int)ppuStack_44 * (int)ppuStack_44) {
-LAB_0049554b:
-        uVar9 = (int)ppuStack_40 / (int)((uint)ppuStack_40 / 0) & (uint)ppuStack_40;
-        uVar4 = (int)ppuStack_40 * uVar9;
-        DAT_00590814 = (uint **)(uVar4 + (uVar9 + uVar4 ^ uVar4));
-        ppuStack_40 = DAT_00590814;
-      }
 ```
-Most notably is the line `if ((int)(2 / (ulonglong)((int)ppuStack_40 * (int)ppuStack_40 + 1)) == (int)ppuStack_44 * (int)ppuStack_44 + 3) goto LAB_0049554b;`.
-To get a better understanding, we need to simplify this expression. We can see that the value is used multiple times before:
+The conditional jump occurs only if the value at the dereferenced stack pointer's position `[ESI + 0x24]` is equal to the current value in `eax`.  
+
+```C
+[...]
+    if ((uint *)**ppuStack_38 == *ppuStack_1c) {
+      ppuStack_3c = DAT_0058dcb8;
+      ppuStack_2c = (uint **)(DAT_0058dcbc * DAT_0058dcbc);
+      ppuStack_44 = DAT_00590894;
+      if ((int)ppuStack_2c * 7 + -1 == (int)DAT_0058dcb8 * (int)DAT_0058dcb8) goto LAB_00492dc8;
+      while( true ) {
+        ppuStack_48 = (uint **)*ppuVar6;
+        ppuStack_40 = (uint **)(DAT_00590890 * DAT_00590890);
+        if ((uint **)((int)ppuStack_44 * (int)ppuStack_44 * 7 - 1U) == ppuStack_40)
+        goto LAB_00492d75;
+        while ((int)(2 / (ulonglong)((int)ppuStack_44 * (int)ppuStack_44 + 1)) ==
+               (int)ppuStack_40 + 3U) {
+[...]
+```
+The conditional jump can be seen in the decompiler output at the following line `if ((int)ppuStack_2c * 7 + -1 == (int)DAT_0058dcb8 * (int)DAT_0058dcb8) goto LAB_00492dc8;`. By looking in the upper sector of the output we can see the "actual" value of `ppuStack_2c`, which is `(uint **)(DAT_0058dcbc * DAT_0058dcbc)`.
 <br>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b506ab32-2c0d-4811-b68c-ee5941718714" width="500">
-<br/>
-ust by looking at it, it won't seem that the values of `ppuStack_40` and `ppuStack_44` get drastically changed. They are used in multiple computations but not overwritten in any way.
-With this fact in hand, we can just replace and simplify these expressions with examplary values like `x` and `y`.
+By replacing this expression we get:
+`if ((uint **)(DAT_0058dcbc * DAT_0058dcbc) * 7 + -1 == (int)DAT_0058dcb8 * (int)DAT_0058dcb8) goto LAB_00492dc8;`
+If we further simplify this statement as in the example before, we get:
 ```C
-x =  ppuStack_40
-y = ppuStack_44
+x =  DAT_0058dcbc
+y = DAT_0058dcb8
 
-if ((2 / (x * x + 1)) == y * y + 3) goto LAB_0049554b;
-```
-
-Rewritten with some examplary variables for better visualisation:
-```
-x = DAT_0058dd44
-y = DAT_0058dd40
-
-if ((2 /  (x * x + 1)) ==  y * y + 3) goto LAB_00491b98;
+if ((x * x) * 7 + -1 == y * y) goto LAB_00492dc8;
 ```
 
 Now we can check this expression using the python tool "z3-solver":
@@ -277,45 +243,23 @@ Python 3.11.5 (main, Sep  2 2023, 14:16:33) [GCC 13.2.1 20230801] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> from z3 import *
 >>> x, y = BitVecs('x y', 32)
->>> f = (2 /  (x * x + 1))
->>> g = y * y + 3
+>>> f = ((x * x * 7) + -1)
+>>> g = y * y
 >>> f
-2/(x*x + 1)
+x*x*7 + 4294967295
 >>> g
-y*y + 3
+y*y
 >>> solver = Solver()
 >>> solver.add(f == g)
 >>> solver.check()
 unsat
->>>
+>>> 
 ```
 
-As we can see, this expression is not satisfiable. So any occurence of `((2 /  (x * x + 1)) ==  y * y + 3)` will lead it to never be true.
+As we can see, this expression is not satisfiable. So any occurence of `(x * x) * 7 + -1 == y * y` will lead it to never be true.
 This branch can be described as dead weight, since it will never be executed.
 
-So we can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress 0x491b5d.
-```
-```
-
-
-
-
-
-
-#### Sample at 0x492491 / 0x4925be / 0x492796 / 
-
-
-
-
-
-
-
-
-
-
-
-
-
+So we can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress 0x492d5b.
 
 ---
 References:
