@@ -182,7 +182,7 @@ So we can conclude, that the conditon is never satisfied and hence the control f
 
 #### Sample at 0x492d09
 <br>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b8f8b709-5d42-4252-969b-8f82047110ee" width="900">
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b8f8b709-5d42-4252-969b-8f82047110ee" width="600">
 <br/>
 
 As a second example the opaque at address 0x492d09 has been chosen. The following code shows a familiarity with the preceding example
