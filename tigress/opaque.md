@@ -56,8 +56,7 @@ On the other hand `x = 4` would not satisfy this condition and the code in the e
 
 
 _E<sup>=v</sup> - for an opaque expression of value v_ <br>
-
-@ fabio: zu ergänzen
+Informations about this type of opaque predicate are vague. It can be seen as a generalisation of the proceeding types. This expression defines an opaque predicate `E` as being evaluated to the value of `v`. The value `v` can either be true or false.
 
 
 ### Analysis in Ghidra
@@ -255,6 +254,7 @@ y*y
 unsat
 >>> 
 ```
+Note: The number -1 in the expression `((x * x * 7) + -1` gets converted into its 32-bit counterpart. Rewriting the expression to  `((x * x * 7) - 1)` would lead to the same result. 
 
 As we can see, this expression is not satisfiable. So any occurence of `(x * x) * 7 + -1 == y * y` will lead it to never be true.
 This branch can be described as dead weight, since it will never be executed.
