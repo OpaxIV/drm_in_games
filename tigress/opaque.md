@@ -235,6 +235,8 @@ if ((x * x) * 7 + -1 == y * y) goto LAB_00492dc8;
 ```
 
 Now we can check this expression using the python tool "z3-solver":
+<br>
+_Note: The number -1 in the expression `((x * x * 7) + -1` gets converted into its 32-bit counterpart. Rewriting the expression to  `((x * x * 7) - 1)` would lead to the same result._
 
 ```py
 [training@vm ~]$ python
@@ -254,7 +256,6 @@ y*y
 unsat
 >>> 
 ```
-Note: The number -1 in the expression `((x * x * 7) + -1` gets converted into its 32-bit counterpart. Rewriting the expression to  `((x * x * 7) - 1)` would lead to the same result. 
 
 As we can see, this expression is not satisfiable. So any occurence of `(x * x) * 7 + -1 == y * y` will lead it to never be true.
 This branch can be described as dead weight, since it will never be executed.
