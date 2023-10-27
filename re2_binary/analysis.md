@@ -38,6 +38,8 @@ Cold water, beginner analysis, graph view
 ![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/3b5dd815-7384-4016-b18d-3c4cdeb4d18a)
 ![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/184ddcaa-35b7-44f1-b10e-2e1e2c4041ab)
 ![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/75daa1f8-e88e-4ae1-bf5b-df9e4f918ac6)
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/d67e4a6a-7302-439f-a24d-ce8520ba81ea)
+
 
 
 
