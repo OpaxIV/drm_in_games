@@ -20,6 +20,12 @@ During the analysis, the goal is to identify individual components of the Steam 
 
 The binary has been analysed with the reverse engineering tool IDA64 (because Ghidra would be too sluggish to use when opening a 150 Mb binary).
 
+### Before you start
+Settings in IDA (type of binary etc)
+
+setting entry point
+
+graphing
 
 ### First Impression
 Cold water, beginner analysis, graph view
