@@ -177,6 +177,7 @@ LAB_0010128f
     00101293 JMP             e9 6f ff ff ff          LAB_00101207
 ```
 The virtual stack pointer is incremented by 0x8, pointing again on top of the stack and the control flow is once again passed onto the dispatcher.
+Finally we can conclude that this handler is implemented as a conditional jump, used to either fetch the next instruction from the bytecode or to directly manipulate the virtual instruction pointer.
 
 #### The VM-Exit
 The last component we can spot is the VM-exit: It is to be found at the adress 0x101245:
