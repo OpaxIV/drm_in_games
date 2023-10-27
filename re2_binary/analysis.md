@@ -1,20 +1,20 @@
 # Analysis of the Resident Evil 2 Binary
 
-## About the game
+## Introduction
+### About the game
 This writeup covers the analysis of the game "Resident Evil 2". The analysis will cover the Steams version of the game which will include, apart from the publishers own anti-piracy system, the Steam Digial Rights Management.
 
-## Definition of a DRM
+### Definition of a DRM
 Digital rights management (DRM) is the use of technology to control and manage access to copyrighted material. This means that not the owner of the digital content decides, if he can watch it, but rather a software decides if the user has the neccessary permissions to watch it. DRM aims to protect the copyright holder’s rights and prevents content from unauthorized distribution and modification.
 @ fabio umschreiben in eigenen worten
 
-
-## About the Steam DRM
+### About the Steam DRM
 The Steam DRM wrapper verifies games ownership and ensures that Steamworks features work properly by launching Steam before launching the game.
 It is not an anti-piracy solution by itself. The Steam DRM protects against extremely casual piracy (i.e. copying all game files to another computer) and has some obfuscation, but it is easily removed by a motivated attacker.
 What Steam suggests using in combination to the DRM is using Steamworks features which won't work on non-legitimate copies of the game (e.g. online multiplayer, achievements, leaderboards, trading cards, etc.).
 
-
-## Analysis Procedure
+## Analysis
+### Analysis Procedure
 During the analysis, the goal is to identify individual components of the Steam DRM-system in the binary of RE2. At the beginning, the graph view shall be used to get a broad idea of the binary. In a further step the most important components of the XX obfuscation shall be identified. Some of these components shall be analysed further and presented in this file.
 @ fabio: add type of obfuscation, VM based?
 
