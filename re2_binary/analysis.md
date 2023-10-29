@@ -2,7 +2,7 @@
 
 ## Introduction
 ### About the game
-This writeup covers the analysis of the game "Resident Evil 2". The analysis will cover the Steams version of the game which will include, apart from the publishers own anti-piracy system, the Steam Digial Rights Management.
+This writeup covers the analysis of the game "Resident Evil 2". The analysis will be taken on the Steams version of the game which will include, apart from the publishers own anti-piracy system, the Steam Digial Rights Management.
 
 ### Definition of a DRM
 Digital rights management (DRM) is the use of technology to control and manage access to copyrighted material. This means that not the owner of the digital content decides, if he can watch it, but rather a software decides if the user has the neccessary permissions to watch it. DRM aims to protect the copyright holder’s rights and prevents content from unauthorized distribution and modification.
@@ -22,6 +22,7 @@ The binary has been analysed with the reverse engineering tool IDA64 (because Gh
 
 ### Before you start
 Settings in IDA (type of binary etc)
+<CTRL> + <E>
 
 setting entry point
 
