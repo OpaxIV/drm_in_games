@@ -38,8 +38,21 @@ Cold water, beginner analysis, graph view
 
 ![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/3b5dd815-7384-4016-b18d-3c4cdeb4d18a)
 ![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/184ddcaa-35b7-44f1-b10e-2e1e2c4041ab)
-![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/75daa1f8-e88e-4ae1-bf5b-df9e4f918ac6)
-![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/d67e4a6a-7302-439f-a24d-ce8520ba81ea)
+
+entry points CTRL + E:
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/97fe3a24-cfe6-48e9-b0c7-6430d6768458)
+
+Func: CAKRegistryMgr(...)
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/a9f1fff8-3ffb-4117-9967-3ea648a915a0)
+
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/0acd15ed-e0d0-4de4-9244-157fd8f8c68a)
+
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/3fc24d89-7096-4e9c-9532-7de6955c6775)
+
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/ce0c8d9f-5153-4eec-9427-d0276f92386f)
+
+![image](https://github.com/OpaxIV/hslu_secproj/assets/93701325/f7d9b0ae-d657-410f-87f2-b39d18d50156)
+
 
 
 
