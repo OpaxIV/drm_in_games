@@ -15,10 +15,8 @@ It is to be stated, that the analysis in this writeup only covers the EasyAntiCh
 
 
 
-### Definition of a Mapper (Computer Science)
+### Definition of a Mapper
 In the English language mapping is defined as an operation that associates each element of a given set (the domain) with one or more elements of a second set (the range). In the context of computers, a mapper is usually used in conjunction with processes (programs). A widely used component in windows for example are the .dll (Dymanic-link Libraries). The use of DLLs helps promote modularization of code, code reuse, efficient memory usage, and reduced disk space. Certain external components, e.g. libraries or functions are then implemented at runtime, instead of the program having the same code as these external entities. By this the operating system and the programs load faster, run faster, and take less disk space on the computer.
-
-
 
 
 
