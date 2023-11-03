@@ -7,8 +7,10 @@ According to the website, "Easy Anti-Cheat is the industry-leading anti–cheat 
 @fabio 2do
 
 ## General Overview
-The Easy Anti-Cheat Engine (Program) consists of many different components. The most important ones are presented in the following picture, including a small description for each one of them: 
+The Easy Anti-Cheat Engine (Program) consists of many different components. The most important ones are presented in the following picture, including a small description for each one of them:
+<br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/07f3ae69-14df-46d2-a3d3-495034cc5f77" width="700">
+<br/>
 It is to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
 
 
