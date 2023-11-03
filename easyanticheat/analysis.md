@@ -39,3 +39,4 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 ---
 - Symbols and debugging information - https://hex-rays.com/blog/igors-tip-of-the-week-55-using-debug-symbols/
 - Easy Anti-Cheat Website - https://easy.ac/en-us/#about
+- IDA Pro Reverse Engineering Tutorial for Beginners - https://www.youtube.com/playlist?list=PLKwUZp9HwWoDDBPvoapdbJ1rdofowT67z
