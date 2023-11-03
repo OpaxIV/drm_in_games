@@ -13,6 +13,8 @@ The Easy Anti-Cheat Engine (Program) consists of many different components. The 
 <br/>
 It is to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
 
+### About the EasyAntiCheat.sys Module
+
 
 ## Analysis
 ### Analysis Procedure
