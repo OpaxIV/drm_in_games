@@ -14,6 +14,16 @@ The Easy Anti-Cheat Engine (Program) consists of many different components. The 
 It is to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
 
 ### About the EasyAntiCheat.sys Module
+- Manual mapper:
+- Basically manual mapping a driver is essentially the same idea as manual mapping a DLL into a process. You are mapping the driver binary into kernel memory, doing some fixups and then you manually call the EntryPoint. This usually is done with the help of a signed vulnerable driver, that exposes a way to read and write to kernel memory over IOCTL. This circumvents DSE and all other official windows mechanisms, that ACs could use to detect your loaded unsinged driver.
+- Manual mapping a portable executeable means you manually write target in a way similar how the windows loader loads drivers and dlls. You need to fix the
+<br> temp
+- allocates extra memory around it's memory -> dynamic code
+- maps contents into the game
+- 
+
+
+@fabio: rewrite and understand
 
 
 ## Analysis
@@ -56,3 +66,4 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 - Easy Anti-Cheat Website - https://easy.ac/en-us/#about
 - IDA Pro Reverse Engineering Tutorial for Beginners - https://www.youtube.com/playlist?list=PLKwUZp9HwWoDDBPvoapdbJ1rdofowT67z
 - EasyAntiCheat Exploit to inject unsigned code into protected processes - https://blog.back.engineering/10/08/2021/
+- Unknown Cheats Forum - https://www.unknowncheats.me/forum/anti-cheat-bypass/447986-manual-map-mean.html
