@@ -1,12 +1,15 @@
 # Analysis of the EasyAntiCheat.sys Binary
 
 ## Introduction
-
-### Definition of an Anti-Cheat Engine
+- write definition of an Anti-Cheat Engine
+- write About the Anti-Cheat Engine
+According to the website, "Easy Anti-Cheat is the industry-leading anti–cheat service, countering hacking and cheating in multiplayer PC games through the use of hybrid anti–cheat mechanisms".
 @fabio 2do
 
-### About the Anti-Cheat Engine
-According to the website, "Easy Anti-Cheat is the industry-leading anti–cheat service, countering hacking and cheating in multiplayer PC games through the use of hybrid anti–cheat mechanisms".
+## General Overview
+The Easy Anti-Cheat Engine (Program) consists of many different components. The most important ones are presented in the following picture, including a small description for each one of them: 
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/07f3ae69-14df-46d2-a3d3-495034cc5f77" width="700">
+It is to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
 
 
 ## Analysis
@@ -48,3 +51,4 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 - Symbols and debugging information - https://hex-rays.com/blog/igors-tip-of-the-week-55-using-debug-symbols/
 - Easy Anti-Cheat Website - https://easy.ac/en-us/#about
 - IDA Pro Reverse Engineering Tutorial for Beginners - https://www.youtube.com/playlist?list=PLKwUZp9HwWoDDBPvoapdbJ1rdofowT67z
+- EasyAntiCheat Exploit to inject unsigned code into protected processes - https://blog.back.engineering/10/08/2021/
