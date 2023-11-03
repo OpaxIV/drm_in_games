@@ -13,6 +13,15 @@ The Easy Anti-Cheat Engine (Program) consists of many different components. The 
 <br/>
 It is to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
 
+
+
+### Definition of a Mapper (Computer Science)
+In the English language mapping is defined as an operation that associates each element of a given set (the domain) with one or more elements of a second set (the range). In the context of computers, a mapper is usually used in conjunction with processes (programs). A widely used component in windows for example are the .dll (Dymanic-link Libraries). The use of DLLs helps promote modularization of code, code reuse, efficient memory usage, and reduced disk space. Certain external components, e.g. libraries or functions are then implemented at runtime, instead of the program having the same code as these external entities. By this the operating system and the programs load faster, run faster, and take less disk space on the computer.
+
+
+
+
+
 ### About the EasyAntiCheat.sys Module
 - Manual mapper:
 - Basically manual mapping a driver is essentially the same idea as manual mapping a DLL into a process. You are mapping the driver binary into kernel memory, doing some fixups and then you manually call the EntryPoint. This usually is done with the help of a signed vulnerable driver, that exposes a way to read and write to kernel memory over IOCTL. This circumvents DSE and all other official windows mechanisms, that ACs could use to detect your loaded unsinged driver.
@@ -54,9 +63,6 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 
 
 
-# Temp Screenshots:
-
-
 
 
 
@@ -67,3 +73,4 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 - IDA Pro Reverse Engineering Tutorial for Beginners - https://www.youtube.com/playlist?list=PLKwUZp9HwWoDDBPvoapdbJ1rdofowT67z
 - EasyAntiCheat Exploit to inject unsigned code into protected processes - https://blog.back.engineering/10/08/2021/
 - Unknown Cheats Forum - https://www.unknowncheats.me/forum/anti-cheat-bypass/447986-manual-map-mean.html
+- What is a DLL - https://learn.microsoft.com/en-us/troubleshoot/windows-client/deployment/dynamic-link-library
