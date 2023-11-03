@@ -42,6 +42,7 @@ The binary has been analysed with the reverse engineering tool IDA64.
 #### Useful IDA64 Shortcuts
 - `F5` on a Function - Generate Pseudocode
 - `SHIFT` + `E` - Show List of Entry Points
+- `SPACE` - Switch between Disassembly and Graph View
 
 
 
@@ -57,6 +58,17 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 
 
 ### Graphing View
+
+@fabio: rm?
+
+
+### Looking at some Functions
+The following functions were randomly chosen out of the list contained in the binary.
+
+#### 0x140004EF0
+The first function to look at can be found at the address 0x140004EF0. By looking at the graph view we can see some conditional jumps: 
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/a40e8bc5-5a78-4fdd-8803-88d637171bfd" width="600">
+Interesting to understand would be, if this would be a possible candidate for an opaque predicate. For this we need to look further into the basic blocks, which contain those conditional jumps.
 
 
 
