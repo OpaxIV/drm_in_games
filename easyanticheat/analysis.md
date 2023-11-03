@@ -15,13 +15,16 @@ During the analysis, the goal is to identify individual obfuscated components in
 The binary has been analysed with the reverse engineering tool IDA64.
 
 ### Before you start
+When opening the binary, IDA64 gives you two options:
+<img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d316db4c-7c0c-420b-87b2-c9a68955592d" width="400">
+The first has been chosen for this analysis.
+@ tim: was ist der unterschied zu diesen beiden optionen? kommt es drauf an?
 
-setting entry point
+Choosing "AMD64 PE" as an option will lead to the following prompt, which can be accepted or denied (since in the end the program won't find anything anyway and you will end up at the same point).
+<img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/824afc39-fb3a-4183-9af5-57f806b56fe3" width="300">
 
-graphing
 
-### First Impression
-Cold water, beginner analysis, graph view
+### Graphing View
 
 
 
