@@ -11,14 +11,10 @@ According to the website, "Easy Anti-Cheat is the industry-leading anti–cheat 
 
 ## Analysis
 ### Analysis Procedure
-During the analysis, the goal is to identify individual components of the Steam DRM-system in the binary of RE2. At the beginning, the graph view shall be used to get a broad idea of the binary. In a further step the most important components of the XX obfuscation shall be identified. Some of these components shall be analysed further and presented in this file.
-@ fabio: add type of obfuscation, VM based?
-
-The binary has been analysed with the reverse engineering tool IDA64 (because Ghidra would be too sluggish to use when opening a 150 Mb binary).
+During the analysis, the goal is to identify individual obfuscated components in the Easy Anti-Cheat binary. At the beginning, the graph view shall be used to get a broad idea and in a further step some obfuscated components of the binary shall be analysed in details. Furthermore the obfuscation technique of each of these components shall be identified. Finally the broad way of functioning of this binary shall be stated.
+The binary has been analysed with the reverse engineering tool IDA64.
 
 ### Before you start
-Settings in IDA (type of binary etc)
-<CTRL> + <E>
 
 setting entry point
 
