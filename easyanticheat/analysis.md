@@ -15,6 +15,14 @@ During the analysis, the goal is to identify individual obfuscated components in
 The binary has been analysed with the reverse engineering tool IDA64.
 
 ### Before you start
+#### Useful IDA64 Shortcuts
+- `F5` on a Function - Generate Pseudocode
+- `SHIFT` + `E` - Show List of Entry Points
+
+
+
+
+#### Opening the Binary
 When opening the binary, IDA64 gives you two options:
 <img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d316db4c-7c0c-420b-87b2-c9a68955592d" width="400">
 The first has been chosen for this analysis.
