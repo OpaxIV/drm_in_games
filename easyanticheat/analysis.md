@@ -90,6 +90,11 @@ In the case of our disassembly, we need to check wheter the value of `rax` fulfi
 @tim: possible opaque predicate
 @fabio: write rest of the text
 
+
+
+
+
+
 #### 0x1400299FC
 When opening the function at 0x1400299FC we can already spot some similarities to the vm-based obfuscation technique.
 <br>
