@@ -86,10 +86,21 @@ An example would be the following:
 ```asm
 ; Conditional Jump with NOT
 test cl, cl   ; set ZF to 1 if cl == 0
-jnz 0x8004f430  ; jump if ZF == 0
+jnz 0x8004f430  ; jump if ZF == 0, hence cl != 0
 ```
-In the case of our disassembly, we need do check the value of `rax`.
+In the case of our disassembly, we need to check wheter the value of `rax` fulfills this condition.
 
+@tim: view value of rax, is jump taken?
+@tim: possible opaque predicate
+@fabio: write rest of the text
+
+#### 0x1400299FC
+When opening the function at 0x1400299FC we can already spot some similarity to the vm-based obfuscation technique.
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e32cccd5-69a0-4d68-9454-514140832a9f" width="300">
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/53aca78c-1875-46fd-8cff-95992fdf9f2b" width="600">
+<br/>
+The high amount of branches which all lead to a central point, would point us furhter to this conclusion. To elaborate further on this point, we need to analyse the function in greater detail. At first we need to make assumptions about the functioning of the individual components to see if they could map to the functional parts of a vm-based obfuscation.
 
 
 
