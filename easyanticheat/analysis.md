@@ -129,17 +129,22 @@ text:00000001400299FC                  mov     [rsp-8+arg_10], rbx
 .text:0000000140029A3D                 mov     [rbp+4Fh+var_98], rdi
 .text:0000000140029A41                 mov     [rbp+4Fh+arg_8], ebx
 ```
-Most notable would be that at the address `0x140029A38` a subroutine is called, leading to `0x1400586C0`:
+Most notable is at the address `0x140029A38`, at which a subroutine is called, leading to `0x1400586C0`:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/f786dc97-0361-4965-95d5-b1e94b7cf09c" width="600">
 <br/>
-The first basic block contains a conditional jump, which is executed if the value in `r8` is greater than `0x8`, leading to the left
+The first basic block contains a conditional jump, which is executed if the value in `r8` is greater than `0x8`, executing the left set of branches.
 ```asm
 [...]
 .text:00000001400586C3 cmp     r8, 8
 .text:00000001400586C7 jb      short loc_140058710
 [...]
 ```
+As we can see, the left set of branches is made up of three basic blocks:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/7ff7a62c-a125-49d9-8343-b572f985e47a" width="400">
+<br/>
+It gives us two possibilities: If the value in register `r8` is equal to 0 (hence the result of the AND operation being 0), then we directly jump to the last basic block in the set at `0x140058720`. On the other hand, if `r8` is indeed not equal to 0, the control flow gets passed to the middle block and a loop occurs. This loop decrements the value of `r8` until it is equal to 0 (`dec     r8`), which finally also leads to the last basic block and returning us to the proceeding calling function.
 
 
 
