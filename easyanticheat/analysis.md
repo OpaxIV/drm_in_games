@@ -44,7 +44,7 @@ The binary has been analysed with the reverse engineering tool IDA64.
 - `SHIFT` + `E` - Show List of Entry Points
 - `SPACE` - Switch between Disassembly and Graph View
 
-
+@fabio: add rest of found shortcuts
 
 
 #### Opening the Binary
@@ -56,10 +56,6 @@ The first has been chosen for this analysis.
 Choosing "AMD64 PE" as an option will lead to the following prompt, which can be accepted or denied (since in the end the program won't find anything anyway and you will end up at the same point).
 <img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/824afc39-fb3a-4183-9af5-57f806b56fe3" width="300">
 
-
-### Graphing View
-
-@fabio: rm?
 
 
 ### Looking at some Functions
@@ -95,14 +91,55 @@ In the case of our disassembly, we need to check wheter the value of `rax` fulfi
 @fabio: write rest of the text
 
 #### 0x1400299FC
-When opening the function at 0x1400299FC we can already spot some similarity to the vm-based obfuscation technique.
+When opening the function at 0x1400299FC we can already spot some similarities to the vm-based obfuscation technique.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e32cccd5-69a0-4d68-9454-514140832a9f" width="300">
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/53aca78c-1875-46fd-8cff-95992fdf9f2b" width="600">
 <br/>
-The high amount of branches which all lead to a central point, would point us furhter to this conclusion. To elaborate further on this point, we need to analyse the function in greater detail. At first we need to make assumptions about the functioning of the individual components to see if they could map to the functional parts of a vm-based obfuscation.
+The high amount of branches which all lead to a central point, would point us further to this conclusion. To elaborate further on this point, we need to analyse the function in greater detail. At first we need to make assumptions about the functioning of the individual components to see if they could map to the functional parts of a vm-based obfuscation.
+<br>
 
-
+##### VM-Entry (?)
+At first we can see some sort of vm-entry directly at the beginning of the function:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/7f0a9a81-f6b6-4b44-9b02-ac4fd246c933" width="300">
+<br/>
+By looking further into the disassembly we can see the usual "preparations" when a function is called, in e.g. the pushing of registers and making of space on the stack.
+```asm
+[...]
+text:00000001400299FC                  mov     [rsp-8+arg_10], rbx
+.text:0000000140029A01                 mov     [rsp-8+arg_18], r9d
+.text:0000000140029A06                 push    rbp
+.text:0000000140029A07                 push    rsi
+.text:0000000140029A08                 push    rdi
+.text:0000000140029A09                 lea     rbp, [rsp-3Fh]
+.text:0000000140029A0E                 sub     rsp, 0D0h
+.text:0000000140029A15                 xor     eax, eax
+.text:0000000140029A17                 xorps   xmm0, xmm0
+.text:0000000140029A1A                 mov     rsi, r8
+.text:0000000140029A1D                 mov     [rbp+4Fh+var_70], rax
+.text:0000000140029A21                 mov     ebx, edx
+.text:0000000140029A23                 mov     rdi, rcx
+.text:0000000140029A26                 xor     edx, edx
+.text:0000000140029A28                 lea     rcx, [rbp+4Fh+var_60]
+.text:0000000140029A2C                 lea     r8d, [rax+48h]
+.text:0000000140029A30                 movups  [rbp+4Fh+var_90], xmm0
+.text:0000000140029A34                 movups  [rbp+4Fh+var_80], xmm0
+.text:0000000140029A38                 call    sub_1400586C0
+.text:0000000140029A3D                 mov     [rbp+4Fh+var_98], rdi
+.text:0000000140029A41                 mov     [rbp+4Fh+arg_8], ebx
+```
+Most notable would be that at the address `0x140029A38` a subroutine is called, leading to `0x1400586C0`:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/f786dc97-0361-4965-95d5-b1e94b7cf09c" width="600">
+<br/>
+The first basic block contains a conditional jump, which is executed if the value in `r8` is greater than `0x8`, leading to the left
+```asm
+[...]
+.text:00000001400586C3 cmp     r8, 8
+.text:00000001400586C7 jb      short loc_140058710
+[...]
+```
 
 
 
