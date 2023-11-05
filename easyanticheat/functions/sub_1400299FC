@@ -1,36 +1,3 @@
-
-### Looking at some Functions
-The following functions were randomly chosen out of the list contained in the binary.
-
-#### 0x140004EF0
-The first function to look at can be found at the address `0x140004EFE`. By looking at the graph view we can see some conditional jumps: 
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/a40e8bc5-5a78-4fdd-8803-88d637171bfd" width="600">
-Interesting to understand would be, if this would be a possible candidate for an opaque predicate. For this we need to look further into the basic blocks, which contain those conditional jumps.
-
-The first conditional jump is to be found in the first basic block at `0x140004EFE` specifically:
-```asm
-.text:0000000140004EF0
-.text:0000000140004EF0
-.text:0000000140004EF0
-.text:0000000140004EF0 sub_140004EF0 proc near
-.text:0000000140004EF0 sub     rsp, 28h
-.text:0000000140004EF4 mov     rax, cs:qword_14007E2F8
-.text:0000000140004EFB test    rax, rax
-.text:0000000140004EFE jnz     short loc_140004F52
-```
-The important part here would be the `test rax, rax` instruction, by which the control flow is controlled. Generally speaking, in the x86 assembly language, the `TEST` instruction performs a bitwise AND on two operands. If the result is 0, the Zero Flag (ZF) is set to 1, otherwise set to 0.<br>
-An example would be the following:
-```asm
-; Conditional Jump with NOT
-test cl, cl   ; set ZF to 1 if cl == 0
-jnz 0x8004f430  ; jump if ZF == 0, hence cl != 0
-```
-In the case of our disassembly, we need to check wheter the value of `rax` fulfills this condition.
-
-@tim: view value of rax, is jump taken?
-@tim: possible opaque predicate
-@fabio: write rest of the text
-
 #### 0x1400299FC
 When opening the function at 0x1400299FC we can already spot some similarities to the vm-based obfuscation technique.
 <br>
