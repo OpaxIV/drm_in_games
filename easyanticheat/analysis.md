@@ -129,6 +129,7 @@ text:00000001400299FC                  mov     [rsp-8+arg_10], rbx
 .text:0000000140029A3D                 mov     [rbp+4Fh+var_98], rdi
 .text:0000000140029A41                 mov     [rbp+4Fh+arg_8], ebx
 ```
+
 Most notable is at the address `0x140029A38`, at which a subroutine is called, leading to `0x1400586C0`:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/f786dc97-0361-4965-95d5-b1e94b7cf09c" width="600">
@@ -145,8 +146,36 @@ As we can see, the left set of branches is made up of three basic blocks:
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/7ff7a62c-a125-49d9-8343-b572f985e47a" width="400">
 <br/>
 It gives us two possibilities: If the value in register `r8` is equal to 0 (hence the result of the AND operation being 0), then we directly jump to the last basic block in the set at `0x140058720`. On the other hand, if `r8` is indeed not equal to 0, the control flow gets passed to the middle block and a loop occurs. This loop decrements the value of `r8` until it is equal to 0 (`dec     r8`), which finally also leads to the last basic block and returning us to the proceeding calling function.
+<br>
 
 
+Now let us return to the original starting point of the function, at the main branching path at `0x1400586C0`. As we have two possibilites from here. The first path, if the outcome is true, has been explained in the proceeding paragraph. The second path, hence if the outcome is false, is as follows:
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/bf015c4a-4dbc-4714-aa89-633547b59fb9" width="500">
+<br>
+This main path further splits into two smaller ones.
+
+
+On the left side we have a similar construction as already seen: One or multiple register's value, in this case of `r9` and `r8`, are either decremented (`sub     r9, 8`) or modified (`and     r8, 7`) and then compared to 0. If the value is or is not equal to zero, then give the control over to another basic block. Afterwards the loop gets initiated again or the control flow goes on forward and finally returns to the calling function.
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/6dcc1c12-a12f-46d6-b957-3ea646bcd839" width="500">
+<br/>
+
+Still in the subroutine, there is one more possible branch one can take. We looked at the right, left and now let us analyse the one in the center:
+
+
+
+
+
+
+
+
+
+
+
+
+
+@tim: generell, wie kann man die zusammenhänge verstehen? was in der binary abläuft? gutes vorgehen?
 
 
 ---
