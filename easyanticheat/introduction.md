@@ -11,7 +11,7 @@ According to the website, "Easy Anti-Cheat is the industry-leading anti–cheat 
 In the English language mapping is defined as an operation that associates each element of a given set (the domain) with one or more elements of a second set (the range). In the context of computers, a mapper is usually used in conjunction with processes (programs). A widely used component in windows for example are the .dll (Dymanic-link Libraries). The use of DLLs helps promote modularization of code, code reuse, efficient memory usage, and reduced disk space. Certain external components, e.g. libraries or functions are then implemented at runtime, instead of the program having the same code as these external entities. By this the operating system and the programs load faster, run faster, and take less disk space on the computer.
 
 
-## General Overview
+## General Overview of the binary
 The Easy Anti-Cheat Engine (Program) consists of many different components. The most important ones are presented in the following picture, including a small description for each one of them:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/07f3ae69-14df-46d2-a3d3-495034cc5f77" width="700">
@@ -39,6 +39,7 @@ More precisely, the component works as an manuel mapper: Basically manual mappin
 ### Analysis Procedure
 During the analysis, the goal is to identify individual obfuscated components in the Easy Anti-Cheat binary. At the beginning, the graph view shall be used to get a broad idea and in a further step some obfuscated components of the binary shall be analysed in details. Furthermore the obfuscation technique of each of these components shall be identified. Finally the broad way of functioning of this binary shall be stated.
 The binary has been analysed with the reverse engineering tool IDA64.
+All the analyzed functions can be found in a separate folder in this repository.
 
 ### Before you start
 #### Useful IDA64 Shortcuts
