@@ -1,26 +1,25 @@
 # Analysis of the EasyAntiCheat.sys Binary
 
 ## Introduction
-- write definition of an Anti-Cheat Engine
-- write About the Anti-Cheat Engine
+The following text provides an analysis of the sub component "EasyAntiCheat.sys". It is part of the Easy Anti-Cheat Engine software.
+
+### Definition of an Anti-Cheat Engine
+Anti-cheat engines are wastly used in the gaming landscape. These tools' purpose is to recognize players, which use tools made for manipulating game software (cheating tools). Anti-cheat engines are mostly used in multiplayer games and can be deployed client-sided as an external program, client-sided as an integrated program or server-sided.
 According to the website, "Easy Anti-Cheat is the industry-leading anti–cheat service, countering hacking and cheating in multiplayer PC games through the use of hybrid anti–cheat mechanisms".
-@fabio 2do
+
+### Definition of a Mapper
+In the English language mapping is defined as an operation that associates each element of a given set (the domain) with one or more elements of a second set (the range). In the context of computers, a mapper is usually used in conjunction with processes (programs). A widely used component in windows for example are the .dll (Dymanic-link Libraries). The use of DLLs helps promote modularization of code, code reuse, efficient memory usage, and reduced disk space. Certain external components, e.g. libraries or functions are then implemented at runtime, instead of the program having the same code as these external entities. By this the operating system and the programs load faster, run faster, and take less disk space on the computer.
+
 
 ## General Overview
 The Easy Anti-Cheat Engine (Program) consists of many different components. The most important ones are presented in the following picture, including a small description for each one of them:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/07f3ae69-14df-46d2-a3d3-495034cc5f77" width="700">
 <br/>
-It is to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
-
-
-
-### Definition of a Mapper
-In the English language mapping is defined as an operation that associates each element of a given set (the domain) with one or more elements of a second set (the range). In the context of computers, a mapper is usually used in conjunction with processes (programs). A widely used component in windows for example are the .dll (Dymanic-link Libraries). The use of DLLs helps promote modularization of code, code reuse, efficient memory usage, and reduced disk space. Certain external components, e.g. libraries or functions are then implemented at runtime, instead of the program having the same code as these external entities. By this the operating system and the programs load faster, run faster, and take less disk space on the computer.
-
-
+It is again to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
 
 ### About the EasyAntiCheat.sys Module
+Generally speaking the EasyAntiCheat.sys is a kernel module, which acts as a driver for the actual program, running in the user space.
 - Manual mapper:
 - Basically manual mapping a driver is essentially the same idea as manual mapping a DLL into a process. You are mapping the driver binary into kernel memory, doing some fixups and then you manually call the EntryPoint. This usually is done with the help of a signed vulnerable driver, that exposes a way to read and write to kernel memory over IOCTL. This circumvents DSE and all other official windows mechanisms, that ACs could use to detect your loaded unsinged driver.
 - Manual mapping a portable executeable means you manually write target in a way similar how the windows loader loads drivers and dlls. You need to fix the
@@ -30,7 +29,7 @@ In the English language mapping is defined as an operation that associates each 
 - 
 
 @fabio to add in text
-kernel modul, treiber modul für userland programm, interagiert
+
 
 
 
