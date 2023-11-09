@@ -29,6 +29,10 @@ In the English language mapping is defined as an operation that associates each 
 - maps contents into the game
 - 
 
+@fabio to add in text
+kernel modul, treiber modul für userland programm, interagiert
+
+
 
 @fabio: rewrite and understand
 
