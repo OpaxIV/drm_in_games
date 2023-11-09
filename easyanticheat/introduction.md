@@ -20,8 +20,7 @@ It is again to be stated, that the analysis in this writeup only covers the Easy
 
 ### About the EasyAntiCheat.sys Module
 Generally speaking the EasyAntiCheat.sys is a kernel module, which acts as a driver for the actual program, running in the user space.
-- Manual mapper:
-- Basically manual mapping a driver is essentially the same idea as manual mapping a DLL into a process. You are mapping the driver binary into kernel memory, doing some fixups and then you manually call the EntryPoint. This usually is done with the help of a signed vulnerable driver, that exposes a way to read and write to kernel memory over IOCTL. This circumvents DSE and all other official windows mechanisms, that ACs could use to detect your loaded unsinged driver.
+More precisely, the component works as an manuel mapper: Basically manual mapping a driver is essentially the same idea as manual mapping a DLL into a process. You are mapping the driver binary into kernel memory, doing some fixups and then you manually call the EntryPoint. This usually is done with the help of a signed vulnerable driver, that exposes a way to read and write to kernel memory over IOCTL. This circumvents DSE and all other official windows mechanisms, that ACs could use to detect your loaded unsinged driver.
 - Manual mapping a portable executeable means you manually write target in a way similar how the windows loader loads drivers and dlls. You need to fix the
 <br> temp
 - allocates extra memory around it's memory -> dynamic code
@@ -43,12 +42,11 @@ The binary has been analysed with the reverse engineering tool IDA64.
 
 ### Before you start
 #### Useful IDA64 Shortcuts
-- `F5` on a Function - Generate Pseudocode
-- `SHIFT` + `E` - Show List of Entry Points
-- `SPACE` - Switch between Disassembly and Graph View
-
-@fabio: add rest of found shortcuts
-
+- `;` - Enter repeatable Comment
+- `:` - Enter Comment
+- `SPACE` - Switch between graph view and disassembly
+- `SHIFT` + `E` - Show entry points
+- `View` >  `Open subviews` > `Pseudocode` or hotkey `F5` - Show decompiler output (when focused on function)
 
 #### Opening the Binary
 When opening the binary, IDA64 gives you two options:
@@ -59,11 +57,10 @@ The first has been chosen for this analysis.
 Choosing "AMD64 PE" as an option will lead to the following prompt, which can be accepted or denied (since in the end the program won't find anything anyway and you will end up at the same point).
 <img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/824afc39-fb3a-4183-9af5-57f806b56fe3" width="300">
 
-@ fabio rewrite
---> 
-Generally speaking, choosing the type of binary to open in IDA64 (or any other disassembler) should not make any difference.
-It depends on the program, since opening the binary and defining it as the wrong cpu architecture could lead to a misinterpretation from the side of the disassembler.
-This is mostly the case when analyzing programs made for embedded systems.
+**Note:**<br>
+Generally speaking, choosing the type of binary, as which to open the executable in IDA64 (or any other disassembler) should not make any difference.
+It depends on the program, since opening the binary and defining it wrongly causes the decompiler to interpret the code in the wrong CPU architecture.
+Fortunately this is mostly only the case when analyzing programs made for embedded systems.
 
 
 
