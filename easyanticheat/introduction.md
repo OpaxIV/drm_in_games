@@ -60,9 +60,11 @@ The first has been chosen for this analysis.
 Choosing "AMD64 PE" as an option will lead to the following prompt, which can be accepted or denied (since in the end the program won't find anything anyway and you will end up at the same point).
 <img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/824afc39-fb3a-4183-9af5-57f806b56fe3" width="300">
 
-
-
-
+@ fabio rewrite
+--> 
+Generally speaking, choosing the type of binary to open in IDA64 (or any other disassembler) should not make any difference.
+It depends on the program, since opening the binary and defining it as the wrong cpu architecture could lead to a misinterpretation from the side of the disassembler.
+This is mostly the case when analyzing programs made for embedded systems.
 
 
 
