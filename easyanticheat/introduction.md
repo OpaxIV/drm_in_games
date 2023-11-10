@@ -8,7 +8,7 @@ Anti-cheat engines are wastly used in the gaming landscape. These tools' purpose
 According to the website, "Easy Anti-Cheat is the industry-leading anti–cheat service, countering hacking and cheating in multiplayer PC games through the use of hybrid anti–cheat mechanisms".
 
 ### Definition of a Mapper
-In the English language mapping is defined as an operation that associates each element of a given set (the domain) with one or more elements of a second set (the range). In the context of computers, a mapper is usually used in conjunction with processes (programs). A widely used component in windows for example are the .dll (Dymanic-link Libraries). The use of DLLs helps promote modularization of code, code reuse, efficient memory usage, and reduced disk space. Certain external components, e.g. libraries or functions are then implemented at runtime, instead of the program having the same code as these external entities. By this the operating system and the programs load faster, run faster, and take less disk space on the computer.
+In the English language mapping is defined as an operation that associates each element of a given set (the domain) with one or more elements of a second set (the range). In the context of computers, a mapper is usually used in conjunction with processes (and programs). A widely used component in windows for example are the .dll (Dymanic-link Libraries). The use of DLLs helps promote modularization of code, code reuse, efficient memory usage, and reduced disk space. Certain external components, e.g. libraries or functions are then implemented at runtime, instead of the program having the same code as these external entities. By this the operating system and the programs load faster, run faster, and take less disk space on the computer.
 
 
 ## General Overview of the binary
@@ -20,20 +20,7 @@ It is again to be stated, that the analysis in this writeup only covers the Easy
 
 ### About the EasyAntiCheat.sys Module
 Generally speaking the EasyAntiCheat.sys is a kernel module, which acts as a driver for the actual program, running in the user space.
-More precisely, the component works as an manuel mapper: Basically manual mapping a driver is essentially the same idea as manual mapping a DLL into a process. You are mapping the driver binary into kernel memory, doing some fixups and then you manually call the EntryPoint. This usually is done with the help of a signed vulnerable driver, that exposes a way to read and write to kernel memory over IOCTL. This circumvents DSE and all other official windows mechanisms, that ACs could use to detect your loaded unsinged driver.
-- Manual mapping a portable executeable means you manually write target in a way similar how the windows loader loads drivers and dlls. You need to fix the
-<br> temp
-- allocates extra memory around it's memory -> dynamic code
-- maps contents into the game
-- 
-
-@fabio to add in text
-
-
-
-
-@fabio: rewrite and understand
-
+More precisely, the component works as a manuel mapper: Basically manual mapping a driver is the same as manual mapping a DLL into a process. It follows a mapping of the driver binary into kernel memory, doing some fixups and then manually calling the EntryPoint. Manual mapping a portable executeable means to manually write a target in a way similar how the windows loader loads drivers and dlls. In other words, the EasyAntiCheat.sys component is a bridge between the kernel and user space and maps neccessary contents into the game running in the user land.
 
 ## Analysis
 ### Analysis Procedure
@@ -62,16 +49,6 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 Generally speaking, choosing the type of binary, as which to open the executable in IDA64 (or any other disassembler) should not make any difference.
 It depends on the program, since opening the binary and defining it wrongly causes the decompiler to interpret the code in the wrong CPU architecture.
 Fortunately this is mostly only the case when analyzing programs made for embedded systems.
-
-
-
-
-
-
-
-
-
-@tim: generell, wie kann man die zusammenhänge verstehen? was in der binary abläuft? gutes vorgehen?
 
 
 ---
