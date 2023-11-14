@@ -4,6 +4,8 @@
 Repository for the Security Project from the Hochschule Luzern
 
 
+@fabio: add "archive" description and "obsolete"
+
 ## Personal 2DO
 - Summarize VM Article and Main Takeaways (replace copy-paste parts)
 - May try to properly analyze the opaque predicates tigress sample 
