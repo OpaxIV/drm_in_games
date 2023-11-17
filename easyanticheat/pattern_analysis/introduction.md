@@ -7,17 +7,21 @@ After having consulted multiple writeups and analysed a set of functions from pr
 3. [Project Conclusion](#typeofobfuscation)
 
 ## Analysis Procedure <a name="analysisprocedure"></a>
+The goal is to quickly find and identify obfuscated code in the binary. Hence the idea is to go trough the list of functions and trying to find a set of functions, which contain some general classifiers for obfuscated code: 
+- The function is only made up by a single basic block.
+- The function contains rare or unusual instructions in the disassembly.
+- The function's code does not represent "normal / usual" code.
 
-sachen in binary ninja öffnen-->generelle patterns sucehn
-
-- einzelne basic blocks
-- komische instruktionen
-- "sieht nicht aus wie normaler code"
-
-
+This analysis shall cover a handfull of functions, which are indeed obfuscated and to make a point, some functions which were correctly identified as not being obfuscated.
 
 ## Analysis of a Random Set of Functions <a name="randomanalysis"></a>
+### XXX (Obfuscated)
+### XXX (Obfuscated)
+### XXX (Obfuscated)
 
+
+### XXX (Not Obfuscated)
+### XXX (Not Obfuscated)
 
 
 
