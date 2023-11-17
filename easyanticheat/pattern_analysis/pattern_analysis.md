@@ -15,15 +15,45 @@ The goal is to quickly find and identify obfuscated code in the binary. Hence th
 This analysis shall cover a handfull of functions, which are indeed obfuscated and to make a point, some functions which were correctly identified as not being obfuscated.
 
 ## Analysis of a Random Set of Functions <a name="randomanalysis"></a>
-### XXX (Obfuscated)
-### XXX (Obfuscated)
-### XXX (Obfuscated)
+### sub_14000590c (Obfuscated)
+- The function is only made up by a single basic block. - **FALSE**
+- The function contains rare or unusual instructions in the disassembly. - **FALSE**
+- The function's code does not represent "normal / usual" code. - **TRUE**
 
+_Notes:_
+- exit jump to register
+- many XOR and strange pseudo code
+<br>
+
+### XXX (Obfuscated)
+- The function is only made up by a single basic block.
+- The function contains rare or unusual instructions in the disassembly.
+- The function's code does not represent "normal / usual" code.
+- Other findings:
+<br>
+
+### XXX (Obfuscated)
+- The function is only made up by a single basic block.
+- The function contains rare or unusual instructions in the disassembly.
+- The function's code does not represent "normal / usual" code.
+- Other findings:
+<br>
 
 ### XXX (Not Obfuscated)
+- The function is only made up by a single basic block.
+- The function contains rare or unusual instructions in the disassembly.
+- The function's code does not represent "normal / usual" code.
+- Other findings:
+<br>
+
 ### XXX (Not Obfuscated)
+- The function is only made up by a single basic block.
+- The function contains rare or unusual instructions in the disassembly.
+- The function's code does not represent "normal / usual" code.
+- Other findings:
+<br>
 
-
+@tim: to check if asumptions are true, really obfuscated or not?
 
 
 
