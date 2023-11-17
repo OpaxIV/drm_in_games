@@ -38,12 +38,15 @@ All the analyzed functions can be found in a separate folder in this repository.
 
 #### Opening the Binary
 When opening the binary, IDA64 gives you two options:
+<br>
 <img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d316db4c-7c0c-420b-87b2-c9a68955592d" width="400">
+<br>
 The first has been chosen for this analysis.
-@ tim: was ist der unterschied zu diesen beiden optionen? kommt es drauf an?
 
 Choosing "AMD64 PE" as an option will lead to the following prompt, which can be accepted or denied (since in the end the program won't find anything anyway and you will end up at the same point).
+<br>
 <img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/824afc39-fb3a-4183-9af5-57f806b56fe3" width="300">
+<br>
 
 **Note:**<br>
 Generally speaking, choosing the type of binary, as which to open the executable in IDA64 (or any other disassembler) should not make any difference.
