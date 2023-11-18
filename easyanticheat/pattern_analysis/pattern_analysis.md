@@ -259,10 +259,15 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 <br>
 
 ### sub_140020463 (Not Obfuscated)
-- The function is only made up by a single basic block.
-- The function contains rare or unusual instructions in the disassembly / pseudo C-code.
-- The function's code does not represent "normal / usual" code.
-- Other findings:
+- The function is only made up by a single basic block. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/defe1236-86b5-4466-ac77-119fc5bfc85f" width="300">
+<br>
+
+- The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **FALSE**
+- The function's code does not represent "normal / usual" code. - **TRUE**
+- Other findings: None
 <br>
 
 ### sub_1400098b0 (Not Obfuscated)
@@ -281,9 +286,3 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 
 - Other findings: None
 <br>
-
-
-
-
-
-## Analysis Procedure <a name="analysisprocedure"></a>
