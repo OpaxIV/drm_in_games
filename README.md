@@ -10,8 +10,6 @@ I sincerely thank him for the support.
 All (re-)sources, which served as a basis for this project, have been referenced extensively in eacht individual chapter. 
 
 ### Basic Roadmap
-<br>
-
 1. Read: https://nicolo.dev/en/blog/fairplay-apple-obfuscation/
 <br>&nbsp;1.1 Understand the fundamentals of the article
 <br>&nbsp;1.2 Summarize the article in own words.
