@@ -188,30 +188,6 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 - Other findings: None
 <br>
 
-### XXX (Obfuscated)
-- The function is only made up by a single basic block.
-- The function contains rare or unusual instructions in the disassembly / pseudo C-code.
-- The function's code does not represent "normal / usual" code.
-- Other findings:
-<br>
-
-### sub_1400098b0 (Not Obfuscated)
-- The function is only made up by a single basic block. - **FALSE**
-
-<br>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/62fd055d-a1af-4574-a1fd-83988e906929" width="300">
-<br>
-
-- The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **FALSE**
-- The function's code does not represent "normal / usual" code. - **FALSE**
-
-<br>
-<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/31762477-9710-4b89-ba28-8a808daa7f7f" width="650">
-<br>
-
-- Other findings: None
-<br>
-
 ### sub_14000fcdf (Obfuscated)
 - The function is only made up by a single basic block. - **FALSE**
 
@@ -281,6 +257,31 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 - Other findings:
   - The last instruction is a jump to a register (`1404be9f2  jmp     rdi`). 
 <br>
+
+### sub_140020463 (Not Obfuscated)
+- The function is only made up by a single basic block.
+- The function contains rare or unusual instructions in the disassembly / pseudo C-code.
+- The function's code does not represent "normal / usual" code.
+- Other findings:
+<br>
+
+### sub_1400098b0 (Not Obfuscated)
+- The function is only made up by a single basic block. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/62fd055d-a1af-4574-a1fd-83988e906929" width="300">
+<br>
+
+- The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **FALSE**
+- The function's code does not represent "normal / usual" code. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/31762477-9710-4b89-ba28-8a808daa7f7f" width="650">
+<br>
+
+- Other findings: None
+<br>
+
 
 
 
