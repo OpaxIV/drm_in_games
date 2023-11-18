@@ -47,9 +47,7 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 - The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **FALSE** 
 - The function's code does not represent "normal / usual" code. - **TRUE**
   - High amount of jumps/goto labels
-  - Possible arithmetic encoding from `0x14000f3ed` to `0x14000f3f6`.  
-
-<br>
+  - Possible arithmetic encoding from `0x14000f3ed` to `0x14000f3f6`.
 ```C
 [...]
 14000f2ee          if (arg3 == 0)
@@ -187,7 +185,7 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 ```
 <br>
 
-- Other findings:
+- Other findings: None
 <br>
 
 ### XXX (Obfuscated)
