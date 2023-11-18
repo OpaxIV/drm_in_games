@@ -212,14 +212,74 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 - Other findings: None
 <br>
 
-### XXX (Not Obfuscated)
-- The function is only made up by a single basic block.
-- The function contains rare or unusual instructions in the disassembly / pseudo C-code.
-- The function's code does not represent "normal / usual" code.
-- Other findings:
+### sub_14000fcdf (Obfuscated)
+- The function is only made up by a single basic block. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/f7d2e3bc-7928-4509-b65f-814a6e73d00c" width="450">
 <br>
 
-@tim: to check if asumptions are true, really obfuscated or not?
+- The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **TRUE**
+- The function's code does not represent "normal / usual" code. - **TRUE**
+  - Possible Arithmetic Encoding from `0x14000fd31` to `0x14032215c`.
+```C
+14000fcdf  {
+14000fce0      arg5 = (arg5 ^ 0xab);
+🚫🚫14000fce3      *(uint8_t*)arg9;
+14000fce3      bool p = /* bool p = unimplemented  {scasb byte [rdi]} */;
+14000fce3      int32_t i = (arg9 + 1);
+14000fce4      if (p)
+14000fce4      {
+14000fc96          arg5 = (arg5 - 0x24);
+14000fca9          int512_t zmm7;
+14000fca9          zmm7 = 0x3cf23230ed;
+❓14000fcb8          /* jump -> (0x143b86770 + arg7) */
+14000fcb5      }
+14000fce6      int64_t var_8 = -0x5d;
+14000fce8      int32_t temp3 = *(uint32_t*)((char*)arg7 - 0x35a26cdd);
+14000fce8      uint64_t rdi = ((uint64_t)(i + *(uint32_t*)((char*)arg7 - 0x35a26cdd)));
+14000fcee      if ((i + temp3))
+14000fce8      {
+14000fd65          *(uint8_t*)arg5 = (*(uint8_t*)arg5 + arg5);
+14000fd79          /* tailcall */
+14000fd79          return sub_1406204d7(arg11, 0x18);
+14000fd67      }
+14000fcf3      *(uint64_t*)0x12dde41f17c4d9ed = arg5;
+14000fcfc      while ((i == (-temp3) || (i + temp3) < i))
+14000fce8      {
+14000fcfc          /* nop */
+14000fcfc      }
+🚫🚫14000fd06      *(uint32_t*)((char*)arg10 + 0x6e254efb) = (RLCD(*(uint32_t*)((char*)arg10 + 0x6e254efb), 0xfd, true));
+14000fd06      bool c_1 = /* bool c_1 = unimplemented  {rcl dword [r13+0x6e254efb], 0xfd} */;
+14000fd0e      uint64_t rbx;
+14000fd0e      *(uint8_t*)((char*)rbx)[1] = 0xba;
+14000fd10      if ((!c_1))
+14000fd10      {
+14000fd11          /* undefined */;
+14000fd11      }
+14000fd12      int32_t rflags;
+14000fd12      int16_t* rdi_1;
+14000fd12      int16_t temp0;
+14000fd12      temp0 = __insd(rdi, arg8, rflags);
+14000fd12      *(uint32_t*)rdi_1 = temp0;
+14000fd1d      *(uint64_t*)0x36878eee = *(uint64_t*)((char*)arg8 + 0x62b42fc4);
+14000fd23      int64_t i_2 = 0x955bf5d1;
+14000fd31      *(uint8_t*)((char*)arg1 + 0x49) = (*(uint8_t*)((char*)arg1 + 0x49) + *(uint8_t*)((char*)arg1)[1]);
+14032216a      int64_t i_1;
+14032216a      do
+14032216a      {
+14032215c          *(uint8_t*)((((arg12 ^ (((-arg1) * arg10) + rdi_1)) + arg8) + i_2) - 1) = *(uint8_t*)(i_2 + 0x36878eed);
+140322163          i_1 = i_2;
+140322163          i_2 = (i_2 - 1);
+140322163      } while (i_1 != 1);
+1404be9ce      *(uint64_t*)(((0x36878eee + arg8) + arg4) + 0x20) = rbx;
+❓1404be9f2      /* jump -> (0x149a4f350 + ((int64_t)*(uint32_t*)(0x36878eee + arg8))) */
+14054938b  }
+```
+
+- Other findings:
+  - The last instruction is a jump to a register (`1404be9f2  jmp     rdi`). 
+<br>
 
 
 
