@@ -219,7 +219,8 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/f7d2e3bc-7928-4509-b65f-814a6e73d00c" width="450">
 <br>
 
-- The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **TRUE**
+- The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **FALSE**
+  - Usage of rather large numbers at e.g.  `14000fd13` and `14000fd18`.
 - The function's code does not represent "normal / usual" code. - **TRUE**
   - Possible Arithmetic Encoding from `0x14000fd31` to `0x14032215c`.
 ```C
