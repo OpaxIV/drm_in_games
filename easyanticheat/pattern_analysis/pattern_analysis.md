@@ -17,12 +17,23 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 ## Analysis of a Random Set of Functions <a name="randomanalysis"></a>
 ### sub_14000590c (Obfuscated)
 - The function is only made up by a single basic block. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/a894a973-ea02-45a4-ac23-916405a2c733" width="200">
+<br>
+
 - The function contains rare or unusual instructions in the disassembly. - **FALSE**
 - The function's code does not represent "normal / usual" code. - **TRUE**
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/254b00d7-21e5-4562-9706-d6bd7a444623" width="850">
+<br>
+  - By looking at the pseudo C-code (or the disassembly) we can see multiple ussages of XOR-instructions and byte shiftig operations.
 
-_Notes:_
-- exit jump to register
-- many XOR and strange pseudo code
+- Further Annotations:
+  - exit jump to register
+  - many XOR and strange pseudo code
+  - many jump instructions
+
 <br>
 
 ### XXX (Obfuscated)
