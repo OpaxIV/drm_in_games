@@ -24,19 +24,19 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 
 - The function contains rare or unusual instructions in the disassembly. - **FALSE**
 - The function's code does not represent "normal / usual" code. - **TRUE**
+  - By looking at the pseudo C-code (or the disassembly) we can see multiple ussages of XOR-instructions and byte shiftig operations.
+  - If we were to combine some of the used expressions, we would get code similar to Arithmetic Encoding.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/254b00d7-21e5-4562-9706-d6bd7a444623" width="850">
-<br>
-  - By looking at the pseudo C-code (or the disassembly) we can see multiple ussages of XOR-instructions and byte shiftig operations.
+<br> 
 
 - Further Annotations:
-  - exit jump to register
-  - many XOR and strange pseudo code
-  - many jump instructions
+  - The last instruction is a jump to a register (`1401a9837  jmp     rsi`).
+  - Many jump instructions, may also be an opaque predicate (would need to be evaluated).
 
 <br>
 
-### XXX (Obfuscated)
+### sub_1400098b0 (Obfuscated)
 - The function is only made up by a single basic block.
 - The function contains rare or unusual instructions in the disassembly.
 - The function's code does not represent "normal / usual" code.
