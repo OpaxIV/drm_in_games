@@ -36,8 +36,13 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 
 <br>
 
-### sub_1400098b0 (Obfuscated)
-- The function is only made up by a single basic block.
+### sub_14000f2d4 (Obfuscated)
+- The function is only made up by a single basic block. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b23393b4-00c9-4dc8-805e-edfc2527f298" width="450">
+<br>
+
 - The function contains rare or unusual instructions in the disassembly.
 - The function's code does not represent "normal / usual" code.
 - Other findings:
@@ -50,11 +55,21 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 - Other findings:
 <br>
 
-### XXX (Not Obfuscated)
-- The function is only made up by a single basic block.
-- The function contains rare or unusual instructions in the disassembly.
-- The function's code does not represent "normal / usual" code.
-- Other findings:
+### sub_1400098b0 (Not Obfuscated)
+- The function is only made up by a single basic block. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/62fd055d-a1af-4574-a1fd-83988e906929" width="300">
+<br>
+
+- The function contains rare or unusual instructions in the disassembly. - **FALSE**
+- The function's code does not represent "normal / usual" code. - **FALSE**
+
+<br>
+<img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/31762477-9710-4b89-ba28-8a808daa7f7f" width="650">
+<br>
+
+- Other findings: None
 <br>
 
 ### XXX (Not Obfuscated)
