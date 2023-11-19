@@ -1,4 +1,4 @@
-# Résume of the FairPlay Article
+# Summary of the FairPlay Article
 _URL: https://nicolo.dev/en/blog/fairplay-apple-obfuscation/_
 <br>
 
