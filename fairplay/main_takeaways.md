@@ -1,8 +1,14 @@
 # List of main takeaways / new learnings of this article
+This file contains definitions and texts of new learned things through the article. Some parts have intentionaly been copied direclty from the appended sources.
+<br>
 
-### This file contains definitions and texts of new learned things through the article.
+## Table of Contents
+1. [Opaque Predicates] (#opaque)
+2. [Mixed Boolean-Arithmetic Obfuscation] (#mixedboolean)
+3. [Control-Flow Flattening] (#controlflow)
+<br>
 
-##  Opaque Predicates
+## Opaque Predicates <a name="opaque"></a>
 Opaque predicates are another very “cheap” technique for introducing obfuscation within instructions. This technique consists of introducing some always true or always false conditions that cause the decompiler to explore blocks of instructions with zero utility.
 The always true or always false conditions include a direct or indirect jump to basic blocks that will never be executed: they do not present additional functionality, they only add complexity to the functions being analyzed.
 
@@ -39,7 +45,7 @@ References:
 
 ---
 
-## Mixed Boolean-Arithmetic Obfuscation
+## Mixed Boolean-Arithmetic Obfuscation <a name="mixexboolean"></a>
 Mixed Boolean-Arithmetic (MBA) obfuscation is a method to perform a semantics-preserving transformation from a simple expression to a representation that is hard to understand and analyze. More specifically, this obfuscation technique consists of the mixture usage of arithmetic operations (e.g., ADD and IMUL) and Boolean operations (e.g., AND, OR, and NOT). Binary code with MBA obfuscation can effectively hide the secret data/algorithm from both static and dynamic reverse engineering, including advanced analyses utilizing SMT solvers. Unfortunately, deobfuscation research against MBA is still in its infancy: state-of-the-art solutions such as pattern matching, bit-blasting, and program synthesis either suffer from severe performance penalties, are designed for specific MBA patterns, or generate too many false simplification results in practice.
 Examples of arithmetic-boolean expressions are:
 <br/>
@@ -51,8 +57,7 @@ References:
 
 ---
 
-## Control-Flow Flattening
-
+## Control-Flow Flattening <a name="controlflow"></a>
 The basic method for ﬂattening a function is the following.
 
 First, we break up the body of the function to basic blocks, and then we put all these blocks, which were originally at diﬀerent nesting levels, next to each other.
