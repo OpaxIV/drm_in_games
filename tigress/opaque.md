@@ -1,8 +1,14 @@
-## Opaque Predicates
+# Opaque Predicates
 Note: Due to an unknown error in tigress, no samples could be generated with the "AddOpaque" option.
 Hence another sample has been taken for analysis (referenced bellow).
+<br>
 
-### General Definition
+## Table of Contents
+1. [General Definition](#generaldefinition)
+2. [Analysis in Ghidra](#analysisinghidra)
+<br>
+
+## General Definition <a name="generaldefinition"></a>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e2deada6-8510-4e74-9c36-7e3dc723cee0" width="500"/>
 <br/>
 
@@ -11,7 +17,7 @@ Using opaque predicates will lead to an extremely excessive control flow graph w
 It is for this reason, that any further analysis based on the control flow graph will turn into tedious work.
 In comparasion to other control flow graph obfuscation techniques, opaque predicates act more covert, since it is difficult to separate them from actual functional code in the program.
 
-#### Opaque Expressions
+### Opaque Expressions
 Opaque predicates can be classified as the following types:
 
 _P<sup>T</sup> - opaquely true predicate_ <br>
@@ -59,7 +65,7 @@ _E<sup>=v</sup> - for an opaque expression of value v_ <br>
 Informations about this type of opaque predicate are vague. It can be seen as a generalisation of the proceeding types. This expression defines an opaque predicate `E` as being evaluated to the value of `v`. The value `v` can either be true or false.
 
 
-### Analysis in Ghidra
+## Analysis in Ghidra <a name="analysisinghidra"></a>
 Beginning at the address 0x491aa0, one can recognize the high complexity of the control flow graph of this binarys function.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e507b626-41a5-43dd-8d44-d87edf457f1a" width="700">
@@ -67,7 +73,7 @@ Beginning at the address 0x491aa0, one can recognize the high complexity of the 
 Since the amount is so vast, only a sample set of randomly chosen candidates will be analyzed in further detail.
 
 
-#### Sample at 0x491b38
+### Sample at 0x491b38
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/ec0d8dde-7edc-4b11-af79-f4d8d884cede" width="900">
 <br/>
@@ -179,7 +185,7 @@ So we can conclude, that the conditon is never satisfied and hence the control f
         00491b96 75 0e           JNZ        LAB_00491ba6
 ```
 
-#### Sample at 0x492d09
+### Sample at 0x492d09
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b8f8b709-5d42-4252-969b-8f82047110ee" width="600">
 <br/>
