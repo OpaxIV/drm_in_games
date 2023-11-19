@@ -3,9 +3,9 @@ This file contains definitions and texts of new learned things through the artic
 <br>
 
 ## Table of Contents
-1. [Opaque Predicates] (#opaque)
-2. [Mixed Boolean-Arithmetic Obfuscation] (#mixedboolean)
-3. [Control-Flow Flattening] (#controlflow)
+1. [Opaque Predicates](#opaque)
+2. [Mixed Boolean-Arithmetic Obfuscation](#mixedboolean)
+3. [Control-Flow Flattening](#controlflow)
 <br>
 
 ## Opaque Predicates <a name="opaque"></a>
