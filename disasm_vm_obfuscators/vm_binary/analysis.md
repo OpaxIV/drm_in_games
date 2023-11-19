@@ -1,9 +1,15 @@
 # Analysis of the vm_base.bin File
-
 This documents contains an analysis (or an attempt at that) of the vim_base.bin binary of the r2con2021_deobfuscation workshop by Dr. Tim Blazytko (referenced bellow).
 The goal is to find the most important components of the VM-based obfuscation and to present their functionality. Doing so will back up the reasoning behind the definition of each one of them.    
+<br>
 
-## Definition of an VM Obfuscation
+## Table of Contents
+1. [Definition of an VM Obfuscation] (#def)
+2. [Analysis Procedure] (#procedure)
+3. [Identification of the VM-Components in the Binary] (#analysis)
+<br>
+
+## Definition of a VM Obfuscation <a name="def"></a>
 The exact definition of an VM-based obfuscation has already been stated under the section https://github.com/OpaxIV/hslu_secproj/blob/0bc6c015a4a7fa69abbd0b94e3960d5773a84f95/disasm_vm_obfuscators/summary.md
 <br>
 In a couple of words one can say, that this obfuscation technique uses a costum instruction set architecture as the basis of its obfuscation. It hides the original code in a sequence of bytes, which are then interpreted at runtime.
@@ -12,14 +18,14 @@ In a couple of words one can say, that this obfuscation technique uses a costum 
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/55528869-41ab-4306-8412-19926d8b745e" width="600">
 <br/>
 
-## Analysis Procedure
+## Analysis Procedure <a name="procedure"></a>
 During the analysis, the goal is to identify individual components of the VM-based obfuscator. At the beginning, the graph view shall be used to get a broad idea of the binary. In a further step the most important components of a VM-based obfuscation shall be identified. In a last step the VM-architecure of the binary is to be stated.
 
 The binary has been analysed with the reverse engineering tool ghidra. When selecting the language, I chose "x86, compiler: gcc". Please make sure to download the file directly from github or with the `curl` terminal command.
 The file then should be of type "ELF" when imported in ghidra.
 
 
-### Identification of the VM Components
+## Identification of the VM-Components in the Binary <a name="analysis"></a>
 Starting at the adress 0x10115a, one can get a broad overview of the VM-obfuscation. The graph already presents a similarity to the picture of the general structure from above:
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/4b48d578-4dba-41f7-abce-0f3af633d01a" width="700">
