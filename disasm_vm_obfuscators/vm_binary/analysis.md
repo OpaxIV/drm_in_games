@@ -4,9 +4,9 @@ The goal is to find the most important components of the VM-based obfuscation an
 <br>
 
 ## Table of Contents
-1. [Definition of an VM Obfuscation] (#def)
-2. [Analysis Procedure] (#procedure)
-3. [Identification of the VM-Components in the Binary] (#analysis)
+1. [Definition of an VM Obfuscation](#def)
+2. [Analysis Procedure](#procedure)
+3. [Identification of the VM-Components in the Binary](#analysis)
 <br>
 
 ## Definition of a VM Obfuscation <a name="def"></a>
