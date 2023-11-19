@@ -1,12 +1,14 @@
 # Encode Arithmetic
 This documentation shall provide a visualisation of an arithmetic encoded C-file. The usage of tigress (in regards of arithmetic encoding) shall be provided and an analysis of the generated output file.
 <br>
+
 ## Table of Contents
 1. [General Definition](#generaldefinition)
 2. [Tigress](#tigress)
 3. [Analysis in Ghidra](#analysisinghidra)
-<br>   
-## General Definition
+<br>
+
+## General Definition <a name="generaldefinition"></a>
 The basic idea of the encode arithmetic technique is to rewrite "simpler" functions into more complex expressions. 
 
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/87ba2a98-23be-4e94-8603-a4026cdccecc" width="500"/>
@@ -36,7 +38,7 @@ if __name__ == "__main__":
 ```
 When executed the word "True" is printed into the console.
 
-## Tigress
+## Tigress <a name="tigress"></a>
 Tigress is a C-programm obfuscator. It takes a file written in C, obfuscates it by imposing the options added by the user and outputs the obfuscated C-file.
 
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
@@ -82,7 +84,7 @@ int main (int argc, char** argv) {
 }
 ```
 
-## Analysis in Ghidra
+## Analysis in Ghidra <a name="analysisinghidra"></a>
 ### Graph View
 Following pictures show the control flow graph of the main function of the standard fib.c implementation and the obfuscated control flow graph of the fib_encode.c file.<br/>
 _fib.c:_<br/>
