@@ -36,7 +36,7 @@ Tigress is a C-programm obfuscator. It takes a file written in C, obfuscates it 
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
 `tigress --Environment=x86_64:Linux:Gcc:13.2.1 --Transform=EncodeArithmetic --Functions=fib,main --out=fib_encode.c /home/training/Desktop/tigress/3.1/fib.c`
 
-Following chapters showcase an analysis of an obfuscated fib.c file. The input, non-obfuscated C-file contains a basic implementation of the Fibonacci series:
+Following chapters will showcase the analysis of an obfuscated fib.c file. The inputed, non-obfuscated C-file contains a basic implementation of the Fibonacci series:
 ```C
 #include "3.1/tigress.h"
 
