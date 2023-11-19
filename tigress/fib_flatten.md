@@ -1,12 +1,21 @@
-## Curve Flattening
-### General Definition
+# Curve Flattening
+This documentation shall provide a visualisation of a C-file, which was obfuscated with the "curve flattening" technique. The usage of tigress (in regards to curve flattening) shall be provided and an analysis of the generated output file.
+<br>
+
+## Table of Contents
+1. [General Definition](#generaldefinition)
+2. [Tigress](#tigress)
+3. [Analysis in Ghidra](#analysisinghidra)
+<br>
+
+## General Definition <a name="generaldefinition"></a>
 The idea of curve flattening consists in altering the control flow of a program by using a dispatcher function.
 As seen in the following picture, the graph is literally "flattened":<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/6a6a8777-acfd-4efb-8460-840951b5638d" width="500"/>
 <br/>
 The edges of the basic blocks are all redirected to a dispatcher function. Decisions, to which blocks of the program one should jump to, are then based on a new artifical variable.
 
-### Tigress
+## Tigress <a name="tigress"></a>
 Tigress is a C-programm obfuscator. It takes a file written in C, obfuscates it by imposing the options added by the user and outputs the obfuscated C-file.
 
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
@@ -52,8 +61,8 @@ int main (int argc, char** argv) {
 }
 ```
 
-### Analysis in Ghidra
-#### Graph View
+## Analysis in Ghidra <a name="analysisinghidra"></a>
+### Graph View
 Following pictures show the control flow graph of the standard fib.c implementation and the obfuscated, flattend control flow graph of the fib_flatten.c file.<br/>
 _fib.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/5f5d2c9d-1ad1-4667-86a5-d07965ce8cf2" width="500"/>
@@ -66,7 +75,7 @@ When looking into the second graph one can see, that a switch case was implement
 
 Since being a switch case, allmost all branches are outgoing from exactly the basic block at `00100145`  (as seen by the arrows).
 
-#### Decompiler
+### Decompiler Output
 The decompiler presents the following code for the standard implementation `fib.c`:<br/>
 _fib.c:_
 ```C
