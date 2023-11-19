@@ -1,7 +1,7 @@
 # Analysis of the EasyAntiCheat.sys Binary
 
 ## Introduction
-The following text provides an analysis of the sub component "EasyAntiCheat.sys". It is part of the Easy Anti-Cheat Engine software.
+The following introduction shall provide an initial overview of one of the components of the Easy Anti-Cheat Engine ("EasyAntiCheat.sys").
 
 ### Definition of an Anti-Cheat Engine
 Anti-cheat engines are wastly used in the gaming landscape. These tools' purpose is to recognize players, which use tools made for manipulating game software (cheating tools). Anti-cheat engines are mostly used in multiplayer games and can be deployed client-sided as an external program, client-sided as an integrated program or server-sided.
