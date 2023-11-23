@@ -12,7 +12,7 @@ Hence another sample has been taken for analysis (referenced bellow).
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e2deada6-8510-4e74-9c36-7e3dc723cee0" width="500"/>
 <br/>
 
-In computer science, predicates are conditional expressions that evaluate to true or false. An opaque predicates value (outcome) is kown to the obfuscator at the time of obfuscation, but difficult to find out externally at a later point in time. 
+In computer science, predicates are conditional expressions that evaluate to true or false. An opaque predicates value (the outcome) is known to the obfuscator at the time of obfuscation, but difficult to find out externally at a later point in time. 
 Using opaque predicates will lead to an extremely excessive control flow graph with redudant inexecutable paths.
 It is for this reason, that any further analysis based on the control flow graph will turn into tedious work.
 In comparasion to other control flow graph obfuscation techniques, opaque predicates act more covert, since it is difficult to separate them from actual functional code in the program.
