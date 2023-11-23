@@ -1,5 +1,5 @@
 # List of main takeaways / new learnings of this article
-This file contains definitions and texts of new learned things through the article. Some parts have intentionaly been copied direclty from the appended sources.
+This file contains definitions and texts of new learned things through the article. Some parts have intentionaly been copied directly from the appended sources.
 <br>
 
 ## Table of Contents
