@@ -2,7 +2,7 @@
 ## Security Project (SecProj) at the Hochschule Luzern
 This repository contains all data regarding the Security Project.
 
-### Acknoledgement
+### Acknowledgement
 I would like to express my special thanks to Dr. Tim Blazytko, who provided me his help and his time during this project.<br>
 I sincerely thank him for the support.  
 
