@@ -7,7 +7,7 @@ I would like to express my special thanks to Dr. Tim Blazytko, who provided me h
 I sincerely thank him for the support.  
 
 ### Sources
-All (re-)sources, which served as a basis for this project, have been referenced extensively in eacht individual chapter. 
+All (re-)sources, which served as a basis for this project, have been referenced extensively in each individual chapter. 
 
 ### Basic Roadmap
 1. Read: https://nicolo.dev/en/blog/fairplay-apple-obfuscation/
@@ -17,7 +17,7 @@ All (re-)sources, which served as a basis for this project, have been referenced
 
 2. Install and understand the Tigress Obfuscation Software
 <br>&nbsp;2.1 Get a simple C program and obfuscate it with tigress. e.g. https://github.com/mrphrazer/r2con2021_deobfuscation/blob/main/samples/src/fib.c
-<br>&nbsp;2.2 Look at the binary compiled binary with e.g. Ghidra
+<br>&nbsp;2.2 Look at the compiled binary with e.g. Ghidra
 <br>&nbsp;&nbsp;2.2.1 Focus on the following obfuscation techniques (one per one):
     - Control Flattening
     - Opaque Predicates
@@ -30,7 +30,7 @@ All (re-)sources, which served as a basis for this project, have been referenced
 <br>
 
 4. Analyze the EasyAntiCheat.sys binary.
-<br>&nbsp;4.1 Focus on some of it's functions.
+<br>&nbsp;4.1 Focus on some of its functions.
 <br>&nbsp;4.2 Focus on the whole binary and try to "quickly" spot (with the acquired knowledge) obfuscated code.
 <br>
 
