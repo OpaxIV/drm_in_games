@@ -66,7 +66,7 @@ Available informations about this type of opaque predicate are vague. It can be 
 
 
 ## Analysis in Ghidra <a name="analysisinghidra"></a>
-Beginning at the address 0x491aa0, one can recognize the high complexity of the control flow graph of this binarys function.
+Beginning at the address 0x491aa0, one can recognize the high complexity contained in this binary.
 <br>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/e507b626-41a5-43dd-8d44-d87edf457f1a" width="700">
 <br/>
