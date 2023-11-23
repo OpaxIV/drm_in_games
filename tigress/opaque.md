@@ -21,7 +21,7 @@ In comparasion to other control flow graph obfuscation techniques, opaque predic
 Opaque predicates can be classified as the following types:
 
 _P<sup>T</sup> - opaquely true predicate_ <br>
-The condition is always satisfied, hence "true". The following example shows, that either expression `2` or `(x^2 + x)^T` must be correct. Since `2` is always true, the branch on the left will always be taken.
+The condition is always satisfied, hence "true". The following example shows, that either expression `2` or `(x^2 + x)^T` must be correct. Since `2` is always true out of these two conditions, the if-case will always be executed.
 ```C
 if (2|(x^2 + x)^T){
 ...
@@ -56,13 +56,13 @@ else {
 ...
 }
 ```
-This code snipplet presents the expression `x mod 2 == 0`, which depending on the value of `x`, can be either true or false.
-For example for `x` being equal to 2, the if-statement would be executed, since this would fullfil the condition (2 mod 2 == 0).
+This code snipplet presents the expression `x mod 2 == 0`, which depending on the value of `x` can be either true or false.
+For example for `x` being equal to 2 the if-statement would be executed, since this would fulfill the condition (2 mod 2 == 0).
 On the other hand `x = 4` would not satisfy this condition and the code in the else-block would be executed instead. 
 
 
 _E<sup>=v</sup> - for an opaque expression of value v_ <br>
-Informations about this type of opaque predicate are vague. It can be seen as a generalisation of the proceeding types. This expression defines an opaque predicate `E` as being evaluated to the value of `v`. The value `v` can either be true or false.
+Available informations about this type of opaque predicate are vague. It can be seen as a generalisation of the preceding types. This expression defines an opaque predicate `E` as being evaluated to the value of `v`. The value `v` can either be true or false.
 
 
 ## Analysis in Ghidra <a name="analysisinghidra"></a>
@@ -80,7 +80,7 @@ Since the amount is so vast, only a sample set of randomly chosen candidates wil
 
 Three basic blocks compose this opaque predicate.
 The first can be seen as the "if-statement", in which the condition gets checked.
-Basic block containing a conditional check (starting at 0x491b38):
+Basic block containing a conditional check (starting at `0x491b38`):
 ```asm
                              LAB_00491b38                                    XREF[1]:     00491b1e(j)  
         00491b38 8b 0d 44        MOV        this,dword ptr [DAT_0058dd44]                    = ??
@@ -99,10 +99,10 @@ Basic block containing a conditional check (starting at 0x491b38):
         00491b59 39 d0           CMP        EAX,EDX
         00491b5b 74 3b           JZ         LAB_00491b98
 ```
-The jump occurs if `eax` and `edx` are equal. This is computed by subtracting both values currently resting in the registers and checking the result.
-If the result ends up being equal to zero, then the jump occurs. Every other outcome would lead to a continuation of the code at 0x0491b5d.
+The jump occurs if `eax` and `edx` are equal. This is computed by subtracting both values currently resting in the registers and checking their result.
+If the result ends up being equal to zero, then the jump occurs. Every other outcome would lead to a continuation of the code at `0x0491b5d`.
 
-Interesting to know would be, what the actual if-statement would be like, hence to understand how the values in the registers `eax` and `edx` would look like.
+Interesting to know would be, what the actual if-statement would be like, hence to understand what the values in the registers `eax` and `edx` are.
 We can somewhat get an idea of this by looking at the decompiler output:
 ```C
   uVar9 = DAT_0058dd44 * DAT_0058dd44 + 1;
@@ -118,7 +118,7 @@ LAB_00491b98:
   }
 ```
 Most notably is the line `if ((int)(2 / (ulonglong)uVar9) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;`.
-To get a better understanding, we need to simplify this expression. By looking one line above, we can see what the `uVar9` variable stands for.
+To get a better understanding, we need to simplify this expression. By looking one line above, we can see for what the `uVar9` variable stands for.
 By substituting `uVar9` with `DAT_0058dd44 * DAT_0058dd44 + 1` we get:
 ```C
   if ((int)(2 / (ulonglong)DAT_0058dd44 * DAT_0058dd44 + 1) == DAT_0058dd40 * DAT_0058dd40 + 3) goto LAB_00491b98;
@@ -133,7 +133,7 @@ if ((2 /  (x * x + 1)) ==  y * y + 3) goto LAB_00491b98;
 ```
 
 Now we can check this expression using the python tool "z3-solver":
-Note: The number `32` in `BitVecs(...)` stands for the values' size. Since we are working with 32-bit registers, the number to input is 32.
+_Note: The number `32` in `BitVecs(...)` stands for the values' size. Since we are working with 32-bit registers, the number to input here is 32._
 ```py
 [training@vm ~]$ python
 Python 3.11.5 (main, Sep  2 2023, 14:16:33) [GCC 13.2.1 20230801] on linux
@@ -156,7 +156,7 @@ unsat
 As we can see, this expression is not satisfiable. So any occurence of `((2 /  (x * x + 1)) ==  y * y + 3)` will lead it to never be true.
 This branch can be described as dead weight, since it will never be executed.
 
-So we can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress 0x491b5d.
+We can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress `0x491b5d`.
 ```
                              LAB_00491b5d                                    XREF[1]:     00491ba4(j)  
         00491b5d b8 04 00        MOV        EAX,0x4
@@ -190,7 +190,7 @@ So we can conclude, that the conditon is never satisfied and hence the control f
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b8f8b709-5d42-4252-969b-8f82047110ee" width="600">
 <br/>
 
-As a second example the opaque at address 0x492d09 has been chosen. The following code shows a familiarity with the preceding example
+As a second example the opaque predicate at the address `0x492d09` has been chosen. The following code shows a familiarity with the preceding example
 ```asm
 00492d09 a1 bc dc        MOV        EAX,[DAT_0058dcbc]                               = ??
 		 58 00
@@ -232,7 +232,7 @@ The conditional jump can be seen in the decompiler output at the following line 
 <br>
 By replacing this expression we get:
 `if ((uint **)(DAT_0058dcbc * DAT_0058dcbc) * 7 + -1 == (int)DAT_0058dcb8 * (int)DAT_0058dcb8) goto LAB_00492dc8;`
-If we further simplify this statement as in the example before, we get:
+If we further simplify this statement like in the example before, we get:
 ```C
 x =  DAT_0058dcbc
 y = DAT_0058dcb8
@@ -266,7 +266,7 @@ unsat
 As we can see, this expression is not satisfiable. So any occurence of `(x * x) * 7 + -1 == y * y` will lead it to never be true.
 This branch can be described as dead weight, since it will never be executed.
 
-So we can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress 0x492d5b.
+We can conclude, that the conditon is never satisfied and hence the control flow will directly continue onto the adress 0x492d5b.
 
 ---
 References:
