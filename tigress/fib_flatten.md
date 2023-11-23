@@ -21,7 +21,7 @@ Tigress is a C-programm obfuscator. It takes a file written in C, obfuscates it 
 The following command transforms the given fib.c file into an obfuscated fib_out.c file:<br/>
 `tigress --Environment=x86_64:Linux:Gcc:13.2.1 --Transform=Flatten --Functions=fib,main --out=fib_flatten.c /home/training/Desktop/tigress/3.1/fib.c`
 
-Following chapters showcase an analysis of an obfuscated fib.c file. The input, non-obfuscated C-file contains a basic implementation of the Fibonacci series:
+Following chapters showcase an analysis of an obfuscated fib.c file. The inputed, non-obfuscated C-file contains a basic implementation of the Fibonacci series:
 ```C
 #include "3.1/tigress.h"
 
@@ -70,10 +70,10 @@ _fib.c:_<br/>
 _fib_flatten.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/9dd4d1a4-e320-4599-bef3-00138a762091" width="800"/>
 
-When looking into the second graph one can see, that a switch case was implemented, which wasn't existent before.<br/>
+When looking at the second graph one can see, that a switch case was implemented (which wasn't existent before).<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/d798dc0e-bdc9-4e32-afcc-216719758f99" width="1200"/>
 
-Since being a switch case, allmost all branches are outgoing from exactly the basic block at `00100145`  (as seen by the arrows).
+Since being a switch case, allmost all branches are outgoing from the basic block at `00100145`  (as seen by the arrows).
 
 ### Decompiler Output
 The decompiler presents the following code for the standard implementation `fib.c`:<br/>
