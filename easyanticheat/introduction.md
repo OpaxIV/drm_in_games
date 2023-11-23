@@ -24,11 +24,13 @@ More precisely, the component works as a manual mapper: Basically manual mapping
 
 ## Analysis
 ### Analysis Procedure
-During the analysis, the goal is to identify individual obfuscated components in the Easy Anti-Cheat binary. At the beginning, the graph view shall be used to get a broad idea and in a further step some obfuscated components of the binary shall be analysed in details. Furthermore the obfuscation technique of each of these components shall be identified. Finally the broad way of functioning of this binary shall be stated.
-The binary has been analysed with the reverse engineering tool IDA64.
+During the analysis, the goal is to identify individual obfuscated components in the Easy Anti-Cheat binary. At the beginning, the graph view shall be used to get a broad idea and in a further step some obfuscated components of the binary shall be analysed in detail. Furthermore the obfuscation technique of each of these components shall be identified (or at least assumed).
+The binary has been analysed with the reverse engineering tools IDA64 and BinaryNinja.
 All the analyzed functions can be found in a separate folder in this repository.
 
-### Before you start
+---
+
+## Miscellaneous
 #### Useful IDA64 Shortcuts
 - `;` - Enter repeatable Comment
 - `:` - Enter Comment
@@ -48,10 +50,9 @@ Choosing "AMD64 PE" as an option will lead to the following prompt, which can be
 <img src ="https://github.com/OpaxIV/hslu_secproj/assets/93701325/824afc39-fb3a-4183-9af5-57f806b56fe3" width="300">
 <br>
 
-**Note:**<br>
-Generally speaking, choosing the type of binary, as which to open the executable in IDA64 (or any other disassembler) should not make any difference.
+_Generally speaking, choosing the type of binary, as which to open the executable in IDA64 (or any other disassembler) should not make any difference.
 It depends on the program, since opening the binary and defining it wrongly causes the decompiler to interpret the code in the wrong CPU architecture.
-Fortunately this is mostly only the case when analyzing programs made for embedded systems.
+Fortunately this is mostly only the case when analyzing programs made for embedded systems._
 
 
 ---
