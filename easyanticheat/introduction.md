@@ -19,8 +19,8 @@ The Easy Anti-Cheat Engine (Program) consists of many different components. The 
 It is again to be stated, that the analysis in this writeup only covers the EasyAntiCheat.sys binary.
 
 ### About the EasyAntiCheat.sys Module
-Generally speaking the EasyAntiCheat.sys is a kernel module, which acts as a driver for the actual program, running in the user space.
-More precisely, the component works as a manuel mapper: Basically manual mapping a driver is the same as manual mapping a DLL into a process. It follows a mapping of the driver binary into kernel memory, doing some fixups and then manually calling the EntryPoint. Manual mapping a portable executeable means to manually write a target in a way similar how the windows loader loads drivers and dlls. In other words, the EasyAntiCheat.sys component is a bridge between the kernel and user space and maps neccessary contents into the game running in the user land.
+Generally speaking the EasyAntiCheat.sys is a kernel module, acting as a driver for the actual program, which runs in the user space.
+More precisely, the component works as a manual mapper: Basically manual mapping a driver is the same as manual mapping a DLL into a process. It follows a mapping of the driver binary into kernel memory, doing some fixups and then manually calling the EntryPoint. Manual mapping a portable executeable means to manually write a target in a way similar how the windows loader loads drivers and dlls. In other words, the EasyAntiCheat.sys component is a bridge between the kernel and user space and maps neccessary contents into the game running in the user land.
 
 ## Analysis
 ### Analysis Procedure
