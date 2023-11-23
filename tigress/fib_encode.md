@@ -14,7 +14,7 @@ The basic idea of the encode arithmetic technique is to rewrite "simpler" functi
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/87ba2a98-23be-4e94-8603-a4026cdccecc" width="500"/>
 <br/>
 
-The following script shows this principle by comparing two functions:
+The following python code shows this principle by comparing two functions:
 ```py
 ## checks if the two expressins are equal
 ## only for testing purposes
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     if genericExp(10) == arithEnc(10):
         print("True")
 ```
-When executed the word "True" is printed into the console.
+When executed the word "True" is printed into the console, if both expressions are equal.
 
 ## Tigress <a name="tigress"></a>
 Tigress is a C-programm obfuscator. It takes a file written in C, obfuscates it by imposing the options added by the user and outputs the obfuscated C-file.
@@ -95,7 +95,7 @@ _fib_encode.c:_<br/>
 <img src="https://github.com/OpaxIV/hslu_secproj/assets/93701325/b94d8dbb-8d7e-4299-bf80-02bc1f8d333b" width="400"/>
 
 The second graph clearly shows some change in its number of instrucions compared to the first graph.
-By just looking at the beginning of the assembly code of the main function at `00100000` more instructions are to be seen compared to the same named standard implementation:
+By just looking at the beginning of the assembly code of the main function at `0x100000` more instructions are to be seen compared to the same named standard implementation:
 
 _fib.c:_
 ```
