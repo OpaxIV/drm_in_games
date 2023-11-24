@@ -36,7 +36,7 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 
 <br>
 
-### sub_14000f2d4 (Obfuscated)
+### sub_14000f2d4 (Not Obfuscated)
 - The function is only made up by a single basic block. - **FALSE**
   - Ideed, this function is more complex than consisting of only one basic block.
   - Complex functions do not necessarily need to be obfuscated, but by looking in conjunction with the code (next point) we can clearly see the sheer amount of jumps/gotos. 
@@ -45,9 +45,9 @@ This analysis shall cover a handfull of functions, which are indeed obfuscated a
 <br>
 
 - The function contains rare or unusual instructions in the disassembly / pseudo C-code. - **FALSE** 
-- The function's code does not represent "normal / usual" code. - **TRUE**
-  - High amount of jumps/goto labels
-  - Possible arithmetic encoding from `0x14000f3ed` to `0x14000f3f6`.
+- The function's code does not represent "normal / usual" code. - **FALSE**
+  - High amount of jumps/goto labels (not a clear indicator for obfuscated code)
+  - Possible arithmetic encoding from `0x14000f3ed` to `0x14000f3f6`
 ```C
 [...]
 14000f2ee          if (arg3 == 0)
