@@ -1,4 +1,4 @@
-# Digial Rights Management (DRM) in Video Games
+# Digital Rights Management (DRM) in Video Games
 ## Security Project (SecProj) at the Hochschule Luzern
 This repository contains all data regarding the Security Project.
 
