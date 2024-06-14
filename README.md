@@ -2,16 +2,17 @@
 ## Security Project (SecProj) at the Hochschule Luzern
 This repository contains all data regarding the Security Project.
 
-## Disclaimer
+### Disclaimer
 This repository was first made public in June of 2024, before of which any copyrighted material has been removed. It is to be noted, that all information found here is for educational purposes only and all rights belong to the respective owners.
 
 ### Acknowledgements
-I would like to express my special thanks to Dr. Tim Blazytko, who provided me his help and his time during this project.<br>
+I would like to express my special thanks to Dr. Tim B., who provided me his help and his time during this project.<br>
 I sincerely thank him for the support.  
 
 ### Sources
-All (re-)sources, which served as a basis for this project, have been referenced extensively in each individual chapter. 
+All (re-)sources, which served as a basis for this project, have been referenced extensively in each individual chapter.
 
+----------------------------------------------------------------------------------------
 ### Basic Roadmap
 1. Read: https://nicolo.dev/en/blog/fairplay-apple-obfuscation/
 <br>&nbsp;1.1 Understand the fundamentals of the article
@@ -37,6 +38,8 @@ All (re-)sources, which served as a basis for this project, have been referenced
 <br>&nbsp;4.2 Focus on the whole binary and try to "quickly" spot (with the acquired knowledge) obfuscated code.
 <br>
 
+
+----------------------------------------------------------------------------------------
 ### Annotations
 - Multiple folders can be found with names like "archive" or "obsolete". These folders contain mainly analyses, which were not further elaborated upon. This was due to time constraints or "wrong directions", which would have else been taken.
 - The file (<a href="hslu_secproj/disasm_vm_obfuscators/symb_exec/analysis.md">"symb_exec"</a>) contains a semi finished analysis of the symbolic execution technique. Unfortunately, this is also unfinished due to not really being in the scope of this project and (again) due to time constraints.
