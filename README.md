@@ -2,7 +2,7 @@
 ## Security Project (SecProj) at the Hochschule Luzern
 This repository contains all data regarding the Security Project.
 
-### Acknowledgement
+### Acknowledgements
 I would like to express my special thanks to Dr. Tim Blazytko, who provided me his help and his time during this project.<br>
 I sincerely thank him for the support.  
 
@@ -35,5 +35,5 @@ All (re-)sources, which served as a basis for this project, have been referenced
 <br>
 
 ### Annotations
-- Multiple folders can be found with names like "archive" oder "obsolete". These folders contain mainly analyses, which were not further elaborated upon. This was due to time constraints or "wrong directions", which would else been taken.
+- Multiple folders can be found with names like "archive" or "obsolete". These folders contain mainly analyses, which were not further elaborated upon. This was due to time constraints or "wrong directions", which would have else been taken.
 - The file (<a href="hslu_secproj/disasm_vm_obfuscators/symb_exec/analysis.md">"symb_exec"</a>) contains a semi finished analysis of the symbolic execution technique. Unfortunately, this is also unfinished due to not really being in the scope of this project and (again) due to time constraints.
