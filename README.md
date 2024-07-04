@@ -1,13 +1,7 @@
 # Digital Rights Management (DRM) in Video Games
-## Security Project (SecProj) at the Hochschule Luzern
-This repository contains all data regarding the Security Project.
 
 ### Disclaimer
 This repository was first made public in June of 2024, before of which any copyrighted material has been removed. It is to be noted, that all information found here is for educational purposes only and all rights belong to the respective owners.
-
-### Acknowledgements
-I would like to express my special thanks to Dr. Tim B., who provided me his help and his time during this project.<br>
-I sincerely thank him for the support.  
 
 ### Sources
 All (re-)sources, which served as a basis for this project, have been referenced extensively in each individual chapter.
